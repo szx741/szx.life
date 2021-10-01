@@ -1,0 +1,2925 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js use-big-shadow article-header-style-2 ">
+<head>
+	<meta name="baidu-site-verification" content="code-MjRy3Rk95s">
+	<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta property="og:title" content="fabric开发环境使用docker搭建 &#8211; 巷子深的生活">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="/fabric%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA">
+				<meta name="description" content="fabric-ca使用（docker实现）
+
+
+
+
+
+1、启动CA服务
+
+
+
+创建目录并且编写文件
+
+
+mkdir -p /opt/docker/fabric-ca-server
+gedit dock...">
+			<meta property="og:description" content="fabric-ca使用（docker实现）
+
+
+
+
+
+1、启动CA服务
+
+
+
+创建目录并且编写文件
+
+
+mkdir -p /opt/docker/fabric-ca-server
+gedit dock...">
+	
+				<meta name="keywords" content="docker,Fabric,fabric-ca">
+	
+					<meta property="og:image" content="/wp-content/uploads/2021/09/erciyuan26-scaled.webp">
+	
+	<meta name="theme-color" content="#fb7ea2">
+	<meta name="theme-color-rgb" content="251,126,162">
+	<meta name="theme-color-origin" content="#fb7ea2">
+	<meta name="argon-enable-custom-theme-color" content="true">
+
+
+	<meta name="theme-card-radius" content="15">
+	<meta name="theme-card-radius-origin" content="15">
+
+	<meta name="theme-version" content="1.2.5">
+
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+			<title>fabric开发环境使用docker搭建 &#8211; 巷子深的生活</title>
+<meta name="description" content="fabric-ca使用（docker实现）   1、启动CA服务  创建目录并且编写文件  mkdir -p /opt/docker/fabric-ca-server gedit dock...">
+<meta name="keywords" content="docker,Fabric,fabric-ca">
+<meta name="robots" content="max-image-preview:large">
+<link rel="stylesheet" id="argon_css_merged-css" href="/wp-content/themes/argon/assets/argon_css_merged.css?ver=1.2.5" type="text/css" media="all">
+<link rel="stylesheet" id="style-css" href="/wp-content/themes/argon/style.css?ver=1.2.5" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=5.8.1" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/themes/argon/assets/argon_js_merged.js?ver=1.2.5" id="argon_js_merged-js"></script>
+<script type="text/javascript" src="/wp-content/themes/argon/assets/js/argon.min.js?ver=1.2.5" id="argonjs-js"></script>
+<link rel="canonical" href="/fabric%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e4%bd%bf%e7%94%a8docker%e6%90%ad%e5%bb%ba/">
+<!-- Analytics by WP-Statistics v13.1.1 - https://wp-statistics.com/ -->
+<script>var WP_Statistics_http = new XMLHttpRequest();WP_Statistics_http.open('GET', '/wp-json/wp-statistics/v2/hit?_=1633071821&_wpnonce=0d4cdba3b3&wp_statistics_hit_rest=yes&browser=WordPress&platform=未知&version=未知&referred=/fabric{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}E5{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}BC{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}80{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}E5{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}8F{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}91{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}E7{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}8E{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}AF{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}E5{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}A2{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}83{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}E4{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}BD{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}BF{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}E7{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}94{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}A8docker{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}E6{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}90{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}AD{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}E5{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}BB{f9b3497b73bf5a78cd4f38a421bd5ae09eae69eabf236cfdb9156a5840d5798c}BA/&ip=82.157.179.143&exclusion_match=yes&exclusion_reason=CrawlerDetect&ua=WordPress/5.8.1; &track_all=1&timestamp=1633100621&current_page_type=post&current_page_id=658&search_query&page_uri=/fabric%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA/&user_id=0', true);WP_Statistics_http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");WP_Statistics_http.send(null);</script>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>	
+		<!-- Baidu Tongji Start -->
+	<script type="text/javascript">
+	var _hmt = _hmt || [];
+		_hmt.push(['_trackPageview']);
+			(function() {
+	var hm = document.createElement("script");
+	hm.src = "//hm.baidu.com/hm.js?948edc23fd8e36ba6feef017d95f4638";
+	hm.setAttribute('async', 'true');
+	document.getElementsByTagName('head')[0].appendChild(hm);
+	})();
+	</script>
+	<!-- Baidu Tongji  End -->
+	<link rel="icon" href="/wp-content/uploads/2021/06/cropped-websiteIcon-150x150.jpg" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2021/06/cropped-websiteIcon-300x300.jpg" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2021/06/cropped-websiteIcon-300x300.jpg">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2021/06/cropped-websiteIcon-300x300.jpg">
+		<style type="text/css" id="wp-custom-css">*:not([class*="icon"]):not(i) {
+font-family: Helvetica, Tahoma, Arial, STHeiti, "华文黑体", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体","Droid Sans", sans-serif !important;
+}
+#primary {
+    opacity: .98;
+}
+mjx-container[jax="SVG"][display="true"] {
+    display: block;
+    text-align: center;
+    margin: 1em 0;
+}</style>
+				<script>
+		document.documentElement.classList.remove("no-js");
+		var argonConfig = {
+			wp_path: "/",
+			language: "zh_CN",
+			dateFormat: "YMD",
+							zoomify: false,
+						pangu: "false",
+							lazyload: {
+					threshold: 800,
+					effect: "fadeIn"
+				},
+						fold_long_comments: false,
+			disable_pjax: false,
+			pjax_animation_durtion: 600,
+			headroom: "true",
+			waterflow_columns: "2",
+			code_highlight: {
+				enable: true,
+				hide_linenumber: false,
+				break_line: false			}
+		}
+	</script>
+	<script>
+		var darkmodeAutoSwitch = "system";
+		function setDarkmode(enable){
+			if (enable == true){
+				$("html").addClass("darkmode");
+			}else{
+				$("html").removeClass("darkmode");
+			}
+			$(window).trigger("scroll");
+		}
+		function toggleDarkmode(){
+			if ($("html").hasClass("darkmode")){
+				setDarkmode(false);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "false");
+			}else{
+				setDarkmode(true);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "true");
+			}
+		}
+		if (sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true"){
+			setDarkmode(true);
+		}
+		function toggleDarkmodeByPrefersColorScheme(media){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			if (media.matches){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		function toggleDarkmodeByTime(){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			let hour = new Date().getHours();
+			if (hour < 7 || hour >= 22){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		if (darkmodeAutoSwitch == 'system'){
+			var darkmodeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+			darkmodeMediaQuery.addListener(toggleDarkmodeByPrefersColorScheme);
+			toggleDarkmodeByPrefersColorScheme(darkmodeMediaQuery);
+		}
+		if (darkmodeAutoSwitch == 'time'){
+			toggleDarkmodeByTime();
+		}
+		if (darkmodeAutoSwitch == 'alwayson'){
+			setDarkmode(true);
+		}
+
+		function toggleAmoledDarkMode(){
+			$("html").toggleClass("amoled-dark");
+			if ($("html").hasClass("amoled-dark")){
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "true");
+			}else{
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "false");
+			}
+		}
+		if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "true"){
+			$("html").addClass("amoled-dark");
+		}else if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "false"){
+			$("html").removeClass("amoled-dark");
+		}
+	</script>
+	<script>
+		if (navigator.userAgent.indexOf("Safari") !== -1 && navigator.userAgent.indexOf("Chrome") === -1){
+			$("html").addClass("using-safari");
+		}
+	</script>
+
+	</head>
+
+
+<style id="themecolor_css">:root{
+		--themecolor: #fb7ea2;
+		--themecolor-dark0: #FB7299;
+		--themecolor-dark: #FA6590;
+		--themecolor-dark2: #F94D7E;
+		--themecolor-dark3: #F9346D;
+		--themecolor-light: #FDAFC6;
+		--themecolor-rgbstr: 251,126,162;
+		--themecolor-gradient: linear-gradient(150deg,var(--themecolor-light) 15%, var(--themecolor) 70%, var(--themecolor-dark0) 94%);
+
+	}</style>
+<style id="theme_cardradius_css">:root{
+		--card-radius: 15px;
+	}</style>
+
+<body class="post-template-default single single-post postid-658 single-format-standard">
+<div id="toolbar">
+	<header class="header-global">
+		<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light bg-primary headroom--not-bottom headroom--not-top headroom--pinned">
+			<div class="container">
+				<button id="open_sidebar" class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle sidebar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-brand mr-0">
+															<a class="navbar-brand navbar-title" href="/">巷子深的生活</a>
+				</div>
+				<div class="navbar-collapse collapse" id="navbar_global">
+					<div class="navbar-collapse-header">
+						<div class="row" style="display: none;">
+							<div class="col-6 collapse-brand"></div>
+							<div class="col-6 collapse-close">
+								<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+									<span></span>
+									<span></span>
+								</button>
+							</div>
+						</div>
+						<div class="input-group input-group-alternative">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-search"></i></span>
+							</div>
+							<input id="navbar_search_input_mobile" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+						</div>
+					</div>
+					<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+
+										<li class="nav-item">
+											<a href="/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-home" aria-hidden="true"></i>首页</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e5%bd%92%e6%a1%a3/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-clock-o" aria-hidden="true"></i>归档</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e7%95%99%e8%a8%80%e6%9d%bf/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-comments" aria-hidden="true"></i>留言板</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/shuoshuo/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-weibo" aria-hidden="true"></i>说说</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e5%8f%8b%e6%83%85%e9%93%be%e6%8e%a5/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-link" aria-hidden="true"></i>友链</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e5%85%b3%e4%ba%8e%e6%9c%ac%e7%ab%99/" class="nav-link" target="" title="关于本站和站主">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-user-circle" aria-hidden="true"></i>关于</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="https://travellings.link/" class="nav-link" target="_blank" title="随机跳转到一个开往的网页">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-subway" aria-hidden="true"></i>开往</span>
+										  </a>
+</li>
+</ul>					<ul class="navbar-nav align-items-lg-center ml-lg-auto">
+						<li id="navbar_search_container" class="nav-item" data-toggle="modal">
+							<div id="navbar_search_input_container">
+								<div class="input-group input-group-alternative">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fa fa-search"></i></span>
+									</div>
+									<input id="navbar_search_input" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="navbar_menu_mask" data-toggle="collapse" data-target="#navbar_global"></div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-toggler-searcg-icon"></span>
+				</button>
+			</div>
+		</nav>
+	</header>
+</div>
+<div class="modal fade" id="argon_search_modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">搜索</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="argon_serach_form" method="get" action="/">
+	<div class="form-group mb-3">
+		<div class="input-group input-group-alternative">
+			<div class="input-group-prepend">
+				<span class="input-group-text"><i class="fa fa-search"></i></span>
+			</div>
+			<input name="s" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+		</div>
+	</div>
+	<div class="text-center">
+		<button onclick="if($('#argon_serach_form input[name=\'s\']').val() != '') {document.getElementById('argon_serach_form').submit();}" type="button" class="btn btn-primary">搜索</button>
+	</div>
+</form>			</div>
+		</div>
+	</div>
+</div>
+<!--Banner-->
+<section id="banner" class="banner section section-lg section-shaped">
+	<div class="shape  shape-default">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+		<div id="banner_container" class="banner-container container text-center">
+					<div class="banner-title text-white" data-interval="100">
+<span data-text="书香不怕巷子深" class="banner-title-inner">&nbsp;</span>
+			<span data-text="勤修内功，只要自己有真才实学，就一定不会被埋没" class="banner-subtitle d-block">&nbsp;</span>
+</div>
+			</div>
+			<style>section.banner{
+				background-image: url(/wp-content/random-image/picture/banner/fm3.webp) !important;
+			}</style>
+		</section>
+
+	<style>#content:before {
+			content: '';
+			display: block;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: -2;
+			background: url(/wp-content/uploads/2021/09/无标题-1.png);
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 1;
+			transition: opacity .5s ease;
+		}
+		html.darkmode #content:before{
+			filter: brightness(0.65);
+		}
+					#content:after {
+				content: '';
+				display: block;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				z-index: -2;
+				background: url(/wp-content/uploads/2021/09/夜间背景.png);
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+				opacity: 0;
+				transition: opacity .5s ease;
+			}
+			html.darkmode #content:after {
+				opacity: 1;
+			}
+			html.darkmode #content:before {
+				opacity: 0;
+			}</style>
+
+	<style>#banner:after {
+			content: '';
+			width: 100vw;
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 120px;
+			background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0) 100%);
+			display: block;
+			z-index: -1;
+		}
+		.banner-title {
+			text-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+		}</style>
+
+<div id="float_action_buttons" class="float-action-buttons fabtns-unloaded">
+	<button id="fabtn_toggle_sides" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip-move-to-left="移至左侧" tooltip-move-to-right="移至右侧">
+		<span class="btn-inner--icon fabtn-show-on-right"><i class="fa fa-caret-left"></i></span>
+		<span class="btn-inner--icon fabtn-show-on-left"><i class="fa fa-caret-right"></i></span>
+	</button>
+	<button id="fabtn_back_to_top" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Back To Top" tooltip="回到顶部">
+		<span class="btn-inner--icon"><i class="fa fa-angle-up"></i></span>
+	</button>
+	<button id="fabtn_go_to_comment" class="btn btn-icon btn-neutral fabtn shadow-sm d-none" type="button" style="display: none;" aria-label="Comment" tooltip="评论">
+		<span class="btn-inner--icon"><i class="fa fa-comment-o"></i></span>
+	</button>
+	<button id="fabtn_toggle_darkmode" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Toggle Darkmode" tooltip-darkmode="夜间模式" tooltip-blackmode="暗黑模式" tooltip-lightmode="日间模式">
+		<span class="btn-inner--icon"><i class="fa fa-moon-o"></i><i class="fa fa-lightbulb-o"></i></span>
+	</button>
+	<button id="fabtn_toggle_blog_settings_popup" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" style="display: none;" aria-label="Open Blog Settings Menu" tooltip="设置">
+		<span class="btn-inner--icon"><i class="fa fa-cog"></i></span>
+	</button>
+	<div id="fabtn_blog_settings_popup" class="card shadow-sm" style="opacity: 0;" aria-hidden="true">
+		<div id="close_blog_settings"><i class="fa fa-close"></i></div>
+		<div class="blog-setting-item mt-3">
+			<div style="transform: translateY(-4px);"><div id="blog_setting_toggle_darkmode_and_amoledarkmode" tooltip-switch-to-darkmode="切换到夜间模式" tooltip-switch-to-blackmode="切换到暗黑模式">
+<span>夜间模式</span><span>暗黑模式</span>
+</div></div>
+			<div style="flex: 1;"></div>
+			<label id="blog_setting_darkmode_switch" class="custom-toggle">
+				<span class="custom-toggle-slider rounded-circle"></span>
+			</label>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">字体</div>
+			<div>
+				<button id="blog_setting_font_sans_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-left">Sans Serif</button><button id="blog_setting_font_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-right">Serif</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">阴影</div>
+			<div>
+				<button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button><button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3 mb-3">
+			<div style="flex: 1;">滤镜</div>
+			<div id="blog_setting_filters" class="ml-3">
+				<button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0" filter-name="off">关闭</button>
+				<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
+				<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
+				<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mb-3">
+			<div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
+			<div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
+				<div id="blog_setting_card_radius"></div>
+			</div>
+		</div>
+					<div class="blog-setting-item mt-1 mb-3">
+				<div style="flex: 1;">主题色</div>
+				<div id="theme-color-picker" class="ml-3"></div>
+			</div>
+			</div>
+	<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip="阅读进度">
+		<div id="fabtn_reading_progress_bar" style="width: 0%;"></div>
+		<span id="fabtn_reading_progress_details">0%</span>
+	</button>
+</div>
+
+<div id="content" class="site-content">
+
+<div class="page-information-card-container"></div>
+
+<div id="sidebar_mask"></div>
+<aside id="leftbar" class="leftbar widget-area" role="complementary">
+				<div id="leftbar_part1" class="widget widget_search card bg-white shadow-sm border-0">
+			<div class="leftbar-banner card-body">
+				<span class="leftbar-banner-title text-white">xaotuman's home</span>
+
+													<span class="leftbar-banner-subtitle text-white">U1S1，二次元才是第一生产力</span>
+				
+			</div>
+
+			<ul id="leftbar_part1_menu" class="leftbar-menu">
+
+						<li class="leftbar-menu-item">
+							<a href="/" target=""><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e5%bd%92%e6%a1%a3/" target=""><i class="fa fa-clock-o" aria-hidden="true"></i>归档</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e7%95%99%e8%a8%80%e6%9d%bf/" target=""><i class="fa fa-comments" aria-hidden="true"></i>留言板</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/shuoshuo/" target=""><i class="fa fa-weibo" aria-hidden="true"></i>说说</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e5%8f%8b%e6%83%85%e9%93%be%e6%8e%a5/" target=""><i class="fa fa-link" aria-hidden="true"></i>友链</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e5%85%b3%e4%ba%8e%e6%9c%ac%e7%ab%99/" target=""><i class="fa fa-user-circle" aria-hidden="true"></i>关于</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="https://travellings.link/" target="_blank"><i class="fa fa-subway" aria-hidden="true"></i>开往</a>
+</li>
+</ul>			<div class="card-body text-center leftbar-search-button">
+				<button id="leftbar_search_container" class="btn btn-secondary btn-lg active btn-sm btn-block border-0" role="button">
+					<i class="menu-item-icon fa fa-search mr-0"></i> 搜索					<input id="leftbar_search_input" type="text" placeholder="搜索什么..." class="form-control form-control-alternative" autocomplete="off">
+				</button>
+			</div>
+		</div>
+		<div id="leftbar_part2" class="widget widget_search card bg-white shadow-sm border-0">
+			<div id="leftbar_part2_inner" class="card-body">
+								<div class="nav-wrapper" style="padding-top: 5px;">
+	                <ul class="nav nav-pills nav-fill" role="tablist">
+													<li class="nav-item sidebar-tab-switcher">
+								<a class="active show" id="leftbar_tab_catalog_btn" data-toggle="tab" href="#leftbar_tab_catalog" role="tab" aria-controls="leftbar_tab_catalog" no-pjax>文章目录</a>
+							</li>
+												<li class="nav-item sidebar-tab-switcher">
+							<a class="" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax>站点概览</a>
+						</li>
+													<li class="nav-item sidebar-tab-switcher">
+								<a class="" id="leftbar_tab_tools_btn" data-toggle="tab" href="#leftbar_tab_tools" role="tab" aria-controls="leftbar_tab_tools" no-pjax>功能</a>
+							</li>
+							                </ul>
+				</div>
+				<div>
+					<div class="tab-content" style="padding: 10px 10px 0 10px;">
+													<div class="tab-pane fade active show" id="leftbar_tab_catalog" role="tabpanel" aria-labelledby="leftbar_tab_catalog_btn">
+								<div id="leftbar_catalog"></div>
+								<script type="text/javascript">
+									$(function () {
+										$(document).headIndex({
+											articleWrapSelector: '#post_content',
+											indexBoxSelector: '#leftbar_catalog',
+											subItemBoxClass: "index-subItem-box",
+											itemClass: "index-item",
+											linkClass: "index-link",
+											offset: 80,
+										});
+									})
+								</script>
+															</div>
+												<div class="tab-pane fade text-center" id="leftbar_tab_overview" role="tabpanel" aria-labelledby="leftbar_tab_overview_btn">
+							<img id="leftbar_overview_author_image" src="/wp-content/uploads/2021/07/erciyuan4.webp" class="img-fluid rounded-circle shadow-sm" style="width: 100px;" alt="avatar">
+							<h6 id="leftbar_overview_author_name">szx</h6>
+							<nav class="site-state">
+								<div class="site-state-item site-state-posts">
+									<a style="cursor: default;">
+										<span class="site-state-item-count">41</span>
+										<span class="site-state-item-name">文章</span>
+									</a>
+								</div>
+								<div class="site-state-item site-state-categories">
+									<a data-toggle="modal" data-target="#blog_categories">
+										<span class="site-state-item-count">17</span>
+										<span class="site-state-item-name">分类</span>
+									</a>
+								</div>      
+								<div class="site-state-item site-state-tags">
+									<a data-toggle="modal" data-target="#blog_tags">
+										<span class="site-state-item-count">69</span>
+										<span class="site-state-item-name">标签</span>
+									</a>
+								</div>
+							</nav>
+							<div class="site-author-links">
+
+											<div class="site-author-links-item">
+												<a href="https://github.com/szx741" rel="noopener" target="_blank"><i class="fa fa-github"></i> Github</a>
+</div>
+
+											<div class="site-author-links-item">
+												<a href="https://gitee.com/xaotuman" rel="noopener" target="_blank"><img src="/wp-content/uploads/2021/07/gitee-fill-round.png" width="14.55px" height="15px"> Gitee</a>
+</div>
+</div>							<div style="height: 20px;"></div>						</div>
+													<div class="tab-pane fade" id="leftbar_tab_tools" role="tabpanel" aria-labelledby="leftbar_tab_tools_btn">
+								<div id="archives-4" class="widget widget_archive card bg-white border-0">
+<h6 class="font-weight-bold text-black">归档</h6>
+			<ul>
+					<li>
+<a href="/2021/10/">2021年10月</a>&nbsp;(1)</li>
+	<li>
+<a href="/2021/09/">2021年9月</a>&nbsp;(18)</li>
+	<li>
+<a href="/2021/08/">2021年8月</a>&nbsp;(10)</li>
+	<li>
+<a href="/2021/07/">2021年7月</a>&nbsp;(11)</li>
+	<li>
+<a href="/2020/08/">2020年8月</a>&nbsp;(1)</li>
+			</ul>
+
+			</div>
+<div id="categories-4" class="widget widget_categories card bg-white border-0">
+<h6 class="font-weight-bold text-black">分类</h6>
+<form action="/" method="get">
+<label class="screen-reader-text" for="cat">分类</label><select name="cat" id="cat" class="postform">
+	<option value="-1">选择分类</option>
+	<option class="level-0" value="2">图一乐&nbsp;&nbsp;(13)</option>
+	<option class="level-1" value="34">&nbsp;&nbsp;&nbsp;分享&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="3">学习文档&nbsp;&nbsp;(19)</option>
+	<option class="level-1" value="39">&nbsp;&nbsp;&nbsp;docker&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="71">&nbsp;&nbsp;&nbsp;GIS&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="79">&nbsp;&nbsp;&nbsp;Golang&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="10">&nbsp;&nbsp;&nbsp;区块链&nbsp;&nbsp;(6)</option>
+	<option class="level-1" value="4">&nbsp;&nbsp;&nbsp;操作系统&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="5">&nbsp;&nbsp;&nbsp;数据库&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="6">&nbsp;&nbsp;&nbsp;深度学习&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="9">&nbsp;&nbsp;&nbsp;软件开发&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="1">未分类&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="7">游戏&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="11">&nbsp;&nbsp;&nbsp;我的世界&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="35">生活&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="8">网站建设&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="61">解决问题&nbsp;&nbsp;(1)</option>
+</select>
+</form>
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			dropdown.parentNode.submit();
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+			</div>
+<div id="calendar-3" class="widget widget_calendar card bg-white border-0">
+<h6 class="font-weight-bold text-black">日历</h6>
+<div id="calendar_wrap" class="calendar_wrap">
+<table id="wp-calendar" class="wp-calendar-table">
+	<caption>2021年 10月</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="星期一">一</th>
+		<th scope="col" title="星期二">二</th>
+		<th scope="col" title="星期三">三</th>
+		<th scope="col" title="星期四">四</th>
+		<th scope="col" title="星期五">五</th>
+		<th scope="col" title="星期六">六</th>
+		<th scope="col" title="星期日">日</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td colspan="4" class="pad">&nbsp;</td>
+<td id="today"><a href="/2021/10/01/" aria-label="2021年10月1日 发布的文章">1</a></td>
+<td>2</td>
+<td>3</td>
+	</tr>
+	<tr>
+		<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+	</tr>
+	<tr>
+		<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+<td>17</td>
+	</tr>
+	<tr>
+		<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+<td>23</td>
+<td>24</td>
+	</tr>
+	<tr>
+		<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td>29</td>
+<td>30</td>
+<td>31</td>
+	</tr>
+	</tbody>
+	</table>
+<nav aria-label="上个月及下个月" class="wp-calendar-nav">
+		<span class="wp-calendar-nav-prev"><a href="/2021/09/">&laquo; 9月</a></span>
+		<span class="pad">&nbsp;</span>
+		<span class="wp-calendar-nav-next">&nbsp;</span>
+	</nav>
+</div>
+</div>							</div>
+											</div>
+				</div>
+			</div>
+		</div>
+</aside>
+<div class="modal fade" id="blog_categories" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">分类</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<a href="/category/study/docker/" class="badge badge-secondary tag">docker <span class="tag-num">3</span></a><a href="/category/study/gis/" class="badge badge-secondary tag">GIS <span class="tag-num">1</span></a><a href="/category/study/golang/" class="badge badge-secondary tag">Golang <span class="tag-num">3</span></a><a href="/category/fun/share/" class="badge badge-secondary tag">分享 <span class="tag-num">6</span></a><a href="/category/study/blockchain/" class="badge badge-secondary tag">区块链 <span class="tag-num">6</span></a><a href="/category/fun/" class="badge badge-secondary tag">图一乐 <span class="tag-num">7</span></a><a href="/category/study/" class="badge badge-secondary tag">学习文档 <span class="tag-num">1</span></a><a href="/category/game/minecraft/" class="badge badge-secondary tag">我的世界 <span class="tag-num">1</span></a><a href="/category/study/system/" class="badge badge-secondary tag">操作系统 <span class="tag-num">1</span></a><a href="/category/study/database/" class="badge badge-secondary tag">数据库 <span class="tag-num">2</span></a><a href="/category/uncategorized/" class="badge badge-secondary tag">未分类 <span class="tag-num">2</span></a><a href="/category/study/deep-learning/" class="badge badge-secondary tag">深度学习 <span class="tag-num">1</span></a><a href="/category/game/" class="badge badge-secondary tag">游戏 <span class="tag-num">1</span></a><a href="/category/life/" class="badge badge-secondary tag">生活 <span class="tag-num">2</span></a><a href="/category/website/" class="badge badge-secondary tag">网站建设 <span class="tag-num">8</span></a><a href="/category/solve_problem/" class="badge badge-secondary tag">解决问题 <span class="tag-num">1</span></a><a href="/category/study/software-development/" class="badge badge-secondary tag">软件开发 <span class="tag-num">2</span></a>			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="blog_tags" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">标签</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<a href="/tag/application/" class="badge badge-secondary tag">application <span class="tag-num">1</span></a><a href="/tag/caliper/" class="badge badge-secondary tag">caliper <span class="tag-num">1</span></a><a href="/tag/cdn/" class="badge badge-secondary tag">CDN <span class="tag-num">1</span></a><a href="/tag/couchdb/" class="badge badge-secondary tag">couchdb <span class="tag-num">1</span></a><a href="/tag/docker/" class="badge badge-secondary tag">docker <span class="tag-num">5</span></a><a href="/tag/easton/" class="badge badge-secondary tag">easton <span class="tag-num">1</span></a><a href="/tag/fabric/" class="badge badge-secondary tag">Fabric <span class="tag-num">6</span></a><a href="/tag/fabric-ca/" class="badge badge-secondary tag">fabric-ca <span class="tag-num">1</span></a><a href="/tag/ftp/" class="badge badge-secondary tag">FTP <span class="tag-num">1</span></a><a href="/tag/geoserver/" class="badge badge-secondary tag">GeoServer <span class="tag-num">1</span></a><a href="/tag/geowebcache/" class="badge badge-secondary tag">Geowebcache <span class="tag-num">1</span></a><a href="/tag/golang/" class="badge badge-secondary tag">Golang <span class="tag-num">1</span></a><a href="/tag/go%e5%bc%80%e5%8f%91/" class="badge badge-secondary tag">Go开发 <span class="tag-num">1</span></a><a href="/tag/go%e8%af%ad%e8%a8%80/" class="badge badge-secondary tag">Go语言 <span class="tag-num">1</span></a><a href="/tag/grafana/" class="badge badge-secondary tag">grafana <span class="tag-num">1</span></a><a href="/tag/hastings/" class="badge badge-secondary tag">hastings <span class="tag-num">1</span></a><a href="/tag/hexo/" class="badge badge-secondary tag">Hexo <span class="tag-num">1</span></a><a href="/tag/makefile/" class="badge badge-secondary tag">makefile <span class="tag-num">1</span></a><a href="/tag/mx-space/" class="badge badge-secondary tag">mx-space <span class="tag-num">1</span></a><a href="/tag/nginx/" class="badge badge-secondary tag">nginx <span class="tag-num">2</span></a><a href="/tag/node-js-sdk/" class="badge badge-secondary tag">node js SDK <span class="tag-num">1</span></a><a href="/tag/openlayers/" class="badge badge-secondary tag">Openlayers <span class="tag-num">1</span></a><a href="/tag/php/" class="badge badge-secondary tag">php <span class="tag-num">1</span></a><a href="/tag/ping/" class="badge badge-secondary tag">ping <span class="tag-num">1</span></a><a href="/tag/postgis/" class="badge badge-secondary tag">postgis <span class="tag-num">1</span></a><a href="/tag/postgresql/" class="badge badge-secondary tag">postgresql <span class="tag-num">2</span></a><a href="/tag/prometheus/" class="badge badge-secondary tag">prometheus <span class="tag-num">1</span></a><a href="/tag/push-markdown/" class="badge badge-secondary tag">push-markdown <span class="tag-num">1</span></a><a href="/tag/ssh/" class="badge badge-secondary tag">ssh <span class="tag-num">1</span></a><a href="/tag/tag1/" class="badge badge-secondary tag">Tag1 <span class="tag-num">1</span></a><a href="/tag/tag222/" class="badge badge-secondary tag">Tag222 <span class="tag-num">1</span></a><a href="/tag/tag333333/" class="badge badge-secondary tag">Tag333333 <span class="tag-num">1</span></a><a href="/tag/tag4444444444/" class="badge badge-secondary tag">Tag4444444444 <span class="tag-num">1</span></a><a href="/tag/tag5/" class="badge badge-secondary tag">Tag5 <span class="tag-num">1</span></a><a href="/tag/typecho/" class="badge badge-secondary tag">Typecho <span class="tag-num">1</span></a><a href="/tag/ubuntu/" class="badge badge-secondary tag">Ubuntu <span class="tag-num">1</span></a><a href="/tag/vscode/" class="badge badge-secondary tag">vscode <span class="tag-num">1</span></a><a href="/tag/webgis/" class="badge badge-secondary tag">WebGIS <span class="tag-num">1</span></a><a href="/tag/wordpress/" class="badge badge-secondary tag">wordpress <span class="tag-num">3</span></a><a href="/tag/yolo/" class="badge badge-secondary tag">yolo <span class="tag-num">1</span></a><a href="/tag/%e4%b8%bb%e9%a2%98/" class="badge badge-secondary tag">主题 <span class="tag-num">1</span></a><a href="/tag/%e5%85%b3%e4%ba%8e%e6%9c%ac%e4%ba%ba/" class="badge badge-secondary tag">关于本人 <span class="tag-num">1</span></a><a href="/tag/%e5%8c%ba%e5%9d%97%e9%93%be/" class="badge badge-secondary tag">区块链 <span class="tag-num">1</span></a><a href="/tag/%e5%8d%9a%e5%ae%a2/" class="badge badge-secondary tag">博客 <span class="tag-num">2</span></a><a href="/tag/%e5%9b%be%e4%b8%80%e4%b9%90/" class="badge badge-secondary tag">图一乐 <span class="tag-num">8</span></a><a href="/tag/%e5%9e%83%e5%9c%be%e5%be%ae%e4%bf%a1/" class="badge badge-secondary tag">垃圾微信 <span class="tag-num">1</span></a><a href="/tag/%e5%a5%bd%e7%89%a9%e6%8e%a8%e8%8d%90/" class="badge badge-secondary tag">好物推荐 <span class="tag-num">2</span></a><a href="/tag/%e5%ad%a6%e4%b9%a0/" class="badge badge-secondary tag">学习 <span class="tag-num">4</span></a><a href="/tag/%e5%af%86%e7%a0%81%e7%ae%a1%e7%90%86/" class="badge badge-secondary tag">密码管理 <span class="tag-num">1</span></a><a href="/tag/%e5%af%b9%e8%b1%a1%e5%ad%98%e5%82%a8/" class="badge badge-secondary tag">对象存储 <span class="tag-num">1</span></a><a href="/tag/%e5%b0%8f%e5%b7%a5%e5%85%b7/" class="badge badge-secondary tag">小工具 <span class="tag-num">2</span></a><a href="/tag/%e5%bd%92%e6%a1%a3/" class="badge badge-secondary tag">归档 <span class="tag-num">1</span></a><a href="/tag/%e6%88%91%e7%9a%84%e4%b8%96%e7%95%8c/" class="badge badge-secondary tag">我的世界 <span class="tag-num">1</span></a><a href="/tag/%e6%89%8b%e6%9c%ba/" class="badge badge-secondary tag">手机 <span class="tag-num">1</span></a><a href="/tag/%e6%8c%87%e5%8d%97%e7%b3%bb%e5%88%97/" class="badge badge-secondary tag">指南系列 <span class="tag-num">1</span></a><a href="/tag/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f/" class="badge badge-secondary tag">操作系统 <span class="tag-num">1</span></a><a href="/tag/%e6%95%b0%e6%8d%ae%e5%ba%93/" class="badge badge-secondary tag">数据库 <span class="tag-num">1</span></a><a href="/tag/%e6%99%ba%e8%83%bd%e5%90%88%e7%ba%a6/" class="badge badge-secondary tag">智能合约 <span class="tag-num">1</span></a><a href="/tag/%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0/" class="badge badge-secondary tag">深度学习 <span class="tag-num">1</span></a><a href="/tag/%e7%94%9f%e6%b4%bb/" class="badge badge-secondary tag">生活 <span class="tag-num">1</span></a><a href="/tag/%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b/" class="badge badge-secondary tag">目标检测 <span class="tag-num">1</span></a><a href="/tag/%e7%bd%91%e7%ab%99%e5%bb%ba%e8%ae%be/" class="badge badge-secondary tag">网站建设 <span class="tag-num">6</span></a><a href="/tag/%e7%bd%91%e7%bb%9c%e5%ae%89%e5%85%a8/" class="badge badge-secondary tag">网络安全 <span class="tag-num">3</span></a><a href="/tag/%e8%8f%9c%e9%b8%9f%e6%95%99%e7%a8%8b/" class="badge badge-secondary tag">菜鸟教程 <span class="tag-num">1</span></a><a href="/tag/%e8%90%8c%e5%9b%bd/" class="badge badge-secondary tag">萌国 <span class="tag-num">1</span></a><a href="/tag/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="badge badge-secondary tag">虚拟机 <span class="tag-num">1</span></a><a href="/tag/%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91/" class="badge badge-secondary tag">软件开发 <span class="tag-num">1</span></a><a href="/tag/%e9%80%9f%e6%88%90/" class="badge badge-secondary tag">速成 <span class="tag-num">1</span></a><a href="/tag/%e9%93%be%e7%a0%81/" class="badge badge-secondary tag">链码 <span class="tag-num">1</span></a>			</div>
+		</div>
+	</div>
+</div>
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+		<article class="post post-full card bg-white shadow-sm border-0" id="post-658">
+	<header class="post-header text-center post-header-with-thumbnail">
+		<img class="post-thumbnail" src="/wp-content/uploads/2021/09/erciyuan26-scaled.webp"><div class="post-header-text-container">		<a class="post-title" href="/fabric%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e4%bd%bf%e7%94%a8docker%e6%90%ad%e5%bb%ba/">fabric开发环境使用docker搭建</a>
+		<div class="post-meta">
+			<div class="post-meta-detail post-meta-detail-time">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<time title="发布于 2021-9-07 13:39:54 | 编辑于 2021-9-07 13:39:54">2021-9-07 13:39
+					</time>
+				</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-edittime">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<time title="发布于 2021-9-07 13:39:54 | 编辑于 2021-9-07 13:39:54">2021-9-07 13:39
+					</time>
+				</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-views">
+					<i class="fa fa-eye" aria-hidden="true"></i> 9</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-comments">
+					<i class="fa fa-comments-o" aria-hidden="true"></i> 0</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-categories">
+				<i class="fa fa-bookmark-o" aria-hidden="true"></i> <a href="/category/study/blockchain/" target="_blank" class="post-meta-detail-catagory-link">区块链</a>
+</div>					</div>
+		</div>	</header>
+
+	<div class="post-content" id="post_content">
+		<h1 id="fabric-ca使用docker实现" tabindex="-1">fabric-ca使用（docker实现）</h1>
+<h3 id="1-启动ca服务" tabindex="-1">1、启动CA服务</h3>
+<p>创建目录并且编写文件</p>
+<pre><code>mkdir -p /opt/docker/fabric-ca-server
+gedit docker-compose.yml
+</code></pre>
+<pre><code class="language-yml">#文件名必须是 docker-compose.yml
+########################文本内容###########################
+fabric-ca-server:
+  image: hyperledger/fabric-ca:1.5.1   #注意这里要更改为你要使用的镜像tag
+  container_name: fabric-ca-server
+  ports:
+    - "7054:7054"
+  environment:
+    - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+  volumes:
+    - "./fabric-ca-server:/etc/hyperledger/fabric-ca-server"
+  command: sh -c 'fabric-ca-server start -b admin:adminpw'
+ 
+#-b admin:adminpw
+#admin 是我们指定的用户，我们现在给admin生成证书
+#adminpw 是admin的密码
+</code></pre>
+<p>启动服务</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<p>docker ps 查看运行情况</p>
+<p>然后关闭刚才运行的服务，并且删除</p>
+<pre><code>docker stop 容器ID
+docker rm容器ID
+</code></pre>
+<p>修改当前目录下 fabric-ca-server/fabric-ca-server-config.yaml文件</p>
+<pre><code class="language-yaml">gedit fabric-ca-server/fabric-ca-server-config.yaml
+
+affiliations:
+   R1:
+      - admin
+      - dev
+      - user
+   R2:
+      - admin
+      - dev
+      - user
+   R3:
+      - admin
+      - dev
+      - user
+   R4:
+      - admin
+      - dev
+      - user
+</code></pre>
+<p>删除当前目录下的fabric-ca-server.db</p>
+<pre><code class="language-bash">rm fabric-ca-server/fabric-ca-server.db 
+</code></pre>
+<p>重启</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<h3 id="2-fabric-ca-server" tabindex="-1">2、Fabric CA Server</h3>
+<pre><code>.
+├── docker-compose.yml
+└── fabric-ca-server
+    ├── ca-cert.pem
+    ├── fabric-ca-server-config.yaml
+    ├── fabric-ca-server.db
+    ├── IssuerPublicKey
+    ├── IssuerRevocationPublicKey
+    └── msp
+        └── keystore
+            ├── 365543fff66f5062d3d053e6323e3faa4a9ad8a4fe6ab86df551060c92694351_sk
+            ├── IssuerRevocationPrivateKey
+            └── IssuerSecretKey
+
+msp&nbsp;：包含keystore，CA服务器的私钥
+ca-cert.pem&nbsp;：CA服务器生成的admin证书
+fabric-ca-server.db&nbsp;：CA默认使用的嵌入型数据库 SQLite,存储发放证书信息，可以通过sqllite3或其他可视化工具查看详细信息。
+fabric-ca-server-config.yaml&nbsp;：CA服务端的配置文件
+</code></pre>
+<h3 id="3-采用fabric-ca-client来生成证书" tabindex="-1">3、采用fabric-ca-client来生成证书</h3>
+<pre><code class="language-bash">mkdir /opt/docker/fabric-ca-client
+
+export FABRIC_CA_CLIENT_HOME=/opt/docker/fabric-ca-client
+
+</code></pre>
+<p>通过fabric-ca-client程序链接CA服务器并<strong>enroll</strong>(登录)admin管理员</p>
+<pre><code class="language-bash">fabric-ca-client enroll -u http://admin:adminpw@localhost:7054
+
+#admin是用户名
+#adminpw是admin的密码
+#localhost:7054 fabric-ca-server端口,这是刚刚在docker-compose.yml指定的
+</code></pre>
+<p>可以发现/mnt/ca_client目录下生成了一个fabric-ca-client-config.yaml配置文件，以及msp目录，包含管理员的证书和私钥。有了已经成功enroll（登录）的admin用户，接下来将admin作为管理员来register（登记）一个新用户：R4-admin</p>
+<p>通过fabric-ca-client <strong>register</strong>（登记）R4管理员的证书</p>
+<pre><code>fabric-ca-client register --id.name r4-admin --id.secret r4-adminpw --id.type admin --id.affiliation r4.admin
+</code></pre>
+<h3 id="4-登录并获取r4-admin的证书到本地" tabindex="-1">4、登录并获取r4-admin的证书到本地</h3>
+<pre><code class="language-bash">fabric-ca-client enroll -u http://r4-admin:r4-adminpw@localhost:7054 -M $FABRIC_CA_CLIENT_HOME/r4-admin
+ 
+#r4-admin:r4-adminpw 对应的用户名和密码
+#-M 指定的是r4-admin证书保存的位置
+</code></pre>
+<h3 id="5-查看已颁发所有证书" tabindex="-1">5、查看已颁发所有证书</h3>
+<pre><code class="language-bash">apt-get install sqlite3 libsqlite3-dev
+</code></pre>
+<pre><code class="language-bash">sqlite3 /opt/docker/fabric-ca-server/fabric-ca-server/fabric-ca-server.db
+
+sqlite&gt; .tables
+sqlite&gt; select * from certificates;
+</code></pre>
+<h1 id="fabric整个docker配置" tabindex="-1">fabric整个docker配置</h1>
+<h2 id="零-整体架构" tabindex="-1">零、整体架构</h2>
+<p>下面介绍下本文所采用的整体架构<br>
+三个组织</p>
+<ul>
+<li>Org0 &#8212;&gt; 组织0</li>
+<li>Org1 &#8212;&gt; 组织1</li>
+<li>Org2 &#8212;&gt; 组织2</li>
+</ul>
+<p>组织中的成员</p>
+<ul>
+<li>Org0: 一个orderer节点,一个Org0的Admin节点</li>
+<li>Org1: 两个Peer节点,一个Org1的Admin节点,一个Org1的User节点</li>
+<li>Org2: 两个Peer节点,一个Org2的Admin节点,一个Org2的User节点</li>
+</ul>
+<p>四台CA服务器</p>
+<ul>
+<li>TLS服务器：为网络中所有节点颁发TLS证书，用于通信的加密</li>
+<li>Org1的CA服务器：为组织1中所有用户颁发证书</li>
+<li>Org2的Ca服务器：为组织2中所有用户颁发证书</li>
+<li>Org0的CA服务器：为组织0中所有用户颁发证书</li>
+</ul>
+<p>这里的四台CA服务器都是根服务器。彼此之间都是独立的存在，没有任何关系。，也就是说每一个CA服务器生成的证书在其他CA服务器都是不能用的。<br>
+介绍完之后，可以进入正题了。</p>
+<h2 id="一-ca服务器的配置" tabindex="-1">一、CA服务器的配置</h2>
+<h3 id="1-启动tls-ca服务器" tabindex="-1">1、启动TLS CA服务器</h3>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/docker-compose/fabric-ca-tls &amp;&amp; cd /root/hyperledger/docker-compose/fabric-ca-tls
+
+gedit docker-compose.yaml
+</code></pre>
+<pre><code class="language-yaml">version: '2'
+
+networks:
+  fabric-ca:
+services:
+   ca-tls:
+     container_name: ca-tls
+     image: hyperledger/fabric-ca
+     command: sh -c 'fabric-ca-server start -d -b tls-ca-admin:tls-ca-adminpw --port 7052'
+     environment:
+       - FABRIC_CA_SERVER_HOME=/root/hyperledger/fabric-ca/crypto
+       - FABRIC_CA_SERVER_TLS_ENABLED=true
+       - FABRIC_CA_SERVER_CSR_CN=ca-tls
+       - FABRIC_CA_SERVER_CSR_HOSTS=0.0.0.0
+       - FABRIC_CA_SERVER_PORT=7052
+       - FABRIC_CA_SERVER_DEBUG=true
+     volumes:
+       - /root/hyperledger/fabric-ca-tls:/root/hyperledger/fabric-ca
+     networks:
+       - fabric-ca
+     ports:
+       - 7052:7052
+</code></pre>
+<p>启动docker容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<p>同时工作目录<code>/root/hyperledger/fabric-ca/</code> 下面会出现<code>crypto</code>文件夹</p>
+<p>ca-cert.pem文件。这是TLS CA服务器的签名根证书，目的是用来对CA的TLS证书进行验证，同时也需要持有这个证书才可以进行证书的颁发。</p>
+<p>多环境下我们需要将它复制到每一台机器上。</p>
+<h4 id="11-tls-ca服务器注册用户" tabindex="-1">1.1 TLS CA服务器注册用户</h4>
+<p>设置环境变量&amp;登陆</p>
+<pre><code class="language-bash">#设置环境变量指定根证书的路径(如果工作目录不同的话记得指定自己的工作目录,以下不再重复说明)
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem
+#设置环境变量指定CA客户端的HOME文件夹
+export FABRIC_CA_CLIENT_HOME=/root/hyperledger/fabric-ca-tls/admin
+#登录管理员用户用于之后的节点身份注册
+fabric-ca-client enroll -d -u https://tls-ca-admin:tls-ca-adminpw@0.0.0.0:7052 --tls.certfiles /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem
+</code></pre>
+<p>登陆成功后会在<code>/root/hyperledger/fabric-ca-tls/</code>目录下生车给你<code>admin</code>文件夹，这里面是 <code>admin</code>相关的证书文件，并且只有登陆了admin,才具有权限进行用户注册，因为该用户具有CA的全部权限，相当于CA服务的root用户。</p>
+<pre><code class="language-bash">fabric-ca-client register -d --id.name peer1-org1 --id.secret peer1PW --id.type peer -u https://0.0.0.0:7052 --tls.certfiles /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name peer2-org1 --id.secret peer2PW --id.type peer -u https://0.0.0.0:7052 --tls.certfiles /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name peer1-org2 --id.secret peer1PW --id.type peer -u https://0.0.0.0:7052 --tls.certfiles /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name peer2-org2 --id.secret peer2PW --id.type peer -u https://0.0.0.0:7052 --tls.certfiles /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name orderer1-org0 --id.secret ordererPW --id.type orderer -u https://0.0.0.0:7052 --tls.certfiles /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name admin-org1 --id.secret org1AdminPW --id.type admin -u https://0.0.0.0:7052 --tls.certfiles /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name admin-org2 --id.secret org2AdminPW --id.type admin -u https://0.0.0.0:7052 --tls.certfiles /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem
+</code></pre>
+<p>这里我们为各个节点注册TLS证书，之后Fabric网络的通信则需要通过这一步骤注册过的用户的TLS证书来进行TLS加密通信。<br>
+到这里我们只是注册了各个节点的身份，还没有获取到他们的证书。证书可以通过登录获取，不过暂时不着急获取他们的TLS证书。<br>
+接下来，我们对其他几个CA服务器进行配置。</p>
+<h4 id="12-配置org0的ca服务" tabindex="-1">1.2 配置Org0的CA服务</h4>
+<p>再强调一下，本文中的几个CA服务器都是根服务器，彼此之间没有任何关系，所以上一步骤的TLS CA服务器在这一部分并没有用到。</p>
+<p>同样，本文使用Docker容器启动CA服务器。</p>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/org0/ca
+
+mkdir -p /root/hyperledger/docker-compose/org0/ca &amp;&amp; cd /root/hyperledger/docker-compose/org0/ca
+
+gedit docker-compose.yaml
+</code></pre>
+<pre><code class="language-yaml">version: '2'
+
+networks:
+  fabric-ca:
+
+services:
+
+  org0:
+    container_name: org0
+    image: hyperledger/fabric-ca:latest
+    command: sh -c 'fabric-ca-server start -d -b org0-admin:org0-adminpw --port 7053'
+    environment:
+      - FABRIC_CA_SERVER_HOME=/root/hyperledger/fabric-ca/crypto
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_CSR_CN=org0
+      - FABRIC_CA_SERVER_CSR_HOSTS=0.0.0.0
+      - FABRIC_CA_SERVER_PORT=7053
+      - FABRIC_CA_SERVER_DEBUG=true
+    volumes:
+      - /root/hyperledger/org0/ca:/root/hyperledger/fabric-ca  ##重要！！！记得修改这里的路径为自己的工作目录
+    networks:
+      - fabric-ca
+    ports:
+      - 7053:7053
+</code></pre>
+<p>启动容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<p>注册org0的用户<br>
+设置环境变量&amp;登陆</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org0/ca/crypto/ca-cert.pem
+
+export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org0/ca/admin
+
+fabric-ca-client enroll -d -u https://org0-admin:org0-adminpw@0.0.0.0:7053 --tls.certfiles /root/hyperledger/org0/ca/crypto/ca-cert.pem
+</code></pre>
+<p>在本组织中共有两个用户：orderer节点和admin用户(这里的admin和管理员是不同的。</p>
+<p>将他们注册到org0的CA服务器。</p>
+<pre><code class="language-bash">fabric-ca-client register -d --id.name orderer1-org0 --id.secret ordererpw --id.type orderer -u https://0.0.0.0:7053 --tls.certfiles /root/hyperledger/org0/ca/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name admin-org0 --id.secret org0adminpw --id.type admin --id.attrs "hf.Registrar.Roles=client,hf.Registrar.Attributes=*,hf.Revoker=true,hf.GenCRL=true,admin=true:ecert,abac.init=true:ecert" -u https://0.0.0.0:7053 --tls.certfiles /root/hyperledger/org0/ca/crypto/ca-cert.pem
+</code></pre>
+<p>命令执行完之后，将会注册一个Orderer节点的身份和一个Admin的身份。同时在工作目录下的org0子文件夹中会有两个文件夹：crypto和admin。crypto中是CA服务器的配置信息，admin是服务器管理员的身份信息。</p>
+<h4 id="13-配置org1的ca服务" tabindex="-1">1.3 配置Org1的CA服务</h4>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/org1/ca
+
+mkdir -p /root/hyperledger/docker-compose/org1/ca &amp;&amp; cd /root/hyperledger/docker-compose/org1/ca
+
+gedit docker-compose.yaml
+</code></pre>
+<pre><code class="language-yaml">version: '2'
+
+networks:
+  fabric-ca:
+
+services:
+
+  org1:
+    container_name: org1
+    image: hyperledger/fabric-ca:latest
+    command: sh -c 'fabric-ca-server start -d -b org1-admin:org1-adminpw --port 7054'
+    environment:
+      - FABRIC_CA_SERVER_HOME=/root/hyperledger/fabric-ca/crypto
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_CSR_CN=org1
+      - FABRIC_CA_SERVER_CSR_HOSTS=0.0.0.0
+      - FABRIC_CA_SERVER_PORT=7054
+      - FABRIC_CA_SERVER_DEBUG=true
+    volumes:
+      - /root/hyperledger/org1/ca:/root/hyperledger/fabric-ca  ##重要！！！记得修改这里的路径为自己的工作目录
+    networks:
+      - fabric-ca
+    ports:
+      - 7054:7054
+</code></pre>
+<p>启动容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<p>注册org1的用户<br>
+设置环境变量&amp;登陆</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org1/ca/crypto/ca-cert.pem
+
+export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org1/ca/admin
+
+fabric-ca-client enroll -d -u https://org1-admin:org1-adminpw@0.0.0.0:7054 --tls.certfiles /root/hyperledger/org1/ca/crypto/ca-cert.pem
+</code></pre>
+<p>组织一种共有四个用户：peer1,peer2,admin,user,分别注册他们</p>
+<pre><code class="language-bash">fabric-ca-client register -d --id.name peer1-org1 --id.secret peer1PW --id.type peer -u https://0.0.0.0:7054 --tls.certfiles /root/hyperledger/org1/ca/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name peer2-org1 --id.secret peer2PW --id.type peer -u https://0.0.0.0:7054 --tls.certfiles /root/hyperledger/org1/ca/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name admin-org1 --id.secret org1AdminPW --id.type admin -u https://0.0.0.0:7054 --tls.certfiles /root/hyperledger/org1/ca/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name user-org1 --id.secret org1UserPW --id.type client -u https://0.0.0.0:7054 --tls.certfiles /root/hyperledger/org1/ca/crypto/ca-cert.pem
+</code></pre>
+<h4 id="14-配置org2的ca服务" tabindex="-1">1.4 配置Org2的CA服务</h4>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/org2/ca
+
+mkdir -p /root/hyperledger/docker-compose/org2/ca &amp;&amp; cd /root/hyperledger/docker-compose/org2/ca
+
+gedit docker-compose.yaml
+</code></pre>
+<p>并在文件内添加以下内容(tips:内容格式不要乱掉)：</p>
+<pre><code class="language-yaml">version: '2'
+
+networks:
+  fabric-ca:
+
+services:
+
+  org2:
+    container_name: org2
+    image: hyperledger/fabric-ca:latest
+    command: sh -c 'fabric-ca-server start -d -b org2-admin:org2-adminpw --port 7055'
+    environment:
+      - FABRIC_CA_SERVER_HOME=/root/hyperledger/fabric-ca/crypto
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_CSR_CN=org2
+      - FABRIC_CA_SERVER_CSR_HOSTS=0.0.0.0
+      - FABRIC_CA_SERVER_PORT=7055
+      - FABRIC_CA_SERVER_DEBUG=true
+    volumes:
+      - /root/hyperledger/org2/ca:/root/hyperledger/fabric-ca  ##重要！！！记得修改这里的路径为自己的工作目录
+    networks:
+      - fabric-ca
+    ports:
+      - 7055:7055
+</code></pre>
+<p>启动容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<p>注册org1的用户<br>
+设置环境变量&amp;登陆</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org2/ca/crypto/ca-cert.pem
+
+export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org2/ca/admin
+
+fabric-ca-client enroll -d -u https://org2-admin:org2-adminpw@0.0.0.0:7055 --tls.certfiles /root/hyperledger/org2/ca/crypto/ca-cert.pem
+</code></pre>
+<p>组织一种共有四个用户：peer1,peer2,admin,user,分别注册他们</p>
+<pre><code class="language-bash">fabric-ca-client register -d --id.name peer1-org2 --id.secret peer1PW --id.type peer -u https://0.0.0.0:7055 --tls.certfiles /root/hyperledger/org2/ca/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name peer2-org2 --id.secret peer2PW --id.type peer -u https://0.0.0.0:7055 --tls.certfiles /root/hyperledger/org2/ca/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name admin-org2 --id.secret org2AdminPW --id.type admin -u https://0.0.0.0:7055 --tls.certfiles /root/hyperledger/org2/ca/crypto/ca-cert.pem
+
+fabric-ca-client register -d --id.name user-org2 --id.secret org2UserPW --id.type client -u https://0.0.0.0:7055 --tls.certfiles /root/hyperledger/org2/ca/crypto/ca-cert.pem
+</code></pre>
+<h2 id="二-org1节点配置" tabindex="-1">二、Org1节点配置</h2>
+<h3 id="21-peer1" tabindex="-1">2.1 peer1</h3>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/org1/peer1/assets/ca/
+
+cp /root/hyperledger/org1/ca/crypto/ca-cert.pem /root/hyperledger/org1/peer1/assets/ca/org1-ca-cert.pem
+</code></pre>
+<p>首先是本组织的MSP证书：<br>
+配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org1/peer1
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org1/peer1/assets/ca/org1-ca-cert.pem
+export FABRIC_CA_CLIENT_MSPDIR=msp
+</code></pre>
+<p>登陆peer1节点到org1 CA 服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://peer1-org1:peer1PW@0.0.0.0:7054 --tls.certfiles /root/hyperledger/org1/ca/crypto/ca-cert.pem
+</code></pre>
+<p>这一步完成后在/root/hyperledger/org1/peer1下出现一个msp文件夹，这是peer1节点的msp证书。</p>
+<p>接下来是TLS证书</p>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/org1/peer1/assets/tls-ca
+cp /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem  /root/hyperledger/org1/peer1/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_MSPDIR=tls-msp
+
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org1/peer1/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>登录peer1节点的TLS CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://peer1-org1:peer1PW@0.0.0.0:7052 --enrollment.profile tls --csr.hosts peer1-org1 --tls.certfiles /root/hyperledger/org1/peer1/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>这一步完成后，在/root/hyperledger/org1/peer1下会出现一个tls-msp文件夹，这是peer1节点的TLS证书。</p>
+<p>修改秘钥文件名<br>
+为什么要修改呢，进入这个文件夹看一下就知道了,由服务器生成的秘钥文件名是一长串无规则的字符串，后期我们使用的时候难道要一个字符一个字符地输入？</p>
+<pre><code class="language-bash">mv /root/hyperledger/org1/peer1/tls-msp/keystore/*_sk /root/hyperledger/org1/peer1/tls-msp/keystore/key.pem
+</code></pre>
+<h3 id="22-peer2" tabindex="-1">2.2 peer2</h3>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/org1/peer2/assets/ca/
+
+cp /root/hyperledger/org1/ca/crypto/ca-cert.pem /root/hyperledger/org1/peer2/assets/ca/org1-ca-cert.pem
+</code></pre>
+<p>首先是本组织的MSP证书：<br>
+配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org1/peer2
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org1/peer2/assets/ca/org1-ca-cert.pem
+export FABRIC_CA_CLIENT_MSPDIR=msp
+</code></pre>
+<p>登陆peer1节点到org1 CA 服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://peer2-org1:peer2PW@0.0.0.0:7054 --tls.certfiles /root/hyperledger/org1/ca/crypto/ca-cert.pem
+</code></pre>
+<p>这一步完成后在/root/hyperledger/org1/peer2下出现一个msp文件夹，这是peer2节点的msp证书。</p>
+<p>接下来是TLS证书</p>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/org1/peer2/assets/tls-ca/
+cp /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem  /root/hyperledger/org1/peer2/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_MSPDIR=tls-msp
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org1/peer2/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>登录peer2节点的TLS CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://peer2-org1:peer2PW@0.0.0.0:7052 --enrollment.profile tls --csr.hosts peer2-org1 --tls.certfiles /root/hyperledger/org1/peer2/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>这一步完成后，在/root/hyperledger/org1/peer2下会出现一个tls-msp文件夹，这是peer2节点的TLS证书。</p>
+<p>修改秘钥文件名<br>
+为什么要修改呢，进入这个文件夹看一下就知道了,由服务器生成的秘钥文件名是一长串无规则的字符串，后期我们使用的时候难道要一个字符一个字符地输入？</p>
+<pre><code class="language-bash">mv /root/hyperledger/org1/peer2/tls-msp/keystore/*_sk /root/hyperledger/org1/peer2/tls-msp/keystore/key.pem
+</code></pre>
+<h3 id="23-admin" tabindex="-1">2.3 admin</h3>
+<p>首先是本组织的MSP证书：<br>
+配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org1/admin
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org1/peer1/assets/ca/org1-ca-cert.pem
+export FABRIC_CA_CLIENT_MSPDIR=msp
+</code></pre>
+<p>登录admin节点的org1 CA 服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://admin-org1:org1AdminPW@0.0.0.0:7054 --tls.certfiles /root/hyperledger/org1/peer1/assets/ca/org1-ca-cert.pem
+</code></pre>
+<p>接下来是TLS证书<br>
+配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_MSPDIR=tls-msp
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org1/peer1/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>登录admin节点的TLS CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://admin-org1:org1AdminPW@0.0.0.0:7052 --enrollment.profile tls --csr.hosts admin-org1 --tls.certfiles /root/hyperledger/org1/peer1/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>复制证书到admincerts文件夹:<br>
+去看Fabric官方的例子，每一个peer节点的MSP文件夹下都有admincerts这个子文件夹的，而且是需要我们手动创建的。</p>
+<pre><code class="language-bash">mkdir /root/hyperledger/org1/peer1/msp/admincerts
+cp /root/hyperledger/org1/admin/msp/signcerts/cert.pem /root/hyperledger/org1/peer1/msp/admincerts/org1-admin-cert.pem
+
+
+mkdir /root/hyperledger/org1/peer2/msp/admincerts
+cp /root/hyperledger/org1/admin/msp/signcerts/cert.pem /root/hyperledger/org1/peer2/msp/admincerts/org1-admin-cert.pem
+</code></pre>
+<h3 id="24启动peer节点" tabindex="-1">2.4启动peer节点</h3>
+<p>到这里，已经配置好了一个节点，所以我们就可以启动这个节点了，当然在之后和orderer节点一起启动也可以，不过忙活了这么多，还是应该提前看到一下所做的工作的成果的！<br>
+附上peer1节点的容器配置信息：</p>
+<p>peer1节点配置启动</p>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/docker-compose/org1/peer1 &amp;&amp; cd /root/hyperledger/docker-compose/org1/peer1
+gedit docker-compose.yaml
+</code></pre>
+<p>并在文件内添加以下内容(tips:内容格式不要乱掉)：</p>
+<pre><code class="language-yaml">version: '2'
+
+networks:
+  fabric-ca:
+
+services:
+  peer1-org1:
+    container_name: peer1-org1
+    image: hyperledger/fabric-peer:2.3.2
+    environment:
+      - CORE_PEER_ID=peer1-org1
+      - CORE_PEER_ADDRESS=peer1-org1:7051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_CHAINCODEADDRESS=peer1-org1:7052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1-org1:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1-org1:7051
+      - CORE_PEER_LOCALMSPID=org1MSP
+      - CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/peer1/msp
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_fabric-ca
+      - FABRIC_LOGGING_SPEC=debug
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/root/hyperledger/org1/peer1/tls-msp/signcerts/cert.pem
+      - CORE_PEER_TLS_KEY_FILE=/root/hyperledger/org1/peer1/tls-msp/keystore/key.pem
+      - CORE_PEER_TLS_ROOTCERT_FILE=/root/hyperledger/org1/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/org1/peer1
+    volumes:
+      - /var/run:/host/var/run
+      - /root/hyperledger/org1/peer1:/root/hyperledger/org1/peer1
+    networks:
+      - fabric-ca
+</code></pre>
+<p>启动容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<p>如果没有报错的话，说明之前配置的没有什么问题，如果出错的话，则需要返回去检查一下了</p>
+<p>peer2 节点配置启动</p>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/docker-compose/org1/peer2 &amp;&amp; cd /root/hyperledger/docker-compose/org1/peer2
+gedit docker-compose.yaml
+</code></pre>
+<p>并在文件内添加以下内容(tips:内容格式不要乱掉)：</p>
+<pre><code class="language-yaml">version: '2'
+
+networks:
+  fabric-ca:
+
+services:
+  peer2-org1:
+    container_name: peer2-org1
+    image: hyperledger/fabric-peer:2.3.2
+    environment:
+      - CORE_PEER_ID=peer2-org1
+      - CORE_PEER_ADDRESS=peer2-org1:7051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_CHAINCODEADDRESS=peer2-org1:7052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1-org1:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2-org1:7051
+      - CORE_PEER_LOCALMSPID=org1MSP
+      - CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/peer2/msp
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_fabric-ca
+      - FABRIC_LOGGING_SPEC=debug
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/root/hyperledger/org1/peer2/tls-msp/signcerts/cert.pem
+      - CORE_PEER_TLS_KEY_FILE=/root/hyperledger/org1/peer2/tls-msp/keystore/key.pem
+      - CORE_PEER_TLS_ROOTCERT_FILE=/root/hyperledger/org1/peer2/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/org1/peer2
+    volumes:
+      - /var/run:/host/var/run
+      - /root/hyperledger/org1/peer2:/root/hyperledger/org1/peer2
+    networks:
+      - fabric-ca
+</code></pre>
+<p>启动容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<h2 id="三-org2节点配置" tabindex="-1">三、Org2节点配置</h2>
+<p>和组织一配置一样，这里就不做过多的解释了，直接上命令</p>
+<h3 id="31-peer1" tabindex="-1">3.1 peer1</h3>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/org2/peer1/assets/ca 
+cp /root/hyperledger/org2/ca/crypto/ca-cert.pem /root/hyperledger/org2/peer1/assets/ca/org2-ca-cert.pem
+</code></pre>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org2/peer1
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org2/peer1/assets/ca/org2-ca-cert.pem
+export FABRIC_CA_CLIENT_MSPDIR=msp
+</code></pre>
+<p>登陆peer1节点到org2 CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://peer1-org2:peer1PW@0.0.0.0:7055 --tls.certfiles /root/hyperledger/org2/peer1/assets/ca/org2-ca-cert.pem
+</code></pre>
+<p>接下来是TLS</p>
+<pre><code class="language-bash">mkdir /root/hyperledger/org2/peer1/assets/tls-ca
+cp /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem  /root/hyperledger/org2/peer1/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_MSPDIR=tls-msp
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org2/peer1/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>登录peer1节点到 TLS CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://peer1-org2:peer1PW@0.0.0.0:7052 --enrollment.profile tls --csr.hosts peer1-org2 --tls.certfiles /root/hyperledger/org2/peer1/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>修改密钥文件</p>
+<pre><code class="language-bash">mv /root/hyperledger/org2/peer1/tls-msp/keystore/*_sk /root/hyperledger/org2/peer1/tls-msp/keystore/key.pem
+</code></pre>
+<h3 id="32-peer2" tabindex="-1">3.2 peer2</h3>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/org2/peer2/assets/ca 
+cp /root/hyperledger/org2/ca/crypto/ca-cert.pem /root/hyperledger/org2/peer2/assets/ca/org2-ca-cert.pem
+</code></pre>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org2/peer2
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org2/peer2/assets/ca/org2-ca-cert.pem
+export FABRIC_CA_CLIENT_MSPDIR=msp
+</code></pre>
+<p>登陆peer2节点到org2 CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://peer2-org2:peer2PW@0.0.0.0:7055 --tls.certfiles /root/hyperledger/org2/peer2/assets/ca/org2-ca-cert.pem
+</code></pre>
+<p>接下来是TLS</p>
+<pre><code class="language-bash">mkdir /root/hyperledger/org2/peer2/assets/tls-ca
+cp /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem  /root/hyperledger/org2/peer2/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_MSPDIR=tls-msp
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org2/peer2/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>登录peer2节点到 TLS CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://peer2-org2:peer2PW@0.0.0.0:7052 --enrollment.profile tls --csr.hosts peer2-org2 --tls.certfiles /root/hyperledger/org2/peer2/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>修改密钥文件</p>
+<pre><code class="language-bash">mv /root/hyperledger/org2/peer2/tls-msp/keystore/*_sk /root/hyperledger/org2/peer2/tls-msp/keystore/key.pem
+</code></pre>
+<h3 id="33-admin" tabindex="-1">3.3 admin</h3>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org2/admin
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org2/peer1/assets/ca/org2-ca-cert.pem
+export FABRIC_CA_CLIENT_MSPDIR=msp
+</code></pre>
+<p>登陆admin节点到org2 CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://admin-org2:org2AdminPW@0.0.0.0:7055 --tls.certfiles /root/hyperledger/org2/peer1/assets/ca/org2-ca-cert.pem
+</code></pre>
+<p>接下来是TLS</p>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_MSPDIR=tls-msp
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org2/peer1/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>登录admin节点到 TLS CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://admin-org2:org2AdminPW@0.0.0.0:7052 --enrollment.profile tls --csr.hosts admin-org2 --tls.certfiles /root/hyperledger/org2/peer1/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<h3 id="34-复制证书到admincerts文件夹" tabindex="-1">3.4 复制证书到admincerts文件夹:</h3>
+<pre><code class="language-bash">mkdir /root/hyperledger/org2/peer1/msp/admincerts
+cp /root/hyperledger/org2/admin/msp/signcerts/cert.pem /root/hyperledger/org2/peer1/msp/admincerts/org2-admin-cert.pem
+
+
+mkdir /root/hyperledger/org2/peer2/msp/admincerts
+cp /root/hyperledger/org2/admin/msp/signcerts/cert.pem /root/hyperledger/org2/peer2/msp/admincerts/org2-admin-cert.pem
+</code></pre>
+<h3 id="35-启动peer节点" tabindex="-1">3.5 启动peer节点</h3>
+<p>peer1节点配置</p>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/docker-compose/org2/peer1 &amp;&amp; cd /root/hyperledger/docker-compose/org2/peer1
+gedit docker-compose.yaml
+</code></pre>
+<p>并在文件内添加以下内容(tips:内容格式不要乱掉)：</p>
+<pre><code class="language-yaml">version: '2'
+
+networks:
+  fabric-ca:
+
+services:
+  peer1-org2:
+    container_name: peer1-org2
+    image: hyperledger/fabric-peer:2.3.2
+    environment:
+      - CORE_PEER_ID=peer1-org2
+      - CORE_PEER_ADDRESS=peer1-org2:7051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_CHAINCODEADDRESS=peer1-org2:7052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1-org2:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1-org2:7051
+      - CORE_PEER_LOCALMSPID=org2MSP
+      - CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org2/peer1/msp
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_fabric-ca
+      - FABRIC_LOGGING_SPEC=debug
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/root/hyperledger/org2/peer1/tls-msp/signcerts/cert.pem
+      - CORE_PEER_TLS_KEY_FILE=/root/hyperledger/org2/peer1/tls-msp/keystore/key.pem
+      - CORE_PEER_TLS_ROOTCERT_FILE=/root/hyperledger/org2/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/org2/peer1
+    volumes:
+      - /var/run:/host/var/run
+      - /root/hyperledger/org2/peer1:/root/hyperledger/org2/peer1
+    networks:
+      - fabric-ca
+</code></pre>
+<p>启动容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<p>peer2节点配置</p>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/docker-compose/org2/peer2 &amp;&amp; cd /root/hyperledger/docker-compose/org2/peer2
+gedit docker-compose.yaml
+</code></pre>
+<p>并在文件内添加以下内容(tips:内容格式不要乱掉)：</p>
+<pre><code class="language-bash">version: '2'
+
+networks:
+  fabric-ca:
+
+services:
+  peer2-org2:
+    container_name: peer2-org2
+    image: hyperledger/fabric-peer:2.3.2
+    environment:
+      - CORE_PEER_ID=peer2-org2
+      - CORE_PEER_ADDRESS=peer2-org2:7051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_CHAINCODEADDRESS=peer2-org2:7052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1-org2:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2-org2:7051
+      - CORE_PEER_LOCALMSPID=org2MSP
+      - CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org2/peer2/msp
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_fabric-ca
+      - FABRIC_LOGGING_SPEC=debug
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/root/hyperledger/org2/peer2/tls-msp/signcerts/cert.pem
+      - CORE_PEER_TLS_KEY_FILE=/root/hyperledger/org2/peer2/tls-msp/keystore/key.pem
+      - CORE_PEER_TLS_ROOTCERT_FILE=/root/hyperledger/org2/peer2/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+      - CORE_PEER_PROFILE_ENABLED=true
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/org2/peer2
+    volumes:
+      - /var/run:/host/var/run
+      - /root/hyperledger/org2/peer2:/root/hyperledger/org2/peer2
+    networks:
+      - fabric-ca
+</code></pre>
+<p>启动容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<h2 id="四-排序节点配置" tabindex="-1">四、 排序节点配置</h2>
+<p>接下来是排序节点的配置，为什么放在最后面呢，因为排序节点的启动需要提前生成创世区块，而创世区块的生成涉及到另一个配置文件，所以就先配置简单的peer节点</p>
+<h3 id="41-orderer" tabindex="-1">4.1 orderer</h3>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/org0/orderer/assets/ca/
+cp /root/hyperledger/org0/ca/crypto/ca-cert.pem /root/hyperledger/org0/orderer/assets/ca/org0-ca-cert.pem
+</code></pre>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org0/orderer
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org0/orderer/assets/ca/org0-ca-cert.pem
+export FABRIC_CA_CLIENT_MSPDIR=msp
+</code></pre>
+<p>登录order节点到org0 CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://orderer1-org0:ordererpw@0.0.0.0:7053 --tls.certfiles /root/hyperledger/org0/orderer/assets/ca/org0-ca-cert.pem
+</code></pre>
+<p>接下来是TLS证书</p>
+<pre><code class="language-bash">mkdir /root/hyperledger/org0/orderer/assets/tls-ca/
+cp /root/hyperledger/fabric-ca-tls/crypto/ca-cert.pem  /root/hyperledger/org0/orderer/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_MSPDIR=tls-msp
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org0/orderer/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>登录order节点到TLS CA服务器上</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://orderer1-org0:ordererPW@0.0.0.0:7052 --enrollment.profile tls --csr.hosts orderer1-org0 --tls.certfiles /root/hyperledger/org0/orderer/assets/tls-ca/tls-ca-cert.pem
+</code></pre>
+<p>修改密钥</p>
+<pre><code class="language-bash">mv /root/hyperledger/org0/orderer/tls-msp/keystore/*_sk /root/hyperledger/org0/orderer/tls-msp/keystore/key.pem
+</code></pre>
+<h3 id="42-admin" tabindex="-1">4.2 admin</h3>
+<p>配置环境变量</p>
+<pre><code class="language-bash">export FABRIC_CA_CLIENT_HOME=/root/hyperledger/org0/admin
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/root/hyperledger/org0/orderer/assets/ca/org0-ca-cert.pem
+export FABRIC_CA_CLIENT_MSPDIR=msp
+</code></pre>
+<p>登录admin 用户获取msp</p>
+<pre><code class="language-bash">fabric-ca-client enroll -d -u https://admin-org0:org0adminpw@0.0.0.0:7053 --tls.certfiles /root/hyperledger/org0/orderer/assets/ca/org0-ca-cert.pem
+</code></pre>
+<p>复制证书到admincerts文件夹:</p>
+<pre><code class="language-bash">mkdir /root/hyperledger/org0/orderer/msp/admincerts
+cp /root/hyperledger/org0/admin/msp/signcerts/cert.pem /root/hyperledger/org0/orderer/msp/admincerts/orderer-admin-cert.pem
+</code></pre>
+<h3 id="43-添加configyaml" tabindex="-1">4.3 添加config.yaml</h3>
+<p>证书都准备好了之后我们还需要在每个msp文件下添加一个config.yaml</p>
+<pre><code class="language-yaml">NodeOUs:
+  Enable: true
+  ClientOUIdentifier:
+    #修改对应的证书名称
+    Certificate: cacerts/0-0-0-0-7053.pem
+    OrganizationalUnitIdentifier: client
+  PeerOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7053.pem
+    OrganizationalUnitIdentifier: peer
+  AdminOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7053.pem
+    OrganizationalUnitIdentifier: admin
+  OrdererOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7053.pem
+    OrganizationalUnitIdentifier: orderer
+</code></pre>
+<p>需要org0，org1, org2 下所有msp目录下都添加。</p>
+<p>org0</p>
+<pre><code class="language-bash">cd /root/hyperledger/org0
+gedit config.yaml
+</code></pre>
+<pre><code class="language-yaml">NodeOUs:
+  Enable: true
+  ClientOUIdentifier:
+    #修改对应的证书名称
+    Certificate: cacerts/0-0-0-0-7053.pem
+    OrganizationalUnitIdentifier: client
+  PeerOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7053.pem
+    OrganizationalUnitIdentifier: peer
+  AdminOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7053.pem
+    OrganizationalUnitIdentifier: admin
+  OrdererOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7053.pem
+    OrganizationalUnitIdentifier: orderer
+</code></pre>
+<p>复制文件到所有msp目录下</p>
+<pre><code class="language-bash">find ./ -name msp -type d -exec cp -r /root/hyperledger/org0/config.yaml {} \;
+</code></pre>
+<p>查找所有的config.yaml文件</p>
+<pre><code class="language-bash">find ./ -name config.yaml -type f 
+</code></pre>
+<p>org1</p>
+<pre><code class="language-bash">cd /root/hyperledger/org1
+gedit config.yaml
+</code></pre>
+<pre><code class="language-yaml">NodeOUs:
+  Enable: true
+  ClientOUIdentifier:
+    #修改对应的证书名称
+    Certificate: cacerts/0-0-0-0-7054.pem
+    OrganizationalUnitIdentifier: client
+  PeerOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7054.pem
+    OrganizationalUnitIdentifier: peer
+  AdminOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7054.pem
+    OrganizationalUnitIdentifier: admin
+  OrdererOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7054.pem
+    OrganizationalUnitIdentifier: orderer
+</code></pre>
+<p>复制文件到所有msp目录下</p>
+<pre><code class="language-bash">find ./ -name msp -type d -exec cp -r /root/hyperledger/org1/config.yaml {} \;
+</code></pre>
+<p>查找所有的config.yaml文件</p>
+<pre><code class="language-bash">find ./ -name config.yaml -type f 
+</code></pre>
+<p>org2</p>
+<pre><code class="language-bash">cd /root/hyperledger/org2
+gedit config.yaml
+</code></pre>
+<pre><code class="language-yaml">NodeOUs:
+  Enable: true
+  ClientOUIdentifier:
+    #修改对应的证书名称
+    Certificate: cacerts/0-0-0-0-7055.pem
+    OrganizationalUnitIdentifier: client
+  PeerOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7055.pem
+    OrganizationalUnitIdentifier: peer
+  AdminOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7055.pem
+    OrganizationalUnitIdentifier: admin
+  OrdererOUIdentifier:
+    Certificate: cacerts/0-0-0-0-7055.pem
+    OrganizationalUnitIdentifier: orderer
+</code></pre>
+<p>复制文件到所有msp目录下</p>
+<pre><code class="language-bash">find ./ -name msp -type d -exec cp -r /root/hyperledger/org2/config.yaml {} \;
+</code></pre>
+<p>查找所有的config.yaml文件</p>
+<pre><code class="language-bash">find ./ -name config.yaml -type f 
+</code></pre>
+<h2 id="五-fabric-网络" tabindex="-1">五、Fabric 网络</h2>
+<p>证书都生成好了，即将要启动网络了。不过在启动网络之前还是有很多准备工作需要做。</p>
+<h3 id="51-整理mspdir文件" tabindex="-1">5.1 整理MSPDir文件</h3>
+<pre><code class="language-bash">#---------------org0--------------------
+mkdir -p /root/hyperledger/configtx &amp;&amp; cd /root/hyperledger/configtx
+mkdir org0
+cp -r ../org0/admin/msp org0/
+cd  org0/msp
+mkdir tlscacerts &amp;&amp; cd tlscacerts
+cp  /root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem ./
+#---------------org1--------------------
+cd /root/hyperledger/configtx
+mkdir org1 
+cp -r ../org1/admin/msp org1/
+cd org1/msp
+mkdir tlscacerts &amp;&amp; cd tlscacerts
+cp /root/hyperledger/org1/admin/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem ./
+#---------------org2--------------------
+cd /root/hyperledger/configtx
+mkdir org2 
+cp -r ../org2/admin/msp org2/
+cd org2/msp
+mkdir tlscacerts &amp;&amp; cd tlscacerts
+cp /root/hyperledger/org2/admin/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem ./
+
+</code></pre>
+<h3 id="52-configtxyaml文件配置" tabindex="-1">5.2 configtx.yaml文件配置</h3>
+<p>在下一个步骤的生成创世区块和通道配置信息需要一个文件：configtx.yaml文件。</p>
+<pre><code class="language-bash">cd /root/hyperledger/configtx
+gedit configtx.yaml
+</code></pre>
+<p>文件内容</p>
+<pre><code class="language-yaml"># Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+---
+################################################################################
+#
+#   Section: Organizations
+#
+#   - This section defines the different organizational identities which will
+#   be referenced later in the configuration.
+#
+################################################################################
+Organizations:
+
+    # SampleOrg defines an MSP using the sampleconfig.  It should never be used
+    # in production but may be used as a template for other definitions
+    - &amp;org0
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: org0MSP
+
+        # ID to load the MSP definition as
+        ID: org0MSP
+
+        # MSPDir is the filesystem path which contains the MSP configuration
+        MSPDir: ../configtx/org0/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/&lt;Application|Orderer&gt;/&lt;OrgName&gt;/&lt;PolicyName&gt;
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('org0MSP.member')"
+            Writers:
+                Type: Signature
+                Rule: "OR('org0MSP.member')"
+            Admins:
+                Type: Signature
+                Rule: "OR('org0MSP.admin')"
+
+        OrdererEndpoints:
+            - orderer1-org0:7050
+
+    - &amp;org1
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: org1MSP
+
+        # ID to load the MSP definition as
+        ID: org1MSP
+
+        MSPDir: ../configtx/org1/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/&lt;Application|Orderer&gt;/&lt;OrgName&gt;/&lt;PolicyName&gt;
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('org1MSP.admin', 'org1MSP.peer', 'org1MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('org1MSP.admin', 'org1MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('org1MSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('org1MSP.peer')"
+
+        # leave this flag set to true.
+        AnchorPeers:
+            # AnchorPeers defines the location of peers which can be used
+            # for cross org gossip communication.  Note, this value is only
+            # encoded in the genesis block in the Application section context
+            - Host: peer1-org1
+              Port: 7051
+
+    - &amp;org2
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: org2MSP
+
+        # ID to load the MSP definition as
+        ID: org2MSP
+
+        MSPDir: ../configtx/org2/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/&lt;Application|Orderer&gt;/&lt;OrgName&gt;/&lt;PolicyName&gt;
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('org2MSP.admin', 'org2MSP.peer', 'org2MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('org2MSP.admin', 'org2MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('org2MSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('org2MSP.peer')"
+
+        AnchorPeers:
+            # AnchorPeers defines the location of peers which can be used
+            # for cross org gossip communication.  Note, this value is only
+            # encoded in the genesis block in the Application section context
+            - Host: peer1-org2
+              Port: 7051
+
+################################################################################
+#
+#   SECTION: Capabilities
+#
+#   - This section defines the capabilities of fabric network. This is a new
+#   concept as of v1.1.0 and should not be utilized in mixed networks with
+#   v1.0.x peers and orderers.  Capabilities define features which must be
+#   present in a fabric binary for that binary to safely participate in the
+#   fabric network.  For instance, if a new MSP type is added, newer binaries
+#   might recognize and validate the signatures from this type, while older
+#   binaries without this support would be unable to validate those
+#   transactions.  This could lead to different versions of the fabric binaries
+#   having different world states.  Instead, defining a capability for a channel
+#   informs those binaries without this capability that they must cease
+#   processing transactions until they have been upgraded.  For v1.0.x if any
+#   capabilities are defined (including a map with all capabilities turned off)
+#   then the v1.0.x peer will deliberately crash.
+#
+################################################################################
+Capabilities:
+    # Channel capabilities apply to both the orderers and the peers and must be
+    # supported by both.
+    # Set the value of the capability to true to require it.
+    Channel: &amp;ChannelCapabilities
+        # V2_0 capability ensures that orderers and peers behave according
+        # to v2.0 channel capabilities. Orderers and peers from
+        # prior releases would behave in an incompatible way, and are therefore
+        # not able to participate in channels at v2.0 capability.
+        # Prior to enabling V2.0 channel capabilities, ensure that all
+        # orderers and peers on a channel are at v2.0.0 or later.
+        V2_0: true
+
+    # Orderer capabilities apply only to the orderers, and may be safely
+    # used with prior release peers.
+    # Set the value of the capability to true to require it.
+    Orderer: &amp;OrdererCapabilities
+        # V2_0 orderer capability ensures that orderers behave according
+        # to v2.0 orderer capabilities. Orderers from
+        # prior releases would behave in an incompatible way, and are therefore
+        # not able to participate in channels at v2.0 orderer capability.
+        # Prior to enabling V2.0 orderer capabilities, ensure that all
+        # orderers on channel are at v2.0.0 or later.
+        V2_0: true
+
+    # Application capabilities apply only to the peer network, and may be safely
+    # used with prior release orderers.
+    # Set the value of the capability to true to require it.
+    Application: &amp;ApplicationCapabilities
+        # V2_0 application capability ensures that peers behave according
+        # to v2.0 application capabilities. Peers from
+        # prior releases would behave in an incompatible way, and are therefore
+        # not able to participate in channels at v2.0 application capability.
+        # Prior to enabling V2.0 application capabilities, ensure that all
+        # peers on channel are at v2.0.0 or later.
+        V2_0: true
+
+################################################################################
+#
+#   SECTION: Application
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for application related parameters
+#
+################################################################################
+Application: &amp;ApplicationDefaults
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the application side of the network
+    Organizations:
+
+    # Policies defines the set of policies at this level of the config tree
+    # For Application policies, their canonical path is
+    #   /Channel/Application/&lt;PolicyName&gt;
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        LifecycleEndorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
+        Endorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
+
+    Capabilities:
+        &lt;&lt;: *ApplicationCapabilities
+################################################################################
+#
+#   SECTION: Orderer
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for orderer related parameters
+#
+################################################################################
+Orderer: &amp;OrdererDefaults
+
+    # Orderer Type: The orderer implementation to start
+    OrdererType: etcdraft
+
+    EtcdRaft:
+        Consenters:
+        - Host: orderer1-org0
+          Port: 7050
+          ClientTLSCert: /root/hyperledger/org0/orderer/tls-msp/signcerts/cert.pem
+          ServerTLSCert: /root/hyperledger/org0/orderer/tls-msp/signcerts/cert.pem
+
+    # Batch Timeout: The amount of time to wait before creating a batch
+    BatchTimeout: 2s
+
+    # Batch Size: Controls the number of messages batched into a block
+    BatchSize:
+
+        # Max Message Count: The maximum number of messages to permit in a batch
+        MaxMessageCount: 10
+
+        # Absolute Max Bytes: The absolute maximum number of bytes allowed for
+        # the serialized messages in a batch.
+        AbsoluteMaxBytes: 99 MB
+
+        # Preferred Max Bytes: The preferred maximum number of bytes allowed for
+        # the serialized messages in a batch. A message larger than the preferred
+        # max bytes will result in a batch larger than preferred max bytes.
+        PreferredMaxBytes: 512 KB
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the orderer side of the network
+    Organizations:
+
+    # Policies defines the set of policies at this level of the config tree
+    # For Orderer policies, their canonical path is
+    #   /Channel/Orderer/&lt;PolicyName&gt;
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        # BlockValidation specifies what signatures must be included in the block
+        # from the orderer for the peer to validate it.
+        BlockValidation:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+
+################################################################################
+#
+#   CHANNEL
+#
+#   This section defines the values to encode into a config transaction or
+#   genesis block for channel related parameters.
+#
+################################################################################
+Channel: &amp;ChannelDefaults
+    # Policies defines the set of policies at this level of the config tree
+    # For Channel policies, their canonical path is
+    #   /Channel/&lt;PolicyName&gt;
+    Policies:
+        # Who may invoke the 'Deliver' API
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        # Who may invoke the 'Broadcast' API
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        # By default, who may modify elements at this config level
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+
+    # Capabilities describes the channel level capabilities, see the
+    # dedicated Capabilities section elsewhere in this file for a full
+    # description
+    Capabilities:
+        &lt;&lt;: *ChannelCapabilities
+
+################################################################################
+#
+#   Profile
+#
+#   - Different configuration profiles may be encoded here to be specified
+#   as parameters to the configtxgen tool
+#
+################################################################################
+Profiles:
+
+    TwoOrgsOrdererGenesis:
+        &lt;&lt;: *ChannelDefaults
+        Orderer:
+            &lt;&lt;: *OrdererDefaults
+            Organizations:
+                - *org0
+            Capabilities:
+                &lt;&lt;: *OrdererCapabilities
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *org1
+                    - *org2
+    TwoOrgsChannel:
+        Consortium: SampleConsortium
+        &lt;&lt;: *ChannelDefaults
+        Application:
+            &lt;&lt;: *ApplicationDefaults
+            Organizations:
+                - *org1
+                - *org2
+            Capabilities:
+                &lt;&lt;: *ApplicationCapabilities
+</code></pre>
+<blockquote>
+<p>注：根据情况修改MSP的路径</p>
+</blockquote>
+<h3 id="53-生成创世区块和通道信息" tabindex="-1">5.3 生成创世区块和通道信息</h3>
+<pre><code class="language-bash">cd /root/hyperledger/configtx
+mkdir system-genesis-block 
+mkdir channel-artifacts
+
+#生成创世区块文件TwoOrgsOrdererGenesis
+export FABRIC_CFG_PATH=$(pwd)
+configtxgen -profile TwoOrgsOrdererGenesis -channelID system-channel -outputBlock ./system-genesis-block/genesis.block
+
+#生成通道
+export CHANNEL_NAME=mychannel
+configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./channel-artifacts/${CHANNEL_NAME}.tx -channelID ${CHANNEL_NAME}
+
+#锚节点更新配置
+export orgmsp=org1MSP
+configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/${orgmsp}anchors.tx -channelID ${CHANNEL_NAME} -asOrg ${orgmsp}
+
+#锚节点更新配置
+export orgmsp=org2MSP
+configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/${orgmsp}anchors.tx -channelID ${CHANNEL_NAME} -asOrg ${orgmsp}
+</code></pre>
+<p>创世区块文件通&amp;道信息生成后启动orderer节</p>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/docker-compose/org0/orderer &amp;&amp; cd /root/hyperledger/docker-compose/org0/orderer
+gedit docker-compose.yaml
+</code></pre>
+<p>并在文件内添加以下内容(tips:内容格式不要乱掉)：</p>
+<pre><code class="language-yaml">version: '2'
+
+networks:
+  fabric-ca:
+services:
+  orderer1-org0:
+    container_name: orderer1-org0
+    image: hyperledger/fabric-orderer:2.3.2
+    environment:
+      - ORDERER_HOME=/root/hyperledger/orderer
+      - ORDERER_HOST=orderer1-org0
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_LISTENPORT=7050
+      - ORDERER_GENERAL_GENESISMETHOD=file
+      - ORDERER_GENERAL_GENESISFILE=/root/hyperledger/orderer/orderer.genesis.block
+      - ORDERER_GENERAL_LOCALMSPID=org0MSP
+      - ORDERER_GENERAL_LOCALMSPDIR=/root/hyperledger/org0/orderer/msp
+      - ORDERER_GENERAL_TLS_ENABLED=true
+
+      - ORDERER_GENERAL_TLS_PRIVATEKEY=/root/hyperledger/org0/orderer/tls-msp/keystore/key.pem
+      - ORDERER_GENERAL_TLS_CERTIFICATE=/root/hyperledger/org0/orderer/tls-msp/signcerts/cert.pem
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem]
+
+      - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+      - ORDERER_KAFKA_VERBOSE=true
+      - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/root/hyperledger/org0/orderer/tls-msp/signcerts/cert.pem
+      - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/root/hyperledger/org0/orderer/tls-msp/keystore/key.pem
+      - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem]
+
+      - ORDERER_GENERAL_LOGLEVEL=debug
+      - ORDERER_DEBUG_BROADCASTTRACEDIR=data/logs
+    volumes:
+      - /root/hyperledger/org0/orderer:/root/hyperledger/org0/orderer/
+      - /root/hyperledger/configtx/system-genesis-block/genesis.block:/root/hyperledger/orderer/orderer.genesis.block
+
+    networks:
+      - fabric-ca
+</code></pre>
+<p>启动容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<h3 id="54-启动org1的cli" tabindex="-1">5.4 启动Org1的cli</h3>
+<p>cli容器内容,我们需要这个容器对组织1进行链码的交互</p>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/docker-compose/org1/cli
+cd /root/hyperledger/docker-compose/org1/cli
+gedit docker-compose.yaml
+</code></pre>
+<p>并在文件内添加以下内容(tips:内容格式不要乱掉)：</p>
+<pre><code class="language-yaml">version: '2'
+
+networks:
+  fabric-ca:
+services:
+    cli-org1:
+      container_name: cli-org1
+      image: hyperledger/fabric-tools:2.3.2
+      tty: true
+      stdin_open: true
+      environment:
+        - SYS_CHANNEL=testchainid
+        - GOPATH=/opt/gopath
+        - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+        - FABRIC_LOGGING_SPEC=DEBUG
+        - CORE_PEER_ID=cli-org1
+        - CORE_PEER_ADDRESS=peer1-org1:7051
+        - CORE_PEER_LOCALMSPID=org1MSP
+        - CORE_PEER_TLS_ENABLED=true
+        - CORE_PEER_TLS_ROOTCERT_FILE=/root/hyperledger/org1/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+        - CORE_PEER_TLS_CERT_FILE=/root/hyperledger/org1/peer1/tls-msp/signcerts/cert.pem
+        - CORE_PEER_TLS_KEY_FILE=/root/hyperledger/org1/peer1/tls-msp/keystore/key.pem
+        - CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/peer1/msp
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric/org1
+      command: /bin/bash
+      volumes:
+        - /root/hyperledger/org1:/root/hyperledger/org1/
+        - /root/hyperledger/org2:/root/hyperledger/org2/
+        - /root/hyperledger/org1/peer1/assets/chaincode:/opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode
+        - /root/hyperledger/org1/admin:/root/hyperledger/org1/admin
+        - /root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem:/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+        - /root/hyperledger/org1/peer1/tls-msp/tlscacerts:/root/hyperledger/org1/admin/msp/tlscacerts
+        - /root/hyperledger/configtx/channel-artifacts:/root/hyperledger/configtx/channel-artifacts
+      networks:
+        - fabric-ca
+</code></pre>
+<p>启动容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<h3 id="55-启动org2的cli" tabindex="-1">5.5 启动Org2的cli</h3>
+<p>cli容器内容,我们需要这个容器对组织1进行链码的交互</p>
+<pre><code class="language-bash">mkdir -p /root/hyperledger/docker-compose/org2/cli 
+cd /root/hyperledger/docker-compose/org2/cli 
+gedit docker-compose.yaml
+</code></pre>
+<p>并在文件内添加以下内容(tips:内容格式不要乱掉)：</p>
+<pre><code class="language-yaml">version: '2'
+
+networks:
+  fabric-ca:
+services:
+    cli-org2:
+      container_name: cli-org2
+      image: hyperledger/fabric-tools:2.3.2
+      tty: true
+      stdin_open: true
+      environment:
+        - SYS_CHANNEL=testchainid
+        - GOPATH=/opt/gopath
+        - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+        - FABRIC_LOGGING_SPEC=DEBUG
+        - CORE_PEER_ID=cli-org2
+        - CORE_PEER_ADDRESS=peer1-org2:7051
+        - CORE_PEER_LOCALMSPID=org2MSP
+        - CORE_PEER_TLS_ENABLED=true
+        - CORE_PEER_TLS_ROOTCERT_FILE=/root/hyperledger/org2/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+        - CORE_PEER_TLS_CERT_FILE=/root/hyperledger/org2/peer1/tls-msp/signcerts/cert.pem
+        - CORE_PEER_TLS_KEY_FILE=/root/hyperledger/org2/peer1/tls-msp/keystore/key.pem
+        - CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org2/peer1/msp
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric/org2
+      command: /bin/bash
+      volumes:
+        - /root/hyperledger/org1:/root/hyperledger/org1/
+        - /root/hyperledger/org2:/root/hyperledger/org2/
+        - /root/hyperledger/org2/peer1:/root/hyperledger/org2/peer1
+        - /root/hyperledger/org2/peer1/assets/chaincode:/opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode
+        - /root/hyperledger/org2/admin:/root/hyperledger/org2/admin
+        - /root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem:/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+        - /root/hyperledger/org2/peer1/tls-msp/tlscacerts:/root/hyperledger/org2/peer1/msp/tlscacerts
+        - /root/hyperledger/configtx/channel-artifacts:/root/hyperledger/configtx/channel-artifacts
+      networks:
+        - fabric-ca
+</code></pre>
+<p>启动容器</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<h2 id="六-创建加入通道" tabindex="-1">六、创建&amp;加入通道</h2>
+<h3 id="61-操作容器cli-org1" tabindex="-1">6.1 操作容器cli-org1</h3>
+<pre><code class="language-bash">#进入容器cli-org1进行操作
+docker exec -it cli-org1 bash
+
+export CHANNEL_NAME=mychannel
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/admin/msp
+
+cd /root/hyperledger/configtx
+
+#不行的话就重启，然后运行/root/hyperledger/docker-compose/down.sh文件
+#然后再启动start.sh文件
+#创建通道
+peer channel create -o orderer1-org0:7050 -c ${CHANNEL_NAME} --ordererTLSHostnameOverride orderer1-org0 -f ./channel-artifacts/${CHANNEL_NAME}.tx --outputBlock ./channel-artifacts/${CHANNEL_NAME}.block --tls true --cafile ${ORDERER_CA}
+
+#peer1-org1加入通道
+export CORE_PEER_ADDRESS=peer1-org1:7051
+peer channel join -b ./channel-artifacts/mychannel.block
+#peer2-org1加入通道
+export CORE_PEER_ADDRESS=peer2-org1:7051
+peer channel join -b ./channel-artifacts/mychannel.block
+
+#更新锚点
+export CORE_PEER_LOCALMSPID=org1MSP
+peer channel update -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx --tls --cafile $ORDERER_CA
+
+#退出容器
+exit
+
+</code></pre>
+<h3 id="62-操作容器cli-org2" tabindex="-1">6.2 操作容器cli-org2</h3>
+<pre><code class="language-bash">#进入容器cli-org2进行操作
+docker exec -it cli-org2 bash
+cd /root/hyperledger/configtx
+
+#peer1-org2加入通道
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org2/admin/msp
+export CORE_PEER_ADDRESS=peer1-org2:7051
+peer channel join -b ./channel-artifacts/mychannel.block
+
+#peer2-org2加入通道
+export CORE_PEER_ADDRESS=peer2-org2:7051
+peer channel join -b ./channel-artifacts/mychannel.block
+
+#更新锚点
+export CHANNEL_NAME=mychannel
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CORE_PEER_LOCALMSPID=org2MSP
+
+peer channel update -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx --tls --cafile $ORDERER_CA
+
+#退出容器
+exit
+</code></pre>
+<h2 id="七-链码安装测试" tabindex="-1">七、链码安装测试</h2>
+<pre><code class="language-bash">#拷贝文件到目录下
+docker cp /root/go/src/github.com/hyperledger/fabric/scripts/fabric-samples/chaincode/fabcar/javascript cli-org1:/root
+#进行打包安装
+
+peer lifecycle chaincode package fabcar.tar.gz --path /root/javascript/ --lang node --label fabcar_1
+
+#然后拷贝到root目录下
+docker cp cli-org1:/root/fabcar.tar.gz /root
+
+
+</code></pre>
+<h3 id="71-链码安装" tabindex="-1">7.1 链码安装</h3>
+<p>cli-org1安装</p>
+<pre><code class="language-bash">#之后只用拷贝到文件里去就行了
+docker cp /root/fabcar.tar.gz cli-org1:/root/hyperledger/org1/peer1/assets/chaincode
+#进入cli-org1
+docker exec -it cli-org1 bash
+
+cd /root/hyperledger/org1/peer1/assets/chaincode
+export CORE_PEER_ADDRESS=peer1-org1:7051
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/admin/msp
+peer lifecycle chaincode install fabcar.tar.gz
+
+
+
+
+exit
+</code></pre>
+<p>cli-org2 的安装基本相同，自行登录cli-org2容器中安装</p>
+<pre><code class="language-bash">#之后只用拷贝到文件里去就行了
+docker cp /root/fabcar.tar.gz cli-org2:/root/hyperledger/org2/peer1/assets/chaincode
+#进入cli-org1
+docker exec -it cli-org2 bash
+cd /root/hyperledger/org2/peer1/assets/chaincode
+export CORE_PEER_ADDRESS=peer1-org2:7051
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org2/admin/msp
+peer lifecycle chaincode install fabcar.tar.gz
+
+exit
+</code></pre>
+<h3 id="72-链码查询" tabindex="-1">7.2 链码查询</h3>
+<pre><code>peer lifecycle chaincode queryinstalled
+packageid: fabcar_1:2fa9ca83f9294c7519f32c5dc27c1948ba7aa50093abdbd84415e78a1aeccd0e
+</code></pre>
+<h3 id="73-链码批准" tabindex="-1">7.3 链码批准</h3>
+<pre><code class="language-bash">docker exec -it cli-org1 bash
+
+export VERSION=1
+export PACKAGE_ID=fabcar_1:2fa9ca83f9294c7519f32c5dc27c1948ba7aa50093abdbd84415e78a1aeccd0e
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CHANNEL_NAME=mychannel
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/admin/msp
+
+peer lifecycle chaincode approveformyorg -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile ${ORDERER_CA} --channelID ${CHANNEL_NAME} --name fabcar1 --version ${VERSION} --init-required --package-id ${PACKAGE_ID} --sequence ${VERSION}
+
+peer lifecycle chaincode checkcommitreadiness --channelID $CHANNEL_NAME --name fabcar1 --version ${VERSION} --sequence ${VERSION} --output json --init-required
+
+exit
+</code></pre>
+<p>同理cli-org2授权基本相同</p>
+<pre><code class="language-bash">docker exec -it cli-org2 bash
+
+export VERSION=1
+export PACKAGE_ID=fabcar_1:2fa9ca83f9294c7519f32c5dc27c1948ba7aa50093abdbd84415e78a1aeccd0e
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CHANNEL_NAME=mychannel
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org2/admin/msp
+
+peer lifecycle chaincode approveformyorg -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile ${ORDERER_CA} --channelID ${CHANNEL_NAME} --name fabcar1 --version ${VERSION} --init-required --package-id ${PACKAGE_ID} --sequence ${VERSION}
+
+peer lifecycle chaincode checkcommitreadiness --channelID $CHANNEL_NAME --name fabcar1 --version ${VERSION} --sequence ${VERSION} --output json --init-required
+
+exit
+</code></pre>
+<h3 id="74-提交链码定义" tabindex="-1">7.4 提交链码定义</h3>
+<pre><code class="language-bash">docker exec -it cli-org1 bash
+export CHANNEL_NAME=mychannel
+export VERSION=1
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/admin/msp
+
+peer lifecycle chaincode commit -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name fabcar1 --peerAddresses peer1-org1:7051 --tlsRootCertFiles /root/hyperledger/org1/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem  --peerAddresses peer1-org2:7051 --tlsRootCertFiles /root/hyperledger/org2/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem --version ${VERSION} --sequence ${VERSION} --init-required
+
+
+peer chaincode list --installed
+exit
+#只用提交一次吧？,cli2不用提交了
+#-------cli-org2-----
+docker exec -it cli-org2 bash
+
+export CHANNEL_NAME=mychannel
+export VERSION=1
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org2/admin/msp
+
+peer lifecycle chaincode commit -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name fabcar --peerAddresses peer1-org1:7051 --tlsRootCertFiles /root/hyperledger/org1/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem  --peerAddresses peer1-org2:7051 --tlsRootCertFiles /root/hyperledger/org2/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem --version ${VERSION} --sequence ${VERSION} --init-required
+</code></pre>
+<p>查询提交内容</p>
+<pre><code class="language-bash">export CHANNEL_NAME=mychannel
+peer lifecycle chaincode querycommitted --channelID $CHANNEL_NAME --name fabcar
+peer lifecycle chaincode queryapproved -C mychannel -n fabcar
+</code></pre>
+<h3 id="75-初始化链码" tabindex="-1">7.5 初始化链码</h3>
+<pre><code class="language-bash">docker exec -it cli-org1 bash
+export CHANNEL_NAME=mychannel
+export VERSION=1
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/admin/msp
+
+peer chaincode invoke -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile $ORDERER_CA -C $CHANNEL_NAME -n fabcar1 --isInit --peerAddresses peer1-org1:7051 --tlsRootCertFiles /root/hyperledger/org1/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem  --peerAddresses peer1-org2:7051 --tlsRootCertFiles /root/hyperledger/org2/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem  -c '{"function":"initLedger","Args":[]}'
+</code></pre>
+<p>查询</p>
+<pre><code class="language-bash">peer chaincode query -C $CHANNEL_NAME -n fabcar1 -c '{"Args":["queryAllCars"]}'
+</code></pre>
+<h2 id="脚本文件" tabindex="-1">脚本文件</h2>
+<h3 id="startsh文件" tabindex="-1">start.sh文件</h3>
+<pre><code class="language-sh">export COMPOSE_PROJECT_NAME=net
+
+export doc_com=$(pwd)
+docker-compose -f ${doc_com}/fabric-ca-tls/docker-compose.yaml -f ${doc_com}/org0/ca/docker-compose.yaml -f ${doc_com}/org0/orderer/docker-compose.yaml -f ${doc_com}/org1/ca/docker-compose.yaml -f ${doc_com}/org1/peer1/docker-compose.yaml -f ${doc_com}/org1/peer2/docker-compose.yaml -f ${doc_com}/org1/cli/docker-compose.yaml -f ${doc_com}/org2/ca/docker-compose.yaml -f ${doc_com}/org2/peer1/docker-compose.yaml -f ${doc_com}/org2/peer2/docker-compose.yaml -f ${doc_com}/org2/cli/docker-compose.yaml up -d
+
+</code></pre>
+<pre><code class="language-sh">export COMPOSE_PROJECT_NAME=net
+
+export doc_com=$(pwd)
+echo ${doc_com}/fabric-ca-tls
+cd fabric-ca-tls
+docker-compose up -d
+sleep 1
+
+echo ${doc_com}/org0/ca
+cd ${doc_com}/org0/ca
+docker-compose up -d
+sleep 1
+
+echo ${doc_com}/org0/orderer
+cd ${doc_com}/org0/orderer
+docker-compose up -d
+sleep 1
+
+echo ${doc_com}/org1/ca
+cd ${doc_com}/org1/ca
+docker-compose up -d
+sleep 1
+
+echo ${doc_com}/org1/peer1
+cd ${doc_com}/org1/peer1
+docker-compose up -d
+sleep 1
+
+echo ${doc_com}/org1/peer2
+cd ${doc_com}/org1/peer2
+docker-compose up -d
+sleep 1
+
+echo ${doc_com}/org1/cli
+cd ${doc_com}/org1/cli
+docker-compose up -d
+sleep 1
+
+echo ${doc_com}/org2/ca
+cd ${doc_com}/org2/ca
+docker-compose up -d
+sleep 1
+
+echo ${doc_com}/org2/peer1
+cd ${doc_com}/org2/peer1
+docker-compose up -d
+sleep 1
+
+echo ${doc_com}/org2/peer2
+cd ${doc_com}/org2/peer2
+docker-compose up -d
+sleep 1
+
+echo ${doc_com}/org2/cli
+cd ${doc_com}/org2/cli
+docker-compose up -d
+</code></pre>
+<h3 id="downsh文件" tabindex="-1">down.sh文件</h3>
+<pre><code class="language-sh">docker kill $(docker ps -a -q) || true
+sleep 1
+docker rm $(docker ps -a -q) || true
+</code></pre>
+<h3 id="stopsh" tabindex="-1"><a href="http://stop.sh/" target="_blank" rel="noopener">stop.sh</a></h3>
+<pre><code class="language-bash">docker stop $(docker ps -a -q) || true
+</code></pre>
+<h4 id="61-链码安装" tabindex="-1">6.1 链码安装</h4>
+<p>cli-org1安装</p>
+<pre><code class="language-bash">#之后只用拷贝到文件里去就行了
+docker cp /home/pi/Desktop/simple.tar.gz cli-org1:/root/hyperledger/org1/peer1/assets/chaincode
+#进入cli-org1
+docker exec -it cli-org1 bash
+cd /root/hyperledger/org1/peer1/assets/chaincode
+export CORE_PEER_ADDRESS=peer1-org1:7051
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/admin/msp
+peer lifecycle chaincode install simple.tar.gz
+
+
+exit
+</code></pre>
+<p>cli-org2 的安装基本相同，自行登录cli-org2容器中安装</p>
+<pre><code class="language-bash">#之后只用拷贝到文件里去就行了
+docker cp /home/pi/Desktop/simple.tar.gz cli-org2:/root/hyperledger/org2/peer1/assets/chaincode
+#进入cli-org1
+docker exec -it cli-org2 bash
+cd /root/hyperledger/org2/peer1/assets/chaincode
+export CORE_PEER_ADDRESS=peer1-org2:7051
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org2/admin/msp
+
+peer lifecycle chaincode install simple.tar.gz
+
+exit
+</code></pre>
+<h4 id="62-链码查询" tabindex="-1">6.2 链码查询</h4>
+<pre><code class="language-bash">peer lifecycle chaincode queryinstalled
+packageid: simple_1:9b72d7f1eda5c57c0f1a71bf739507db9e2581a036474f12b252e15346a381ea
+</code></pre>
+<h4 id="63-链码批准" tabindex="-1">6.3 链码批准</h4>
+<pre><code class="language-bash">docker exec -it cli-org1 bash
+
+export VERSION=1
+export PACKAGE_ID=simple_1:9b72d7f1eda5c57c0f1a71bf739507db9e2581a036474f12b252e15346a381ea
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CHANNEL_NAME=mychannel
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/admin/msp
+
+peer lifecycle chaincode approveformyorg -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile ${ORDERER_CA} --channelID ${CHANNEL_NAME} --name simple --version ${VERSION} --package-id ${PACKAGE_ID} --sequence ${VERSION} --waitForEvent
+
+peer lifecycle chaincode checkcommitreadiness --channelID $CHANNEL_NAME --name simple --version ${VERSION} --sequence ${VERSION} --output json 
+
+exit
+</code></pre>
+<p>同理cli-org2授权基本相同</p>
+<pre><code class="language-bash">docker exec -it cli-org2 bash
+
+export VERSION=1
+export PACKAGE_ID=simple_1:9b72d7f1eda5c57c0f1a71bf739507db9e2581a036474f12b252e15346a381ea
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CHANNEL_NAME=mychannel
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org2/admin/msp
+
+peer lifecycle chaincode approveformyorg -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile ${ORDERER_CA} --channelID ${CHANNEL_NAME} --name simple --version ${VERSION}  --package-id ${PACKAGE_ID} --sequence ${VERSION} --waitForEvent
+
+peer lifecycle chaincode checkcommitreadiness --channelID $CHANNEL_NAME --name simple --version ${VERSION} --sequence ${VERSION} --output json 
+
+exit
+</code></pre>
+<h4 id="64-提交链码定义" tabindex="-1">6.4 提交链码定义</h4>
+<pre><code class="language-bash">docker exec -it cli-org1 bash
+export CHANNEL_NAME=mychannel
+export VERSION=1
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/admin/msp
+
+peer lifecycle chaincode commit -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name simple --peerAddresses peer1-org1:7051 --tlsRootCertFiles /root/hyperledger/org1/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem  --peerAddresses peer1-org2:7051 --tlsRootCertFiles /root/hyperledger/org2/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem --version ${VERSION} --sequence ${VERSION} 
+
+exit
+#只用提交一次吧？
+peer chaincode list --installed
+#-------cli-org2-----
+docker exec -it cli-org2 bash
+
+export CHANNEL_NAME=mychannel
+export VERSION=1
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org2/admin/msp
+
+peer lifecycle chaincode commit -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name simple --peerAddresses peer1-org1:7051 --tlsRootCertFiles /root/hyperledger/org1/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem  --peerAddresses peer1-org2:7051 --tlsRootCertFiles /root/hyperledger/org2/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem --version ${VERSION} --sequence ${VERSION} 
+</code></pre>
+<p>查询提交内容</p>
+<pre><code class="language-bash">export CHANNEL_NAME=mychannel
+peer lifecycle chaincode querycommitted --channelID $CHANNEL_NAME --name simple
+peer lifecycle chaincode queryapproved -C mychannel -n simple
+</code></pre>
+<h4 id="65-初始化链码" tabindex="-1">6.5 初始化链码</h4>
+<pre><code class="language-bash">docker exec -it cli-org1 bash
+export CHANNEL_NAME=mychannel
+export VERSION=1
+export ORDERER_CA=/root/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem
+export CORE_PEER_MSPCONFIGPATH=/root/hyperledger/org1/admin/msp
+
+peer chaincode invoke -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile $ORDERER_CA -C $CHANNEL_NAME -n simple --peerAddresses peer1-org1:7051 --tlsRootCertFiles /root/hyperledger/org1/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem  --peerAddresses peer1-org2:7051 --tlsRootCertFiles /root/hyperledger/org2/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem --isInit -c '{"function":"initLedger","Args":[]}'
+
+peer chaincode invoke -o orderer1-org0:7050 --ordererTLSHostnameOverride orderer1-org0 --tls --cafile $ORDERER_CA -C $CHANNEL_NAME -n simple --peerAddresses peer1-org1:7051 --tlsRootCertFiles /root/hyperledger/org1/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem  --peerAddresses peer1-org2:7051 --tlsRootCertFiles /root/hyperledger/org2/peer1/tls-msp/tlscacerts/tls-0-0-0-0-7052.pem -c '{"function":"Create","Args":["a","10"]}'
+
+</code></pre>
+<p>查询</p>
+<pre><code class="language-bash">peer chaincode query -C mychannel -n simple -c '{"Args":["Read","a"]}'
+</code></pre>
+	</div>
+
+	
+	
+	
+			<div class="post-tags">
+			<i class="fa fa-tags" aria-hidden="true"></i>
+			<a href="/tag/docker/" target="_blank" class="tag badge badge-secondary post-meta-detail-tag">docker</a><a href="/tag/fabric/" target="_blank" class="tag badge badge-secondary post-meta-detail-tag">Fabric</a><a href="/tag/fabric-ca/" target="_blank" class="tag badge badge-secondary post-meta-detail-tag">fabric-ca</a>		</div>
+	</article>
+<div id="share_container">
+	<div id="share" data-initialized="true">
+						<a class="no-pjax icon-wechat" tooltip="分享到微信">
+				<button class="btn btn-icon btn-success">
+					<span class="btn-inner--icon"><i class="fa fa-weixin"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-douban" tooltip="分享到豆瓣">
+				<button class="btn btn-icon btn-primary" style="background: #209261;border: none;">
+					<span aria-hidden="true">豆</span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-qq" tooltip="分享到 QQ">
+				<button class="btn btn-icon btn-primary" style="background: #2196f3;border: none;">
+					<span class="btn-inner--icon"><i class="fa fa-qq"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-qzone" tooltip="分享到 QQ 空间">
+				<button class="btn btn-icon btn-primary" style="background: #ffc107;border: none;">
+					<span class="btn-inner--icon"><i class="fa fa-star"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-weibo" tooltip="分享到微博">
+				<button class="btn btn-icon btn-warning">
+					<span class="btn-inner--icon"><i class="fa fa-weibo"></i></span>
+				</button>
+			</a>
+				<a target="_blank" class="no-pjax icon-copy-link" id="share_copy_link" tooltip="复制链接">
+			<button class="btn btn-icon btn-default">
+				<span class="btn-inner--icon"><i class="fa fa-link"></i></span>
+			</button>
+		</a>
+	</div>
+	<button id="share_show" class="btn btn-icon btn-primary" tooltip="分享">
+		<span class="btn-inner--icon"><i class="fa fa-share"></i></span>
+	</button>
+</div>
+<script type="text/javascript">
+	socialShare("#share", {
+	    title : 'fabric开发环境使用docker搭建',
+	    description : 'fabric-ca使用（docker实现） 1、启动CA服务 创建目录并且编写文件 mkdir -p…',
+	    wechatQrcodeTitle : "分享到微信",
+	    wechatQrcodeHelper : '微信扫描二维码',
+	    source : '/fabric%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e4%bd%bf%e7%94%a8docker%e6%90%ad%e5%bb%ba/'
+	});
+	$("#share_show")[0].onclick = function(){
+		$("#share_container").addClass("opened");
+	};
+	$("#share_copy_link")[0].onclick = function(){
+		let input = document.createElement('input');
+		document.body.appendChild(input);
+		input.setAttribute("value", window.location.href);
+		input.setAttribute("readonly", "readonly");
+		input.setAttribute("style", "opacity: 0;mouse-events:none;");
+		input.select();
+		if (document.execCommand('copy')){
+			iziToast.show({
+				title: '链接已复制',
+				message: "链接已复制到剪贴板",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#2dce89',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-check',
+				timeout: 5000
+			});
+		}else{
+			iziToast.show({
+				title: '复制失败',
+				message: "请手动复制链接",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#f5365c',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-close',
+				timeout: 5000
+			});
+		}
+		document.body.removeChild(input);
+	};
+</script>
+<div id="comments" class="comments-area card shadow-sm">
+	<div class="card-body">
+					<span>暂无评论</span>
+			</div>
+</div>
+
+
+<div id="post_comment" class="card shadow-sm  enable-qq-avatar">
+	<div class="card-body">
+		<h2 class="post-comment-title">
+			<i class="fa fa-commenting"></i>
+			<span class="hide-on-comment-editing">发送评论</span>
+			<span class="hide-on-comment-not-editing">编辑评论</span>
+		</h2>
+		<div id="post_comment_reply_info" class="post-comment-reply" style="display: none;">
+			<span>正在回复 <b><span id="post_comment_reply_name"></span></b> 的评论 :</span>
+			<div id="post_comment_reply_preview" class="post-comment-reply-preview"></div>
+			<button id="post_comment_reply_cancel" class="btn btn-outline-primary btn-sm">取消回复</button>
+		</div>
+		<form>
+			<div class="row">
+				<div class="col-md-12">
+					<textarea id="post_comment_content" class="form-control form-control-alternative" placeholder="评论内容" name="comment" style="height: 80px;"></textarea>
+				</div>
+				<div class="col-md-12" style="height: 0;overflow: hidden;">
+					<pre id="post_comment_content_hidden" class=""></pre>
+				</div>
+			</div>
+						<div class="row hide-on-comment-editing" style="margin-bottom: -10px;">
+				<div class="col-md-4">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+							</div>
+							<input id="post_comment_name" class="form-control" placeholder="昵称" type="text" name="author" value="">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+							</div>
+							<input id="post_comment_email" class="form-control" placeholder="邮箱 / QQ 号" type="email" name="email" value="">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4 post-comment-captcha-container">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-key"></i></span>
+							</div>
+							<input id="post_comment_captcha" class="form-control" placeholder="验证码" type="text">
+							<style>.post-comment-captcha-container:before{
+									content: "17 - 16 = ";
+								}</style>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row hide-on-comment-editing" id="post_comment_extra_input" style="display: none">
+				<div class="col-md-12" style="margin-bottom: -10px;">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4 post-comment-link-container">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-link"></i></span>
+							</div>
+							<input id="post_comment_link" class="form-control" placeholder="网站" type="text" name="url" value="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row hide-on-comment-editing " style="margin-top: 10px; ">
+				<div class="col-md-12">
+					<button id="post_comment_toggle_extra_input" type="button" class="btn btn-icon btn-outline-primary btn-sm" tooltip-show-extra-field="展开附加字段" tooltip-hide-extra-field="折叠附加字段">
+						<span class="btn-inner--icon"><i class="fa fa-angle-down"></i></span>
+					</button>
+				</div>
+</div>
+			<div class="row" style="margin-top: 5px; margin-bottom: 10px;">
+				<div class="col-md-12">
+											<div class="custom-control custom-checkbox comment-post-checkbox comment-post-use-markdown">
+							<input class="custom-control-input" id="comment_post_use_markdown" type="checkbox" checked>
+							<label class="custom-control-label" for="comment_post_use_markdown">Markdown</label>
+						</div>
+																					<div class="custom-control custom-checkbox comment-post-checkbox comment-post-mailnotice" tooltip="有回复时邮件通知我">
+							<input class="custom-control-input" id="comment_post_mailnotice" type="checkbox">
+							<label class="custom-control-label" for="comment_post_mailnotice">邮件提醒</label>
+						</div>
+										<button id="post_comment_send" class="btn btn-icon btn-primary comment-btn pull-right mr-0" type="button">
+						<span class="btn-inner--icon hide-on-comment-editing"><i class="fa fa-send"></i></span>
+						<span class="btn-inner--icon hide-on-comment-not-editing"><i class="fa fa-pencil"></i></span>
+						<span class="btn-inner--text hide-on-comment-editing" style="margin-right: 0;">发送</span>
+						<span class="btn-inner--text hide-on-comment-not-editing" style="margin-right: 0;">编辑</span>
+					</button>
+					<button id="post_comment_edit_cancel" class="btn btn-icon btn-danger comment-btn pull-right hide-on-comment-not-editing" type="button" style="margin-right: 8px;">
+						<span class="btn-inner--icon"><i class="fa fa-close"></i></span>
+						<span class="btn-inner--text">取消</span>
+					</button>
+											<button id="comment_emotion_btn" class="btn btn-icon btn-primary pull-right" type="button" title="表情">
+							<i class="fa fa-smile-o" aria-hidden="true"></i>
+						</button>
+						<div id="emotion_keyboard" class="emotion-keyboard card shadow-sm bg-white">
+	<div class="emotion-keyboard-content">
+		<div class="emotion-group" index="0">
+<div class="emotion-item" text="|´・ω・)ノ" title="">|´・ω・)ノ</div>
+<div class="emotion-item" text="ヾ(≧∇≦*)ゝ" title="">ヾ(≧∇≦*)ゝ</div>
+<div class="emotion-item" text="(☆ω☆)" title="">(☆ω☆)</div>
+<div class="emotion-item" text="（╯‵□′）╯︵┴─┴" title="">（╯‵□′）╯︵┴─┴</div>
+<div class="emotion-item" text="￣﹃￣" title="">￣﹃￣</div>
+<div class="emotion-item" text="(/ω＼)" title="">(/ω＼)</div>
+<div class="emotion-item" text="∠( ᐛ 」∠)＿" title="">∠( ᐛ 」∠)＿</div>
+<div class="emotion-item" text="(๑•̀ㅁ•́ฅ)" title="">(๑•̀ㅁ•́ฅ)</div>
+<div class="emotion-item" text="→_→" title="">→_→</div>
+<div class="emotion-item" text="୧(๑•̀⌄•́๑)૭" title="">୧(๑•̀⌄•́๑)૭</div>
+<div class="emotion-item" text="٩(ˊᗜˋ*)و" title="">٩(ˊᗜˋ*)و</div>
+<div class="emotion-item" text="(ノ°ο°)ノ" title="">(ノ°ο°)ノ</div>
+<div class="emotion-item" text="(´இ皿இ｀)" title="">(´இ皿இ｀)</div>
+<div class="emotion-item" text="⌇●﹏●⌇" title="">⌇●﹏●⌇</div>
+<div class="emotion-item" text="(ฅ´ω`ฅ)" title="">(ฅ´ω`ฅ)</div>
+<div class="emotion-item" text="(╯°A°)╯︵○○○" title="">(╯°A°)╯︵○○○</div>
+<div class="emotion-item" text="φ(￣∇￣o)" title="">φ(￣∇￣o)</div>
+<div class="emotion-item" text="ヾ(´･ ･｀｡)ノ&quot;" title="">ヾ(´･ ･｀｡)ノ&quot;</div>
+<div class="emotion-item" text="( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃" title="">( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃</div>
+<div class="emotion-item" text="(ó﹏ò｡)" title="">(ó﹏ò｡)</div>
+<div class="emotion-item" text="Σ(っ °Д °;)っ" title="">Σ(っ °Д °;)っ</div>
+<div class="emotion-item" text="( ,,´･ω･)ﾉ&quot;(´っω･｀｡)" title="">( ,,´･ω･)ﾉ&quot;(´っω･｀｡)</div>
+<div class="emotion-item" text="╮(╯▽╰)╭" title="">╮(╯▽╰)╭</div>
+<div class="emotion-item" text="o(*////▽////*)q" title="">o(*////▽////*)q</div>
+<div class="emotion-item" text="＞﹏＜" title="">＞﹏＜</div>
+<div class="emotion-item" text="( ๑´•ω•) &quot;(ㆆᴗㆆ)" title="">( ๑´•ω•) &quot;(ㆆᴗㆆ)</div>
+</div>
+<div class="emotion-group d-none" index="1">
+<div class="emotion-item" text="😂" title="">😂</div>
+<div class="emotion-item" text="😀" title="">😀</div>
+<div class="emotion-item" text="😅" title="">😅</div>
+<div class="emotion-item" text="😊" title="">😊</div>
+<div class="emotion-item" text="🙂" title="">🙂</div>
+<div class="emotion-item" text="🙃" title="">🙃</div>
+<div class="emotion-item" text="😌" title="">😌</div>
+<div class="emotion-item" text="😍" title="">😍</div>
+<div class="emotion-item" text="😘" title="">😘</div>
+<div class="emotion-item" text="😜" title="">😜</div>
+<div class="emotion-item" text="😝" title="">😝</div>
+<div class="emotion-item" text="😏" title="">😏</div>
+<div class="emotion-item" text="😒" title="">😒</div>
+<div class="emotion-item" text="🙄" title="">🙄</div>
+<div class="emotion-item" text="😳" title="">😳</div>
+<div class="emotion-item" text="😡" title="">😡</div>
+<div class="emotion-item" text="😔" title="">😔</div>
+<div class="emotion-item" text="😫" title="">😫</div>
+<div class="emotion-item" text="😱" title="">😱</div>
+<div class="emotion-item" text="😭" title="">😭</div>
+<div class="emotion-item" text="💩" title="">💩</div>
+<div class="emotion-item" text="👻" title="">👻</div>
+<div class="emotion-item" text="🙌" title="">🙌</div>
+<div class="emotion-item" text="🖕" title="">🖕</div>
+<div class="emotion-item" text="👍" title="">👍</div>
+<div class="emotion-item" text="👫" title="">👫</div>
+<div class="emotion-item" text="👬" title="">👬</div>
+<div class="emotion-item" text="👭" title="">👭</div>
+<div class="emotion-item" text="🌚" title="">🌚</div>
+<div class="emotion-item" text="🌝" title="">🌝</div>
+<div class="emotion-item" text="🙈" title="">🙈</div>
+<div class="emotion-item" text="💊" title="">💊</div>
+<div class="emotion-item" text="😶" title="">😶</div>
+<div class="emotion-item" text="🙏" title="">🙏</div>
+<div class="emotion-item" text="🍦" title="">🍦</div>
+<div class="emotion-item" text="🍉" title="">🍉</div>
+<div class="emotion-item" text="😣" title="">😣</div>
+</div>
+<div class="emotion-group d-none" index="2">
+<div class="emotion-item emotion-item-sticker" code="dinosaur-shy" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/1.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-daze" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/2.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-sweat" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/3.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-proud" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/4.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-powerless" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/5.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-pouting" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/6.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-eating" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/7.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-ok" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/8.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-doubt" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/9.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-depressed" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/10.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-close-eyes" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/11.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-sleeping" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/12.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-puzzled" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/13.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-agree" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/14.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-crazy" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/15.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-angry" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/16.jpg"></div>
+</div>
+<div class="emotion-group d-none" index="3">
+<div class="emotion-item emotion-item-sticker" code="flower-flower" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/1.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-grass" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/2.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-leaf" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/3.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-star" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/4.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-sun" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/5.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-moon" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/6.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-water" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/7.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-heihei" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/8.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-lemon" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/9.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-birthday" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/10.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-sea" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/11.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-vegetable" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/12.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-tile" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/13.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-utf" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/14.jpg"></div>
+<div class="emotion-group-description">Source: github.com/k4yt3x/flowerhd</div>
+</div>	</div>
+	<div class="emotion-keyboard-bar">
+		<div class="emotion-group-name active" index="0">颜文字</div>
+<div class="emotion-group-name" index="1">Emoji</div>
+<div class="emotion-group-name" index="2">小恐龙</div>
+<div class="emotion-group-name" index="3">花!</div>	</div>
+</div>									</div>
+			</div>
+			<input id="post_comment_captcha_seed" value="" style="display: none;">
+			<input id="post_comment_post_id" value="658" style="display: none;">
+		</form>
+	</div>
+</div>
+<div id="comment_edit_history" class="modal fade" tabindex="-1" role="dialog" aria-modal="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" style="font-size: 20px;"></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body" style="word-break: break-word;"></div>
+		</div>
+	</div>
+</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content"></div>
+	</div>
+</div>
+<div class="post-navigation card shadow-sm">
+<div class="post-navigation-item post-navigation-pre">
+<span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/fabric%e5%8e%8b%e5%8a%9b%e6%b5%8b%e8%af%95/" rel="prev">fabric压力测试</a>
+</div>
+<div class="post-navigation-item post-navigation-next">
+<span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/ssh%e8%bf%9e%e6%8e%a5%e5%88%b0%e8%99%9a%e6%8b%9f%e6%9c%ba/" rel="next">ssh连接到虚拟机</a>
+</div>
+</div>
+<div class="related-posts card shadow-sm">
+                    <h2 class="post-comment-title" style="margin-top: 1.2rem;margin-left: 1.5rem;margin-right: 1.5rem;">
+                    <i class="fa fa-book"></i>
+			        <span>推荐文章</span>
+		            </h2>
+		            <div style="overflow-x: auto;padding: 1.5rem;padding-top: 0.8rem;padding-bottom: 0.8rem;}">
+<a class="related-post-card" href="/%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e5%bc%80%e5%8f%91/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">应用程序开发</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/09/erciyuan29.webp"></a><a class="related-post-card" href="/%e9%93%be%e7%a0%81%e5%bc%80%e5%8f%91%e5%ad%a6%e4%b9%a0/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">链码开发学习</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/09/erciyuan27.webp"></a><a class="related-post-card" href="/fabric%e5%8e%8b%e5%8a%9b%e6%b5%8b%e8%af%95/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">fabric压力测试</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/08/erciyuan19-1.webp"></a><a class="related-post-card" href="/fabric%e6%80%a7%e8%83%bd%e7%9b%91%e6%8e%a7/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">fabric性能监控</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/08/erciyuan20-1.webp"></a><a class="related-post-card" href="/%e6%90%ad%e5%bb%babitwarden/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">搭建bitwarden</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/08/erciyuan23-1.webp"></a>
+</div>
+</div>
+					<footer id="footer" class="site-footer card shadow-sm border-0">
+						<div>
+    Copyright © 2021
+    <a href="/">xaotuman's home</a>
+    | Worked in <span id="run_time"></span> days
+</div>
+<div>
+    <img src="/wp-content/uploads/2021/08/工信部.webp" href="http://beian.miit.gov.cn">
+    <a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备2021021402号-1</a> ｜
+    <img src="/wp-content/uploads/2021/08/备案图标.png" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030302001119">
+    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030302001119">浙公网安备
+        33030302001119号</a>｜
+     <img src="/wp-content/uploads/2021/09/萌国icon.webp" href="https://icp.gov.moe/?keyword=20218257">
+    <a href="https://icp.gov.moe/?keyword=20218257" target="_blank">萌ICP备20218257号</a>
+</div>
+						<div>Theme <a href="https://github.com/solstice23/argon-theme" target="_blank"><strong>Argon</strong></a>
+</div>
+					</footer>
+				</main>
+			</div>
+		</div>
+		<script src="/wp-content/themes/argon/argontheme.js?v1.2.5"></script>
+						
+					<link rel="stylesheet" href="/wp-content/themes/argon/assets/vendor/highlight/styles/gradient-light.css">
+		
+	
+
+</body>
+
+<script>
+function runTime() {
+    var d = new Date(), str = '';
+    BirthDay = new Date("2021-7-14");
+    today = new Date();
+    timeold = (today.getTime() - BirthDay.getTime());
+    msPerDay = 24 * 60 * 60 * 1000
+    e_daysold = timeold / msPerDay
+    daysold = Math.floor(e_daysold);
+    str = daysold;
+    return str;
+}
+$('#run_time').html(runTime())
+setInterval(function () {
+    $('#run_time').html(runTime())
+}, 3600000);
+</script>
+
+
+<!-- Dynamic page generated in 0.073 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2021-10-01 15:03:41 -->
+
+<!-- super cache -->
+</html>

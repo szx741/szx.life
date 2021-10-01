@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js use-big-shadow article-header-style-2 ">
+<head>
+	<meta name="baidu-site-verification" content="code-MjRy3Rk95s">
+	<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta property="og:title" content="应用程序开发 &#8211; 巷子深的生活">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91">
+				<meta name="description" content="应用程序示例
+
+
+
+https://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html
+
+
+（英文2.2和2.3版本有这个...">
+			<meta property="og:description" content="应用程序示例
+
+
+
+https://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html
+
+
+（英文2.2和2.3版本有这个...">
+	
+				<meta name="keywords" content="application,Fabric,node js SDK">
+	
+					<meta property="og:image" content="/wp-content/uploads/2021/09/erciyuan29.webp">
+	
+	<meta name="theme-color" content="#fb7ea2">
+	<meta name="theme-color-rgb" content="251,126,162">
+	<meta name="theme-color-origin" content="#fb7ea2">
+	<meta name="argon-enable-custom-theme-color" content="true">
+
+
+	<meta name="theme-card-radius" content="15">
+	<meta name="theme-card-radius-origin" content="15">
+
+	<meta name="theme-version" content="1.2.5">
+
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+			<title>应用程序开发 &#8211; 巷子深的生活</title>
+<meta name="description" content="应用程序示例  https://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html  （英文2.2和2.3版本有这个...">
+<meta name="keywords" content="application,Fabric,node js SDK">
+<meta name="robots" content="max-image-preview:large">
+<link rel="stylesheet" id="argon_css_merged-css" href="/wp-content/themes/argon/assets/argon_css_merged.css?ver=1.2.5" type="text/css" media="all">
+<link rel="stylesheet" id="style-css" href="/wp-content/themes/argon/style.css?ver=1.2.5" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=5.8.1" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/themes/argon/assets/argon_js_merged.js?ver=1.2.5" id="argon_js_merged-js"></script>
+<script type="text/javascript" src="/wp-content/themes/argon/assets/js/argon.min.js?ver=1.2.5" id="argonjs-js"></script>
+<link rel="canonical" href="/%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e5%bc%80%e5%8f%91/">
+<!-- Analytics by WP-Statistics v13.1.1 - https://wp-statistics.com/ -->
+<script>var WP_Statistics_http = new XMLHttpRequest();WP_Statistics_http.open('GET', '/wp-json/wp-statistics/v2/hit?_=1633071815&_wpnonce=0d4cdba3b3&wp_statistics_hit_rest=yes&browser=WordPress&platform=未知&version=未知&referred=/{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}E5{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}BA{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}94{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}E7{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}94{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}A8{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}E7{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}A8{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}8B{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}E5{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}BA{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}8F{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}E5{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}BC{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}80{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}E5{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}8F{65d5f7a770d74e94278946034d41625607be08cc2855e167cf997e649614d189}91/&ip=82.157.179.143&exclusion_match=yes&exclusion_reason=CrawlerDetect&ua=WordPress/5.8.1; &track_all=1&timestamp=1633100615&current_page_type=post&current_page_id=661&search_query&page_uri=/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/&user_id=0', true);WP_Statistics_http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");WP_Statistics_http.send(null);</script>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>	
+		<!-- Baidu Tongji Start -->
+	<script type="text/javascript">
+	var _hmt = _hmt || [];
+		_hmt.push(['_trackPageview']);
+			(function() {
+	var hm = document.createElement("script");
+	hm.src = "//hm.baidu.com/hm.js?948edc23fd8e36ba6feef017d95f4638";
+	hm.setAttribute('async', 'true');
+	document.getElementsByTagName('head')[0].appendChild(hm);
+	})();
+	</script>
+	<!-- Baidu Tongji  End -->
+	<link rel="icon" href="/wp-content/uploads/2021/06/cropped-websiteIcon-150x150.jpg" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2021/06/cropped-websiteIcon-300x300.jpg" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2021/06/cropped-websiteIcon-300x300.jpg">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2021/06/cropped-websiteIcon-300x300.jpg">
+		<style type="text/css" id="wp-custom-css">*:not([class*="icon"]):not(i) {
+font-family: Helvetica, Tahoma, Arial, STHeiti, "华文黑体", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体","Droid Sans", sans-serif !important;
+}
+#primary {
+    opacity: .98;
+}
+mjx-container[jax="SVG"][display="true"] {
+    display: block;
+    text-align: center;
+    margin: 1em 0;
+}</style>
+				<script>
+		document.documentElement.classList.remove("no-js");
+		var argonConfig = {
+			wp_path: "/",
+			language: "zh_CN",
+			dateFormat: "YMD",
+							zoomify: false,
+						pangu: "false",
+							lazyload: {
+					threshold: 800,
+					effect: "fadeIn"
+				},
+						fold_long_comments: false,
+			disable_pjax: false,
+			pjax_animation_durtion: 600,
+			headroom: "true",
+			waterflow_columns: "2",
+			code_highlight: {
+				enable: true,
+				hide_linenumber: false,
+				break_line: false			}
+		}
+	</script>
+	<script>
+		var darkmodeAutoSwitch = "system";
+		function setDarkmode(enable){
+			if (enable == true){
+				$("html").addClass("darkmode");
+			}else{
+				$("html").removeClass("darkmode");
+			}
+			$(window).trigger("scroll");
+		}
+		function toggleDarkmode(){
+			if ($("html").hasClass("darkmode")){
+				setDarkmode(false);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "false");
+			}else{
+				setDarkmode(true);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "true");
+			}
+		}
+		if (sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true"){
+			setDarkmode(true);
+		}
+		function toggleDarkmodeByPrefersColorScheme(media){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			if (media.matches){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		function toggleDarkmodeByTime(){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			let hour = new Date().getHours();
+			if (hour < 7 || hour >= 22){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		if (darkmodeAutoSwitch == 'system'){
+			var darkmodeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+			darkmodeMediaQuery.addListener(toggleDarkmodeByPrefersColorScheme);
+			toggleDarkmodeByPrefersColorScheme(darkmodeMediaQuery);
+		}
+		if (darkmodeAutoSwitch == 'time'){
+			toggleDarkmodeByTime();
+		}
+		if (darkmodeAutoSwitch == 'alwayson'){
+			setDarkmode(true);
+		}
+
+		function toggleAmoledDarkMode(){
+			$("html").toggleClass("amoled-dark");
+			if ($("html").hasClass("amoled-dark")){
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "true");
+			}else{
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "false");
+			}
+		}
+		if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "true"){
+			$("html").addClass("amoled-dark");
+		}else if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "false"){
+			$("html").removeClass("amoled-dark");
+		}
+	</script>
+	<script>
+		if (navigator.userAgent.indexOf("Safari") !== -1 && navigator.userAgent.indexOf("Chrome") === -1){
+			$("html").addClass("using-safari");
+		}
+	</script>
+
+	</head>
+
+
+<style id="themecolor_css">:root{
+		--themecolor: #fb7ea2;
+		--themecolor-dark0: #FB7299;
+		--themecolor-dark: #FA6590;
+		--themecolor-dark2: #F94D7E;
+		--themecolor-dark3: #F9346D;
+		--themecolor-light: #FDAFC6;
+		--themecolor-rgbstr: 251,126,162;
+		--themecolor-gradient: linear-gradient(150deg,var(--themecolor-light) 15%, var(--themecolor) 70%, var(--themecolor-dark0) 94%);
+
+	}</style>
+<style id="theme_cardradius_css">:root{
+		--card-radius: 15px;
+	}</style>
+
+<body class="post-template-default single single-post postid-661 single-format-standard">
+<div id="toolbar">
+	<header class="header-global">
+		<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light bg-primary headroom--not-bottom headroom--not-top headroom--pinned">
+			<div class="container">
+				<button id="open_sidebar" class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle sidebar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-brand mr-0">
+															<a class="navbar-brand navbar-title" href="/">巷子深的生活</a>
+				</div>
+				<div class="navbar-collapse collapse" id="navbar_global">
+					<div class="navbar-collapse-header">
+						<div class="row" style="display: none;">
+							<div class="col-6 collapse-brand"></div>
+							<div class="col-6 collapse-close">
+								<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+									<span></span>
+									<span></span>
+								</button>
+							</div>
+						</div>
+						<div class="input-group input-group-alternative">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-search"></i></span>
+							</div>
+							<input id="navbar_search_input_mobile" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+						</div>
+					</div>
+					<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+
+										<li class="nav-item">
+											<a href="/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-home" aria-hidden="true"></i>首页</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e5%bd%92%e6%a1%a3/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-clock-o" aria-hidden="true"></i>归档</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e7%95%99%e8%a8%80%e6%9d%bf/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-comments" aria-hidden="true"></i>留言板</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/shuoshuo/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-weibo" aria-hidden="true"></i>说说</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e5%8f%8b%e6%83%85%e9%93%be%e6%8e%a5/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-link" aria-hidden="true"></i>友链</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e5%85%b3%e4%ba%8e%e6%9c%ac%e7%ab%99/" class="nav-link" target="" title="关于本站和站主">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-user-circle" aria-hidden="true"></i>关于</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="https://travellings.link/" class="nav-link" target="_blank" title="随机跳转到一个开往的网页">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-subway" aria-hidden="true"></i>开往</span>
+										  </a>
+</li>
+</ul>					<ul class="navbar-nav align-items-lg-center ml-lg-auto">
+						<li id="navbar_search_container" class="nav-item" data-toggle="modal">
+							<div id="navbar_search_input_container">
+								<div class="input-group input-group-alternative">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fa fa-search"></i></span>
+									</div>
+									<input id="navbar_search_input" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="navbar_menu_mask" data-toggle="collapse" data-target="#navbar_global"></div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-toggler-searcg-icon"></span>
+				</button>
+			</div>
+		</nav>
+	</header>
+</div>
+<div class="modal fade" id="argon_search_modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">搜索</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="argon_serach_form" method="get" action="/">
+	<div class="form-group mb-3">
+		<div class="input-group input-group-alternative">
+			<div class="input-group-prepend">
+				<span class="input-group-text"><i class="fa fa-search"></i></span>
+			</div>
+			<input name="s" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+		</div>
+	</div>
+	<div class="text-center">
+		<button onclick="if($('#argon_serach_form input[name=\'s\']').val() != '') {document.getElementById('argon_serach_form').submit();}" type="button" class="btn btn-primary">搜索</button>
+	</div>
+</form>			</div>
+		</div>
+	</div>
+</div>
+<!--Banner-->
+<section id="banner" class="banner section section-lg section-shaped">
+	<div class="shape  shape-default">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+		<div id="banner_container" class="banner-container container text-center">
+					<div class="banner-title text-white" data-interval="100">
+<span data-text="书香不怕巷子深" class="banner-title-inner">&nbsp;</span>
+			<span data-text="勤修内功，只要自己有真才实学，就一定不会被埋没" class="banner-subtitle d-block">&nbsp;</span>
+</div>
+			</div>
+			<style>section.banner{
+				background-image: url(/wp-content/random-image/picture/banner/fm4.webp) !important;
+			}</style>
+		</section>
+
+	<style>#content:before {
+			content: '';
+			display: block;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: -2;
+			background: url(/wp-content/uploads/2021/09/无标题-1.png);
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 1;
+			transition: opacity .5s ease;
+		}
+		html.darkmode #content:before{
+			filter: brightness(0.65);
+		}
+					#content:after {
+				content: '';
+				display: block;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				z-index: -2;
+				background: url(/wp-content/uploads/2021/09/夜间背景.png);
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+				opacity: 0;
+				transition: opacity .5s ease;
+			}
+			html.darkmode #content:after {
+				opacity: 1;
+			}
+			html.darkmode #content:before {
+				opacity: 0;
+			}</style>
+
+	<style>#banner:after {
+			content: '';
+			width: 100vw;
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 120px;
+			background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0) 100%);
+			display: block;
+			z-index: -1;
+		}
+		.banner-title {
+			text-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+		}</style>
+
+<div id="float_action_buttons" class="float-action-buttons fabtns-unloaded">
+	<button id="fabtn_toggle_sides" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip-move-to-left="移至左侧" tooltip-move-to-right="移至右侧">
+		<span class="btn-inner--icon fabtn-show-on-right"><i class="fa fa-caret-left"></i></span>
+		<span class="btn-inner--icon fabtn-show-on-left"><i class="fa fa-caret-right"></i></span>
+	</button>
+	<button id="fabtn_back_to_top" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Back To Top" tooltip="回到顶部">
+		<span class="btn-inner--icon"><i class="fa fa-angle-up"></i></span>
+	</button>
+	<button id="fabtn_go_to_comment" class="btn btn-icon btn-neutral fabtn shadow-sm d-none" type="button" style="display: none;" aria-label="Comment" tooltip="评论">
+		<span class="btn-inner--icon"><i class="fa fa-comment-o"></i></span>
+	</button>
+	<button id="fabtn_toggle_darkmode" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Toggle Darkmode" tooltip-darkmode="夜间模式" tooltip-blackmode="暗黑模式" tooltip-lightmode="日间模式">
+		<span class="btn-inner--icon"><i class="fa fa-moon-o"></i><i class="fa fa-lightbulb-o"></i></span>
+	</button>
+	<button id="fabtn_toggle_blog_settings_popup" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" style="display: none;" aria-label="Open Blog Settings Menu" tooltip="设置">
+		<span class="btn-inner--icon"><i class="fa fa-cog"></i></span>
+	</button>
+	<div id="fabtn_blog_settings_popup" class="card shadow-sm" style="opacity: 0;" aria-hidden="true">
+		<div id="close_blog_settings"><i class="fa fa-close"></i></div>
+		<div class="blog-setting-item mt-3">
+			<div style="transform: translateY(-4px);"><div id="blog_setting_toggle_darkmode_and_amoledarkmode" tooltip-switch-to-darkmode="切换到夜间模式" tooltip-switch-to-blackmode="切换到暗黑模式">
+<span>夜间模式</span><span>暗黑模式</span>
+</div></div>
+			<div style="flex: 1;"></div>
+			<label id="blog_setting_darkmode_switch" class="custom-toggle">
+				<span class="custom-toggle-slider rounded-circle"></span>
+			</label>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">字体</div>
+			<div>
+				<button id="blog_setting_font_sans_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-left">Sans Serif</button><button id="blog_setting_font_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-right">Serif</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">阴影</div>
+			<div>
+				<button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button><button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3 mb-3">
+			<div style="flex: 1;">滤镜</div>
+			<div id="blog_setting_filters" class="ml-3">
+				<button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0" filter-name="off">关闭</button>
+				<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
+				<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
+				<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mb-3">
+			<div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
+			<div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
+				<div id="blog_setting_card_radius"></div>
+			</div>
+		</div>
+					<div class="blog-setting-item mt-1 mb-3">
+				<div style="flex: 1;">主题色</div>
+				<div id="theme-color-picker" class="ml-3"></div>
+			</div>
+			</div>
+	<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip="阅读进度">
+		<div id="fabtn_reading_progress_bar" style="width: 0%;"></div>
+		<span id="fabtn_reading_progress_details">0%</span>
+	</button>
+</div>
+
+<div id="content" class="site-content">
+
+<div class="page-information-card-container"></div>
+
+<div id="sidebar_mask"></div>
+<aside id="leftbar" class="leftbar widget-area" role="complementary">
+				<div id="leftbar_part1" class="widget widget_search card bg-white shadow-sm border-0">
+			<div class="leftbar-banner card-body">
+				<span class="leftbar-banner-title text-white">xaotuman's home</span>
+
+													<span class="leftbar-banner-subtitle text-white">U1S1，二次元才是第一生产力</span>
+				
+			</div>
+
+			<ul id="leftbar_part1_menu" class="leftbar-menu">
+
+						<li class="leftbar-menu-item">
+							<a href="/" target=""><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e5%bd%92%e6%a1%a3/" target=""><i class="fa fa-clock-o" aria-hidden="true"></i>归档</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e7%95%99%e8%a8%80%e6%9d%bf/" target=""><i class="fa fa-comments" aria-hidden="true"></i>留言板</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/shuoshuo/" target=""><i class="fa fa-weibo" aria-hidden="true"></i>说说</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e5%8f%8b%e6%83%85%e9%93%be%e6%8e%a5/" target=""><i class="fa fa-link" aria-hidden="true"></i>友链</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e5%85%b3%e4%ba%8e%e6%9c%ac%e7%ab%99/" target=""><i class="fa fa-user-circle" aria-hidden="true"></i>关于</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="https://travellings.link/" target="_blank"><i class="fa fa-subway" aria-hidden="true"></i>开往</a>
+</li>
+</ul>			<div class="card-body text-center leftbar-search-button">
+				<button id="leftbar_search_container" class="btn btn-secondary btn-lg active btn-sm btn-block border-0" role="button">
+					<i class="menu-item-icon fa fa-search mr-0"></i> 搜索					<input id="leftbar_search_input" type="text" placeholder="搜索什么..." class="form-control form-control-alternative" autocomplete="off">
+				</button>
+			</div>
+		</div>
+		<div id="leftbar_part2" class="widget widget_search card bg-white shadow-sm border-0">
+			<div id="leftbar_part2_inner" class="card-body">
+								<div class="nav-wrapper" style="padding-top: 5px;">
+	                <ul class="nav nav-pills nav-fill" role="tablist">
+													<li class="nav-item sidebar-tab-switcher">
+								<a class="active show" id="leftbar_tab_catalog_btn" data-toggle="tab" href="#leftbar_tab_catalog" role="tab" aria-controls="leftbar_tab_catalog" no-pjax>文章目录</a>
+							</li>
+												<li class="nav-item sidebar-tab-switcher">
+							<a class="" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax>站点概览</a>
+						</li>
+													<li class="nav-item sidebar-tab-switcher">
+								<a class="" id="leftbar_tab_tools_btn" data-toggle="tab" href="#leftbar_tab_tools" role="tab" aria-controls="leftbar_tab_tools" no-pjax>功能</a>
+							</li>
+							                </ul>
+				</div>
+				<div>
+					<div class="tab-content" style="padding: 10px 10px 0 10px;">
+													<div class="tab-pane fade active show" id="leftbar_tab_catalog" role="tabpanel" aria-labelledby="leftbar_tab_catalog_btn">
+								<div id="leftbar_catalog"></div>
+								<script type="text/javascript">
+									$(function () {
+										$(document).headIndex({
+											articleWrapSelector: '#post_content',
+											indexBoxSelector: '#leftbar_catalog',
+											subItemBoxClass: "index-subItem-box",
+											itemClass: "index-item",
+											linkClass: "index-link",
+											offset: 80,
+										});
+									})
+								</script>
+															</div>
+												<div class="tab-pane fade text-center" id="leftbar_tab_overview" role="tabpanel" aria-labelledby="leftbar_tab_overview_btn">
+							<img id="leftbar_overview_author_image" src="/wp-content/uploads/2021/07/erciyuan4.webp" class="img-fluid rounded-circle shadow-sm" style="width: 100px;" alt="avatar">
+							<h6 id="leftbar_overview_author_name">szx</h6>
+							<nav class="site-state">
+								<div class="site-state-item site-state-posts">
+									<a style="cursor: default;">
+										<span class="site-state-item-count">41</span>
+										<span class="site-state-item-name">文章</span>
+									</a>
+								</div>
+								<div class="site-state-item site-state-categories">
+									<a data-toggle="modal" data-target="#blog_categories">
+										<span class="site-state-item-count">17</span>
+										<span class="site-state-item-name">分类</span>
+									</a>
+								</div>      
+								<div class="site-state-item site-state-tags">
+									<a data-toggle="modal" data-target="#blog_tags">
+										<span class="site-state-item-count">69</span>
+										<span class="site-state-item-name">标签</span>
+									</a>
+								</div>
+							</nav>
+							<div class="site-author-links">
+
+											<div class="site-author-links-item">
+												<a href="https://github.com/szx741" rel="noopener" target="_blank"><i class="fa fa-github"></i> Github</a>
+</div>
+
+											<div class="site-author-links-item">
+												<a href="https://gitee.com/xaotuman" rel="noopener" target="_blank"><img src="/wp-content/uploads/2021/07/gitee-fill-round.png" width="14.55px" height="15px"> Gitee</a>
+</div>
+</div>							<div style="height: 20px;"></div>						</div>
+													<div class="tab-pane fade" id="leftbar_tab_tools" role="tabpanel" aria-labelledby="leftbar_tab_tools_btn">
+								<div id="archives-4" class="widget widget_archive card bg-white border-0">
+<h6 class="font-weight-bold text-black">归档</h6>
+			<ul>
+					<li>
+<a href="/2021/10/">2021年10月</a>&nbsp;(1)</li>
+	<li>
+<a href="/2021/09/">2021年9月</a>&nbsp;(18)</li>
+	<li>
+<a href="/2021/08/">2021年8月</a>&nbsp;(10)</li>
+	<li>
+<a href="/2021/07/">2021年7月</a>&nbsp;(11)</li>
+	<li>
+<a href="/2020/08/">2020年8月</a>&nbsp;(1)</li>
+			</ul>
+
+			</div>
+<div id="categories-4" class="widget widget_categories card bg-white border-0">
+<h6 class="font-weight-bold text-black">分类</h6>
+<form action="/" method="get">
+<label class="screen-reader-text" for="cat">分类</label><select name="cat" id="cat" class="postform">
+	<option value="-1">选择分类</option>
+	<option class="level-0" value="2">图一乐&nbsp;&nbsp;(13)</option>
+	<option class="level-1" value="34">&nbsp;&nbsp;&nbsp;分享&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="3">学习文档&nbsp;&nbsp;(19)</option>
+	<option class="level-1" value="39">&nbsp;&nbsp;&nbsp;docker&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="71">&nbsp;&nbsp;&nbsp;GIS&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="79">&nbsp;&nbsp;&nbsp;Golang&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="10">&nbsp;&nbsp;&nbsp;区块链&nbsp;&nbsp;(6)</option>
+	<option class="level-1" value="4">&nbsp;&nbsp;&nbsp;操作系统&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="5">&nbsp;&nbsp;&nbsp;数据库&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="6">&nbsp;&nbsp;&nbsp;深度学习&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="9">&nbsp;&nbsp;&nbsp;软件开发&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="1">未分类&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="7">游戏&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="11">&nbsp;&nbsp;&nbsp;我的世界&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="35">生活&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="8">网站建设&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="61">解决问题&nbsp;&nbsp;(1)</option>
+</select>
+</form>
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			dropdown.parentNode.submit();
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+			</div>
+<div id="calendar-3" class="widget widget_calendar card bg-white border-0">
+<h6 class="font-weight-bold text-black">日历</h6>
+<div id="calendar_wrap" class="calendar_wrap">
+<table id="wp-calendar" class="wp-calendar-table">
+	<caption>2021年 10月</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="星期一">一</th>
+		<th scope="col" title="星期二">二</th>
+		<th scope="col" title="星期三">三</th>
+		<th scope="col" title="星期四">四</th>
+		<th scope="col" title="星期五">五</th>
+		<th scope="col" title="星期六">六</th>
+		<th scope="col" title="星期日">日</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td colspan="4" class="pad">&nbsp;</td>
+<td id="today"><a href="/2021/10/01/" aria-label="2021年10月1日 发布的文章">1</a></td>
+<td>2</td>
+<td>3</td>
+	</tr>
+	<tr>
+		<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+	</tr>
+	<tr>
+		<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+<td>17</td>
+	</tr>
+	<tr>
+		<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+<td>23</td>
+<td>24</td>
+	</tr>
+	<tr>
+		<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td>29</td>
+<td>30</td>
+<td>31</td>
+	</tr>
+	</tbody>
+	</table>
+<nav aria-label="上个月及下个月" class="wp-calendar-nav">
+		<span class="wp-calendar-nav-prev"><a href="/2021/09/">&laquo; 9月</a></span>
+		<span class="pad">&nbsp;</span>
+		<span class="wp-calendar-nav-next">&nbsp;</span>
+	</nav>
+</div>
+</div>							</div>
+											</div>
+				</div>
+			</div>
+		</div>
+</aside>
+<div class="modal fade" id="blog_categories" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">分类</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<a href="/category/study/docker/" class="badge badge-secondary tag">docker <span class="tag-num">3</span></a><a href="/category/study/gis/" class="badge badge-secondary tag">GIS <span class="tag-num">1</span></a><a href="/category/study/golang/" class="badge badge-secondary tag">Golang <span class="tag-num">3</span></a><a href="/category/fun/share/" class="badge badge-secondary tag">分享 <span class="tag-num">6</span></a><a href="/category/study/blockchain/" class="badge badge-secondary tag">区块链 <span class="tag-num">6</span></a><a href="/category/fun/" class="badge badge-secondary tag">图一乐 <span class="tag-num">7</span></a><a href="/category/study/" class="badge badge-secondary tag">学习文档 <span class="tag-num">1</span></a><a href="/category/game/minecraft/" class="badge badge-secondary tag">我的世界 <span class="tag-num">1</span></a><a href="/category/study/system/" class="badge badge-secondary tag">操作系统 <span class="tag-num">1</span></a><a href="/category/study/database/" class="badge badge-secondary tag">数据库 <span class="tag-num">2</span></a><a href="/category/uncategorized/" class="badge badge-secondary tag">未分类 <span class="tag-num">2</span></a><a href="/category/study/deep-learning/" class="badge badge-secondary tag">深度学习 <span class="tag-num">1</span></a><a href="/category/game/" class="badge badge-secondary tag">游戏 <span class="tag-num">1</span></a><a href="/category/life/" class="badge badge-secondary tag">生活 <span class="tag-num">2</span></a><a href="/category/website/" class="badge badge-secondary tag">网站建设 <span class="tag-num">8</span></a><a href="/category/solve_problem/" class="badge badge-secondary tag">解决问题 <span class="tag-num">1</span></a><a href="/category/study/software-development/" class="badge badge-secondary tag">软件开发 <span class="tag-num">2</span></a>			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="blog_tags" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">标签</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<a href="/tag/application/" class="badge badge-secondary tag">application <span class="tag-num">1</span></a><a href="/tag/caliper/" class="badge badge-secondary tag">caliper <span class="tag-num">1</span></a><a href="/tag/cdn/" class="badge badge-secondary tag">CDN <span class="tag-num">1</span></a><a href="/tag/couchdb/" class="badge badge-secondary tag">couchdb <span class="tag-num">1</span></a><a href="/tag/docker/" class="badge badge-secondary tag">docker <span class="tag-num">5</span></a><a href="/tag/easton/" class="badge badge-secondary tag">easton <span class="tag-num">1</span></a><a href="/tag/fabric/" class="badge badge-secondary tag">Fabric <span class="tag-num">6</span></a><a href="/tag/fabric-ca/" class="badge badge-secondary tag">fabric-ca <span class="tag-num">1</span></a><a href="/tag/ftp/" class="badge badge-secondary tag">FTP <span class="tag-num">1</span></a><a href="/tag/geoserver/" class="badge badge-secondary tag">GeoServer <span class="tag-num">1</span></a><a href="/tag/geowebcache/" class="badge badge-secondary tag">Geowebcache <span class="tag-num">1</span></a><a href="/tag/golang/" class="badge badge-secondary tag">Golang <span class="tag-num">1</span></a><a href="/tag/go%e5%bc%80%e5%8f%91/" class="badge badge-secondary tag">Go开发 <span class="tag-num">1</span></a><a href="/tag/go%e8%af%ad%e8%a8%80/" class="badge badge-secondary tag">Go语言 <span class="tag-num">1</span></a><a href="/tag/grafana/" class="badge badge-secondary tag">grafana <span class="tag-num">1</span></a><a href="/tag/hastings/" class="badge badge-secondary tag">hastings <span class="tag-num">1</span></a><a href="/tag/hexo/" class="badge badge-secondary tag">Hexo <span class="tag-num">1</span></a><a href="/tag/makefile/" class="badge badge-secondary tag">makefile <span class="tag-num">1</span></a><a href="/tag/mx-space/" class="badge badge-secondary tag">mx-space <span class="tag-num">1</span></a><a href="/tag/nginx/" class="badge badge-secondary tag">nginx <span class="tag-num">2</span></a><a href="/tag/node-js-sdk/" class="badge badge-secondary tag">node js SDK <span class="tag-num">1</span></a><a href="/tag/openlayers/" class="badge badge-secondary tag">Openlayers <span class="tag-num">1</span></a><a href="/tag/php/" class="badge badge-secondary tag">php <span class="tag-num">1</span></a><a href="/tag/ping/" class="badge badge-secondary tag">ping <span class="tag-num">1</span></a><a href="/tag/postgis/" class="badge badge-secondary tag">postgis <span class="tag-num">1</span></a><a href="/tag/postgresql/" class="badge badge-secondary tag">postgresql <span class="tag-num">2</span></a><a href="/tag/prometheus/" class="badge badge-secondary tag">prometheus <span class="tag-num">1</span></a><a href="/tag/push-markdown/" class="badge badge-secondary tag">push-markdown <span class="tag-num">1</span></a><a href="/tag/ssh/" class="badge badge-secondary tag">ssh <span class="tag-num">1</span></a><a href="/tag/tag1/" class="badge badge-secondary tag">Tag1 <span class="tag-num">1</span></a><a href="/tag/tag222/" class="badge badge-secondary tag">Tag222 <span class="tag-num">1</span></a><a href="/tag/tag333333/" class="badge badge-secondary tag">Tag333333 <span class="tag-num">1</span></a><a href="/tag/tag4444444444/" class="badge badge-secondary tag">Tag4444444444 <span class="tag-num">1</span></a><a href="/tag/tag5/" class="badge badge-secondary tag">Tag5 <span class="tag-num">1</span></a><a href="/tag/typecho/" class="badge badge-secondary tag">Typecho <span class="tag-num">1</span></a><a href="/tag/ubuntu/" class="badge badge-secondary tag">Ubuntu <span class="tag-num">1</span></a><a href="/tag/vscode/" class="badge badge-secondary tag">vscode <span class="tag-num">1</span></a><a href="/tag/webgis/" class="badge badge-secondary tag">WebGIS <span class="tag-num">1</span></a><a href="/tag/wordpress/" class="badge badge-secondary tag">wordpress <span class="tag-num">3</span></a><a href="/tag/yolo/" class="badge badge-secondary tag">yolo <span class="tag-num">1</span></a><a href="/tag/%e4%b8%bb%e9%a2%98/" class="badge badge-secondary tag">主题 <span class="tag-num">1</span></a><a href="/tag/%e5%85%b3%e4%ba%8e%e6%9c%ac%e4%ba%ba/" class="badge badge-secondary tag">关于本人 <span class="tag-num">1</span></a><a href="/tag/%e5%8c%ba%e5%9d%97%e9%93%be/" class="badge badge-secondary tag">区块链 <span class="tag-num">1</span></a><a href="/tag/%e5%8d%9a%e5%ae%a2/" class="badge badge-secondary tag">博客 <span class="tag-num">2</span></a><a href="/tag/%e5%9b%be%e4%b8%80%e4%b9%90/" class="badge badge-secondary tag">图一乐 <span class="tag-num">8</span></a><a href="/tag/%e5%9e%83%e5%9c%be%e5%be%ae%e4%bf%a1/" class="badge badge-secondary tag">垃圾微信 <span class="tag-num">1</span></a><a href="/tag/%e5%a5%bd%e7%89%a9%e6%8e%a8%e8%8d%90/" class="badge badge-secondary tag">好物推荐 <span class="tag-num">2</span></a><a href="/tag/%e5%ad%a6%e4%b9%a0/" class="badge badge-secondary tag">学习 <span class="tag-num">4</span></a><a href="/tag/%e5%af%86%e7%a0%81%e7%ae%a1%e7%90%86/" class="badge badge-secondary tag">密码管理 <span class="tag-num">1</span></a><a href="/tag/%e5%af%b9%e8%b1%a1%e5%ad%98%e5%82%a8/" class="badge badge-secondary tag">对象存储 <span class="tag-num">1</span></a><a href="/tag/%e5%b0%8f%e5%b7%a5%e5%85%b7/" class="badge badge-secondary tag">小工具 <span class="tag-num">2</span></a><a href="/tag/%e5%bd%92%e6%a1%a3/" class="badge badge-secondary tag">归档 <span class="tag-num">1</span></a><a href="/tag/%e6%88%91%e7%9a%84%e4%b8%96%e7%95%8c/" class="badge badge-secondary tag">我的世界 <span class="tag-num">1</span></a><a href="/tag/%e6%89%8b%e6%9c%ba/" class="badge badge-secondary tag">手机 <span class="tag-num">1</span></a><a href="/tag/%e6%8c%87%e5%8d%97%e7%b3%bb%e5%88%97/" class="badge badge-secondary tag">指南系列 <span class="tag-num">1</span></a><a href="/tag/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f/" class="badge badge-secondary tag">操作系统 <span class="tag-num">1</span></a><a href="/tag/%e6%95%b0%e6%8d%ae%e5%ba%93/" class="badge badge-secondary tag">数据库 <span class="tag-num">1</span></a><a href="/tag/%e6%99%ba%e8%83%bd%e5%90%88%e7%ba%a6/" class="badge badge-secondary tag">智能合约 <span class="tag-num">1</span></a><a href="/tag/%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0/" class="badge badge-secondary tag">深度学习 <span class="tag-num">1</span></a><a href="/tag/%e7%94%9f%e6%b4%bb/" class="badge badge-secondary tag">生活 <span class="tag-num">1</span></a><a href="/tag/%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b/" class="badge badge-secondary tag">目标检测 <span class="tag-num">1</span></a><a href="/tag/%e7%bd%91%e7%ab%99%e5%bb%ba%e8%ae%be/" class="badge badge-secondary tag">网站建设 <span class="tag-num">6</span></a><a href="/tag/%e7%bd%91%e7%bb%9c%e5%ae%89%e5%85%a8/" class="badge badge-secondary tag">网络安全 <span class="tag-num">3</span></a><a href="/tag/%e8%8f%9c%e9%b8%9f%e6%95%99%e7%a8%8b/" class="badge badge-secondary tag">菜鸟教程 <span class="tag-num">1</span></a><a href="/tag/%e8%90%8c%e5%9b%bd/" class="badge badge-secondary tag">萌国 <span class="tag-num">1</span></a><a href="/tag/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="badge badge-secondary tag">虚拟机 <span class="tag-num">1</span></a><a href="/tag/%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91/" class="badge badge-secondary tag">软件开发 <span class="tag-num">1</span></a><a href="/tag/%e9%80%9f%e6%88%90/" class="badge badge-secondary tag">速成 <span class="tag-num">1</span></a><a href="/tag/%e9%93%be%e7%a0%81/" class="badge badge-secondary tag">链码 <span class="tag-num">1</span></a>			</div>
+		</div>
+	</div>
+</div>
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+		<article class="post post-full card bg-white shadow-sm border-0" id="post-661">
+	<header class="post-header text-center post-header-with-thumbnail">
+		<img class="post-thumbnail" src="/wp-content/uploads/2021/09/erciyuan29.webp"><div class="post-header-text-container">		<a class="post-title" href="/%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e5%bc%80%e5%8f%91/">应用程序开发</a>
+		<div class="post-meta">
+			<div class="post-meta-detail post-meta-detail-time">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<time title="发布于 2021-9-07 13:48:10 | 编辑于 2021-9-07 13:48:10">2021-9-07 13:48
+					</time>
+				</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-edittime">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<time title="发布于 2021-9-07 13:48:10 | 编辑于 2021-9-07 13:48:10">2021-9-07 13:48
+					</time>
+				</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-views">
+					<i class="fa fa-eye" aria-hidden="true"></i> 17</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-comments">
+					<i class="fa fa-comments-o" aria-hidden="true"></i> 0</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-categories">
+				<i class="fa fa-bookmark-o" aria-hidden="true"></i> <a href="/category/study/blockchain/" target="_blank" class="post-meta-detail-catagory-link">区块链</a>
+</div>					</div>
+		</div>	</header>
+
+	<div class="post-content" id="post_content">
+		<h1 id="应用程序示例" tabindex="-1">应用程序示例</h1>
+<p><a href="https://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html" target="_blank" rel="noopener">https://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html</a></p>
+<p>（英文2.2和2.3版本有这个章节，只不过2.2叫做编写你的第一个应用，2.3叫做应用程序示例，中文版的只有2.2，而且举的例子和英文版本不一样，是fabcar，英文版本的是fabric-samples/asset-transfer-basic/application-javascript）</p>
+<p>本教程介绍了Fabric应用程序如何与已部署的区块链网络进行交互。本教程使用通过Fabric SDK构建的示例程序（在<a href="https://hyperledger-fabric.readthedocs.io/en/latest/developapps/application.html" target="_blank" rel="noopener">应用程序</a>主题中进行了详细说明）来调用智能合约，该智能合约使用智能合约API查询和更新账本（在<a href="https://hyperledger-fabric.readthedocs.io/en/latest/developapps/smartcontract.html" target="_blank" rel="noopener">智能合约处理</a>中进行了详细说明）。我们还将使用示例程序和已部署的证书颁发机构来生成应用程序需要与许可的区块链进行交互的X.509证书。</p>
+<h2 id="关于资产转移" tabindex="-1">关于资产转移</h2>
+<p>此资产转移（基本）样本演示了如何使用资产初始化账本，查询那些资产，创建新资产，基于资产ID查询单个资产，更新现有资产以及将资产转移给新所有者。它涉及以下两个组件：</p>
+<p>1、示例程序在fabric-samples目录下：调用区块链网络，调用以链码（智能合约）实现的交易。</p>
+<pre><code>asset-transfer-basic/application-javascript
+</code></pre>
+<p>2、智能合约本身，实现涉及与账本交互的交易。智能合约（链码）位于以下<code>fabric-samples</code>目录中：</p>
+<pre><code>asset-transfer-basic/chaincode-(javascript, java, go, typescript)
+</code></pre>
+<p>我们将经历三个主要步骤：</p>
+<p>**1.建立开发环境。**我们的应用程序需要与之交互的网络，因此我们将为我们的智能合约和应用程序部署一个基本的网络。</p>
+<p align="center"><img src="https://hyperledger-fabric.readthedocs.io/en/latest/_images/AppConceptsOverview.png" alt="_images / AppConceptsOverview.png"></p>
+<p><strong>2.探索样本智能合约。</strong> 我们将检查示例assetTransfer（javascript）智能合约，以了解其中的交易以及应用程序如何使用它们查询和更新账本。</p>
+<p>**3.通过示例应用程序与智能合约进行交互。**我们的应用程序将使用assetTransfer智能合约在账本上创建，查询和更新资产。我们将研究应用程序及其创建的交易的代码，包括使用资产初始化账本，查询资产，查询一系列资产，创建新资产以及将资产转让给新所有者。</p>
+<p>​　linux先安装这个软件</p>
+<pre><code class="language-bash">sudo apt install build-essential
+</code></pre>
+<h2 id="建立区块链网络" tabindex="-1">建立区块链网络</h2>
+<h3 id="启动网络" tabindex="-1">启动网络</h3>
+<p>导航到存储库<code>test-network</code>本地克隆中的子目录 <code>fabric-samples</code>。</p>
+<pre><code class="language-bash">cd fabric-samples/test-network
+</code></pre>
+<p>如果您已经在运行测试网络，请将其关闭以确保环境干净。</p>
+<pre><code class="language-bash">./network.sh down
+</code></pre>
+<p>使用<code>network.sh</code>shell脚本启动Fabric测试网络。</p>
+<pre><code class="language-bash">./network.sh up createChannel -c mychannel -ca
+</code></pre>
+<p>此命令将部署具有两个对等方，一个订购服务和三个证书颁发机构（Orderer，Org1，Org2）的Fabric测试网络。代替使用cryptogen工具，我们使用证书颁发机构（因此是<code>-ca</code>标记）来启动测试网络。此外，启动证书颁发机构时会引导组织管理员用户注册。在后续步骤中，我们将显示示例应用程序如何完成管理员注册。</p>
+<p>接下来，让我们通过<code>./network.sh</code>使用链码名称和语言选项调用脚本来部署链码。</p>
+<pre><code class="language-bash">./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-javascript/ -ccl javascript
+</code></pre>
+<p>笔记</p>
+<p>在后台，此脚本使用链码生命周期来打包，安装，查询已安装的链码，批准Org1和Org2的链码，最后提交链码。</p>
+<p>如果成功部署了链码，则终端中输出的末尾应类似于以下内容：</p>
+<pre><code>Committed chaincode definition for chaincode 'basic' on channel 'mychannel':
+Version: 1.0, Sequence: 1, Endorsement Plugin: escc, Validation Plugin: vscc, Approvals: [Org1MSP: true, Org2MSP: true]
+===================== Query chaincode definition successful on peer0.org2 on channel 'mychannel' =====================
+
+===================== Chaincode initialization is not required =====================
+</code></pre>
+<h3 id="示例程序" tabindex="-1">示例程序</h3>
+<p>接下来，让我们准备示例资产转移Javascript应用程序，该应用程序将用于与已部署的链码进行交互。</p>
+<ul>
+<li><a href="https://github.com/hyperledger/fabric-samples/blob/master/asset-transfer-basic/application-javascript" target="_blank" rel="noopener">JavaScript应用</a></li>
+</ul>
+<p>请注意，以下链接中的Go和Java也提供了示例应用程序：</p>
+<ul>
+<li><a href="https://github.com/hyperledger/fabric-samples/blob/master/asset-transfer-basic/application-go" target="_blank" rel="noopener">Go</a></li>
+<li><a href="https://github.com/hyperledger/fabric-samples/blob/master/asset-transfer-basic/application-java" target="_blank" rel="noopener">Java应用</a></li>
+</ul>
+<p>打开一个新的终端，然后导航到该<code>application-javascript</code>文件夹。</p>
+<pre><code>cd asset-transfer-basic/application-javascript
+</code></pre>
+<p>该目录包含使用Fabric SDK for Node.js开发的示例程序。运行以下命令以安装应用程序依赖项。最多可能需要一分钟才能完成：</p>
+<pre><code>npm install
+</code></pre>
+<p>此过程将安装在的应用程序中定义的关键应用程序依赖项 <code>package.json</code>。其中最重要的是<code>fabric-network</code>Node.js模块；它使应用程序能够使用身份，钱包和网关来连接到渠道，提交交易并等待通知。本教程还使用该<code>fabric-ca-client</code>模块为用户注册各自的证书颁发机构，生成有效的身份，然后<code>fabric-network</code>模块将其用于与区块链网络进行交互。</p>
+<p>一旦完成，一切就绪运行应用程序。让我们看一下将在本教程中使用的示例JavaScript应用程序文件。运行以下命令以列出此目录中的文件：<code>npm install</code></p>
+<pre><code>ls
+</code></pre>
+<p>您应该看到以下内容：</p>
+<pre><code>app.js                  node_modules            package.json       package-lock.json
+</code></pre>
+<p><strong>笔记</strong></p>
+<blockquote>
+<p>下一节的第一部分涉及与证书颁发机构的通信。您可能会发现，通过打开新的终端外壳并运行，在运行即将到来的程序时，流式传输CA日志很有用 。<code>docker logs -f ca_org1</code></p>
+</blockquote>
+<p>第一步，当我们启动Fabric测试网络时，创建了一个管理员用户（字面上称为<code>admin</code>）作为证书颁发机构（CA）的<strong>注册商</strong>。我们的第一步是<code>admin</code>通过让应用程序调用<code>enrollAdmin</code>来生成私钥，公钥和X.509证书 。此过程使用<strong>证书签名请求</strong>（CSR）-私钥和公钥首先在本地生成，然后将公用密钥发送到CA，CA返回编码的证书供应用程序使用。这些凭证然后存储在钱包中，使我们能够充当CA的管理员。</p>
+<p>让我们运行该应用程序，然后逐步完成与智能合约功能的每个交互。在 <code>asset-transfer-basic/application-javascript</code>目录中，运行以下命令：</p>
+<pre><code>node app.js
+</code></pre>
+<h2 id="第一-应用程序注册管理员用户" tabindex="-1">第一、应用程序注册管理员用户</h2>
+<p><strong>笔记</strong></p>
+<blockquote>
+<p>重要的是要注意，注册管理员和注册应用程序用户是在应用程序和证书颁发机构之间发生的交互，而不是在应用程序和链码之间发生的交互。如果您检查链码，<code>asset-transfer-basic/chaincode-javascript/lib</code>您会发现该链码不包含任何支持注册管理员或注册用户的功能。</p>
+</blockquote>
+<p>在下面的示例应用程序代码中，您将看到在参考公共连接配置文件路径之后，确保连接配置文件存在，并指定创建钱包的位置， <code>enrollAdmin()</code>并且从证书颁发机构生成了管理员凭证。</p>
+<pre><code>async function main() {
+  try {
+    // build an in memory object with the network configuration (also known as a connection profile)
+    const ccp = buildCCP();
+
+    // build an instance of the fabric ca services client based on
+    // the information in the network configuration
+    const caClient = buildCAClient(FabricCAServices, ccp);
+
+    // setup the wallet to hold the credentials of the application user
+    const wallet = await buildWallet(Wallets, walletPath);
+
+    // in a real application this would be done on an administrative flow, and only once
+    await enrollAdmin(caClient, wallet);
+</code></pre>
+<p>此命令将CA管理员的凭据存储在<code>wallet</code>目录中。您可以在<code>wallet/admin.id</code> 文件中找到管理员的证书和私钥。</p>
+<p><strong>笔记</strong></p>
+<blockquote>
+<p>如果您决定通过断开网络并重新启动来重新开始，则必须<code>wallet</code>在重新运行javascript应用程序之前删除该文件夹及其标识，否则会出现错误。发生这种情况的原因是，在关闭测试网络时，关闭了证书颁发机构及其数据库，但是原始钱包仍保留在application-javascript目录中，因此必须将其删除。当您重新运行示例javascript应用程序时，将生成一个新的钱包和凭据。</p>
+</blockquote>
+<p>如果您向上滚动到终端中输出的开头，则应类似于以下内容：</p>
+<pre><code>Wallet path: /Users/&lt;your_username&gt;/fabric-samples/asset-transfer-basic/application-javascript/wallet
+Successfully enrolled admin user and imported it into the wallet
+</code></pre>
+<p>因为启动证书颁发机构时会引导管理员注册步骤，所以我们只需要注册管理员。</p>
+<p><strong>笔记</strong></p>
+<blockquote>
+<p>由于Fabric CA交互在示例中是通用的，因此enrollAdmin（）和其他与CA相关的功能都包含在<code>fabric-samples/test-application/javascript/CAUtil.js</code> 通用实用程序中。</p>
+</blockquote>
+<p>对于应用程序用户，我们需要应用程序在下一步中注册和注册用户。</p>
+<h2 id="第二-应用程序注册并注册一个应用程序用户" tabindex="-1">第二、应用程序注册并注册一个应用程序用户</h2>
+<p>现在我们已经在钱包中拥有管理员的凭据，该应用程序将使用该<code>admin</code> 用户来注册和注册一个应用程序用户，该用户将用于与区块链网络进行交互。应用程序代码部分如下所示。</p>
+<pre><code class="language-js">// in a real application this would be done only when a new user was required to be added
+// and would be part of an administrative flow
+await registerUser(caClient, wallet, userId, 'org1.department1');
+</code></pre>
+<p>（我看代码不是这样子的，是这样子的）</p>
+<pre><code class="language-js">// in a real application this would be done only when a new user was required to be added
+// and would be part of an administrative flow
+await registerAndEnrollUser(caClient, wallet, mspOrg1, org1UserId, 'org1.department1');
+</code></pre>
+<p>与管理员注册类似，此功能使用CSR来注册，注册<code>appUser</code>和存储其凭据以及<code>admin</code>钱包中的凭据。现在，我们拥有两个独立用户的身份，<code>admin</code>并且<code>appUser</code>该身份可以由我们的应用程序使用。</p>
+<p>在终端输出中进一步向下滚动，您应该看到类似于以下内容的应用程序用户注册确认：</p>
+<pre><code>Successfully registered and enrolled user appUser and imported it into the wallet
+</code></pre>
+<h2 id="第三-示例应用程序准备与渠道和智能合约的连接" tabindex="-1">第三、示例应用程序准备与渠道和智能合约的连接</h2>
+<p>在前面的步骤中，应用程序生成了管理员和应用程序用户凭据，并将其放置在钱包中。如果凭据存在并且具有与之关联的正确权限属性，则示例应用程序用户将能够在引用通道名称和合同名称之后调用链码功能。</p>
+<p><strong>笔记</strong></p>
+<blockquote>
+<p>我们的连接配置仅指定您自己的组织中的对等方。我们告诉节点客户端sdk使用服务发现（在同级上运行），该服务获取当前处于联机状态的其他同级，元数据（如相关的认可策略）以及否则需要与其余节点进行通信的任何静态信息。由于我们的客户端与其他结构节点在同一网络上运行，因此<code>asLocalhost</code>set<code>true</code>告知它以localhost连接。在不将客户端与其他结构节点在同一网络上运行的部署中，该<code>asLocalhost</code>选项将设置为<code>false</code>。</p>
+</blockquote>
+<p>您会注意到，在以下应用程序代码行中，应用程序正在通过网关使用合同名称和渠道名称来引用合同：</p>
+<pre><code class="language-js">// Create a new gateway instance for interacting with the fabric network.
+// In a real application this would be done as the backend server session is setup for
+// a user that has been verified.
+const gateway = new Gateway();
+
+try {
+  // setup the gateway instance
+  // The user will now be able to create connections to the fabric network and be able to
+  // submit transactions and query. All transactions submitted by this gateway will be
+  // signed by this user using the credentials stored in the wallet.
+  await gateway.connect(ccp, {
+    wallet,
+    identity: userId,
+    discovery: {enabled: true, asLocalhost: true} // using asLocalhost as this gateway is using a fabric network deployed locally
+  });
+
+  // Build a network instance based on the channel where the smart contract is deployed
+  const network = await gateway.getNetwork(channelName);
+
+
+  // Get the contract from the network.
+  const contract = network.getContract(chaincodeName);
+</code></pre>
+<p>当链码包包含多个智能合约时，可以在<a href="https://hyperledger.github.io/fabric-sdk-node/release-2.2/module-fabric-network.Network.html#getContract" target="_blank" rel="noopener">getContract（）API</a>上指定链码包的名称和要定位的特定智能合约。例如：</p>
+<pre><code>const contract = await network.getContract('chaincodeName', 'smartContractName');
+</code></pre>
+<h2 id="第四-应用程序使用一些样本数据初始化账本" tabindex="-1">第四、应用程序使用一些样本数据初始化账本</h2>
+<p>现在我们已经到了实际让示例应用程序提交事务的地步，让我们按顺序进行处理。为每个被调用的函数以及终端输出提供了应用程序代码片段和调用的链代码片段。</p>
+<p>SubmitTransaction（）函数用于调用chaincode<code>InitLedger</code>函数，以使用一些样本数据填充账本。在幕后，submitTransaction（）函数将使用服务发现来为链码找到一组所需的认可对等体，在所需数目的对等体上调用链码，从这些对等体收集链码认可的结果，最后将事务提交给订购服务。</p>
+<p>示例程序<code>'InitLedger'</code>电话</p>
+<pre><code class="language-js">// Initialize a set of asset data on the channel using the chaincode 'InitLedger' function.
+// This type of transaction would only be run once by an application the first time it was started after it
+// deployed the first time. Any updates to the chaincode deployed later would likely not need to run
+// an "init" type function.
+console.log('\n--&gt; Submit Transaction: InitLedger, function creates the initial set of assets on the ledger');
+await contract.submitTransaction('InitLedger');
+console.log('*** Result: committed');
+</code></pre>
+<p>在lib/assetTransfer.js中，链码<code>'InitLedger'</code>功能</p>
+<pre><code class="language-js">async InitLedger(ctx) {
+     const assets = [
+         {
+             ID: 'asset1',
+             Color: 'blue',
+             Size: 5,
+             Owner: 'Tomoko',
+             AppraisedValue: 300,
+         },
+         {
+             ID: 'asset2',
+             Color: 'red',
+             Size: 5,
+             Owner: 'Brad',
+             AppraisedValue: 400,
+         },
+         {
+             ID: 'asset3',
+             Color: 'green',
+             Size: 10,
+             Owner: 'Jin Soo',
+             AppraisedValue: 500,
+         },
+         {
+             ID: 'asset4',
+             Color: 'yellow',
+             Size: 10,
+             Owner: 'Max',
+             AppraisedValue: 600,
+         },
+         {
+             ID: 'asset5',
+             Color: 'black',
+             Size: 15,
+             Owner: 'Adriana',
+             AppraisedValue: 700,
+         },
+         {
+             ID: 'asset6',
+             Color: 'white',
+             Size: 15,
+             Owner: 'Michel',
+             AppraisedValue: 800,
+         },
+     ];
+
+     for (const asset of assets) {
+         asset.docType = 'asset';
+         await ctx.stub.putState(asset.ID, Buffer.from(JSON.stringify(asset)));
+         console.info(`Asset ${asset.ID} initialized`);
+     }
+ }
+</code></pre>
+<p>终端输出条目应类似于以下内容：</p>
+<pre><code>Submit Transaction: InitLedger, function creates the initial set of assets on the ledger
+</code></pre>
+<h2 id="第五-应用程序调用每个chaincode函数" tabindex="-1">第五、应用程序调用每个chaincode函数</h2>
+<p>首先，关于查询账本的一句话。</p>
+<p>区块链网络中的每个对等方都拥有一个<a href="https://hyperledger-fabric.readthedocs.io/en/latest/ledger/ledger.html" target="_blank" rel="noopener">账本</a>的副本。应用程序可以使用对等点上运行的智能合约的只读调用（称为查询）来查看账本中的最新数据。</p>
+<p>这是查询工作方式的简化表示：</p>
+<p align="center"><img src="https://hyperledger-fabric.readthedocs.io/en/latest/_images/write_first_app.diagram.1.png" alt="_images / write_first_app.diagram.1.png"></p>
+<p>最常见的查询涉及账本中数据的当前值-其 <a href="https://hyperledger-fabric.readthedocs.io/en/latest/ledger/ledger.html#world-state" target="_blank" rel="noopener">世界状态</a>。世界状态表示为一组键/值对，应用程序可以查询单个键或多个键的数据。此外，当您使用CouchDB作为状态数据库并使用JSON建模数据时，可以使用复杂的查询来读取账本上的数据。当寻找与某些关键字具有特定值匹配的所有资产时，这将非常有用。例如，具有特定所有者的所有资产。</p>
+<p>下面，该示例应用程序仅获取我们在使用数据初始化账本时在上一步中填充的所有资产。当您要查询单个对等方而无需向定单服务提交交易时，可以使用validateTransaction（）函数。</p>
+<h3 id="获得所有资产" tabindex="-1">获得所有资产</h3>
+<p>示例程序<code>'GetAllAssets'</code></p>
+<pre><code class="language-js">// Let's try a query type operation (function).
+// This will be sent to just one peer and the results will be shown.
+console.log('\n--&gt; Evaluate Transaction: GetAllAssets, function returns all the current assets on the ledger');
+let result = await contract.evaluateTransaction('GetAllAssets');
+console.log(`*** Result: ${prettyJSONString(result.toString())}`);
+</code></pre>
+<p>链码<code>'GetAllAssets'</code>功能</p>
+<pre><code class="language-js">// GetAllAssets returns all assets found in the world state.
+ async GetAllAssets(ctx) {
+     const allResults = [];
+     // range query with empty string for startKey and endKey does an open-ended query of all assets in the chaincode namespace.
+     const iterator = await ctx.stub.getStateByRange('', '');
+     let result = await iterator.next();
+     while (!result.done) {
+         const strValue = Buffer.from(result.value.value.toString()).toString('utf8');
+         let record;
+         try {
+             record = JSON.parse(strValue);
+         } catch (err) {
+             console.log(err);
+             record = strValue;
+         }
+         allResults.push({ Key: result.value.key, Record: record });
+         result = await iterator.next();
+     }
+     return JSON.stringify(allResults);
+ }
+</code></pre>
+<p>终端输出应如下所示：</p>
+<pre><code class="language-bash">  Evaluate Transaction: GetAllAssets, function returns all the current assets on the ledger
+  Result: [
+  {
+    "Key": "asset1",
+    "Record": {
+      "ID": "asset1",
+      "Color": "blue",
+      "Size": 5,
+      "Owner": "Tomoko",
+      "AppraisedValue": 300,
+      "docType": "asset"
+    }
+  },
+  {
+    "Key": "asset2",
+    "Record": {
+      "ID": "asset2",
+      "Color": "red",
+      "Size": 5,
+      "Owner": "Brad",
+      "AppraisedValue": 400,
+      "docType": "asset"
+    }
+  },
+  {
+    "Key": "asset3",
+    "Record": {
+      "ID": "asset3",
+      "Color": "green",
+      "Size": 10,
+      "Owner": "Jin Soo",
+      "AppraisedValue": 500,
+      "docType": "asset"
+    }
+  },
+  {
+    "Key": "asset4",
+    "Record": {
+      "ID": "asset4",
+      "Color": "yellow",
+      "Size": 10,
+      "Owner": "Max",
+      "AppraisedValue": 600,
+      "docType": "asset"
+    }
+  },
+  {
+    "Key": "asset5",
+    "Record": {
+      "ID": "asset5",
+      "Color": "black",
+      "Size": 15,
+      "Owner": "Adriana",
+      "AppraisedValue": 700,
+      "docType": "asset"
+    }
+  },
+  {
+    "Key": "asset6",
+    "Record": {
+      "ID": "asset6",
+      "Color": "white",
+      "Size": 15,
+      "Owner": "Michel",
+      "AppraisedValue": 800,
+      "docType": "asset"
+    }
+  }
+]
+</code></pre>
+<p>接下来，示例应用程序提交事务以创建“ asset13”。</p>
+<h3 id="创建新资产" tabindex="-1">创建新资产</h3>
+<p>示例程序<code>'CreateAsset'</code></p>
+<pre><code class="language-js">// Now let's try to submit a transaction.
+// This will be sent to both peers and if both peers endorse the transaction, the endorsed proposal will be sent
+// to the orderer to be committed by each of the peer's to the channel ledger.
+console.log('\n--&gt; Submit Transaction: CreateAsset, creates new asset with ID, color, owner, size, and appraisedValue arguments');
+await contract.submitTransaction('CreateAsset', 'asset13', 'yellow', '5', 'Tom', '1300');
+console.log('*** Result: committed');
+</code></pre>
+<p>链码<code>'CreateAsset'</code>功能</p>
+<pre><code class="language-js">// CreateAsset issues a new asset to the world state with given details.
+async CreateAsset(ctx, id, color, size, owner, appraisedValue) {
+  const asset = {
+      ID: id,
+      Color: color,
+      Size: size,
+      Owner: owner,
+      AppraisedValue: appraisedValue,
+  };
+  return ctx.stub.putState(id, Buffer.from(JSON.stringify(asset)));
+}
+</code></pre>
+<p>终端输出：</p>
+<pre><code class="language-bash">Submit Transaction: CreateAsset, creates new asset with ID, color, owner, size, and appraisedValue arguments
+</code></pre>
+<p><strong>笔记</strong></p>
+<blockquote>
+<p>在上面的应用程序和链码片段中，必须注意的是，示例应用程序<code>'CreateAsset'</code> 使用链码期望的相同类型和数量的参数，并以正确的顺序提交了事务。在这种情况下，事务名称和正确测序参数是：<code>'CreateAsset'</code>，<code>'asset13'</code>， <code>'yellow'</code>，<code>'5'</code>，<code>'Tom'</code>，<code>'1300'</code>因为相应的chaincode CreateAsset期待的定义资产对象参数的正确顺序和类型：序列：ID，颜色，大小，所有者和AppraisedValue</p>
+<p>类型：ID（字符串），颜色（字符串），大小（整数），所有者（字符串），AppraisedValue（整数）。</p>
+</blockquote>
+<p>然后，示例应用程序评估对“ asset13”的查询。</p>
+<h3 id="读取资产" tabindex="-1">读取资产</h3>
+<p>示例程序<code>'ReadAsset'</code></p>
+<pre><code class="language-js">console.log('\n--&gt; Evaluate Transaction: ReadAsset, function returns an asset with a given assetID');
+result = await contract.evaluateTransaction('ReadAsset', 'asset13');
+console.log(`*** Result: ${prettyJSONString(result.toString())}`);
+</code></pre>
+<p>链码<code>'ReadAsset'</code>功能</p>
+<pre><code class="language-js">// ReadAsset returns the asset stored in the world state with given id.
+async ReadAsset(ctx, id) {
+  const assetJSON = await ctx.stub.getState(id); // get the asset from chaincode state
+  if (!assetJSON || assetJSON.length === 0) {
+      throw new Error(`The asset ${id} does not exist`);
+  }
+  return assetJSON.toString();
+}
+</code></pre>
+<p>终端输出：</p>
+<pre><code class="language-js">Evaluate Transaction: ReadAsset, function returns an asset with a given assetID
+Result: {
+  "ID": "asset13",
+  "Color": "yellow",
+  "Size": "5",
+  "Owner": "Tom",
+  "AppraisedValue": "1300"
+}
+</code></pre>
+<p>在序列的下一部分中，示例应用程序将评估看是否 <code>asset1</code>存在，这将返回布尔值true，因为<code>asset1</code>在用资产初始化账本时，我们用账本填充了账本。你可能还记得，原来的评估价值<code>asset1</code>为<code>300</code>。然后，应用程序提交交易以<code>asset1</code>使用新的评估值进行更新，然后立即进行评估以<code>asset1</code>从账本中读取以显示的新评估值<code>350</code>。</p>
+<h3 id="判断是否存在" tabindex="-1">判断是否存在</h3>
+<p>示例应用程序<code>'AssetExists'</code>，<code>'UpdateAsset'</code>以及<code>'ReadAsset'</code></p>
+<pre><code class="language-js">console.log('\n--&gt; Evaluate Transaction: AssetExists, function returns "true" if an asset with given assetID exist');
+result = await contract.evaluateTransaction('AssetExists', 'asset1');
+console.log(`*** Result: ${prettyJSONString(result.toString())}`);
+
+console.log('\n--&gt; Submit Transaction: UpdateAsset asset1, change the appraisedValue to 350');
+await contract.submitTransaction('UpdateAsset', 'asset1', 'blue', '5', 'Tomoko', '350');
+console.log('*** Result: committed');
+
+console.log('\n--&gt; Evaluate Transaction: ReadAsset, function returns "asset1" attributes');
+result = await contract.evaluateTransaction('ReadAsset', 'asset1');
+console.log(`*** Result: ${prettyJSONString(result.toString())}`);
+</code></pre>
+<p>链码&#8217;AssetExists&#8217;<code>，</code>&#8216;UpdateAsset&#8217;<code>和</code>&#8216;ReadAsset&#8217;`功能</p>
+<pre><code class="language-js">// AssetExists returns true when asset with given ID exists in world state.
+   async AssetExists(ctx, id) {
+       const assetJSON = await ctx.stub.getState(id);
+       return assetJSON &amp;&amp; assetJSON.length &gt; 0;
+   }
+// UpdateAsset updates an existing asset in the world state with provided parameters.
+   async UpdateAsset(ctx, id, color, size, owner, appraisedValue) {
+       const exists = await this.AssetExists(ctx, id);
+       if (!exists) {
+           throw new Error(`The asset ${id} does not exist`);
+       }
+
+       // overwriting original asset with new asset
+       const updatedAsset = {
+           ID: id,
+           Color: color,
+           Size: size,
+           Owner: owner,
+           AppraisedValue: appraisedValue,
+       };
+       return ctx.stub.putState(id, Buffer.from(JSON.stringify(updatedAsset)));
+   }
+ // ReadAsset returns the asset stored in the world state with given id.
+ async ReadAsset(ctx, id) {
+     const assetJSON = await ctx.stub.getState(id); // get the asset from chaincode state
+     if (!assetJSON || assetJSON.length === 0) {
+         throw new Error(`The asset ${id} does not exist`);
+     }
+     return assetJSON.toString();
+ }
+</code></pre>
+<p>终端输出：</p>
+<pre><code class="language-bash">Evaluate Transaction: AssetExists, function returns "true" if an asset with given assetID exist
+Result: true
+
+Submit Transaction: UpdateAsset asset1, change the appraisedValue to 350
+
+Evaluate Transaction: ReadAsset, function returns "asset1" attributes
+Result: {
+  "ID": "asset1",
+  "Color": "blue",
+  "Size": "5",
+  "Owner": "Tomoko",
+  "AppraisedValue": "350"
+}
+</code></pre>
+<p>在序列的这一部分中，示例应用程序尝试<code>'UpdateAsset'</code>针对我们不知道的资产（<code>asset70</code>）提交事务。我们希望得到一个错误，因为您无法更新不存在的资产，这就是为什么在尝试更新或删除资产之前检查资产是否存在的一个好主意。</p>
+<p>示例程序<code>'UpdateAsset'</code></p>
+<pre><code class="language-js">try {
+  // How about we try a transactions where the executing chaincode throws an error
+  // Notice how the submitTransaction will throw an error containing the error thrown by the chaincode
+  console.log('\n--&gt; Submit Transaction: UpdateAsset asset70, asset70 does not exist and should return an error');
+  await contract.submitTransaction('UpdateAsset', 'asset70', 'blue', '5', 'Tomoko', '300');
+  console.log('******** FAILED to return an error');
+} catch (error) {
+  console.log(`*** Successfully caught the error: \n    ${error}`);
+}
+</code></pre>
+<p>链码<code>'UpdateAsset'</code>功能</p>
+<pre><code class="language-js">// UpdateAsset updates an existing asset in the world state with provided parameters.
+async UpdateAsset(ctx, id, color, size, owner, appraisedValue) {
+    const exists = await this.AssetExists(ctx, id);
+    if (!exists) {
+        throw new Error(`The asset ${id} does not exist`);
+    }
+
+      // overwriting original asset with new asset
+      const updatedAsset = {
+          ID: id,
+          Color: color,
+          Size: size,
+          Owner: owner,
+          AppraisedValue: appraisedValue,
+      };
+      return ctx.stub.putState(id, Buffer.from(JSON.stringify(updatedAsset)));
+  }
+</code></pre>
+<p>终端输出：</p>
+<pre><code class="language-bash">Submit Transaction: UpdateAsset asset70
+2020-08-02T11:12:12.322Z - error: [Transaction]: Error: No valid responses from any peers. Errors:
+  peer=peer0.org1.example.com:7051, status=500, message=error in simulation: transaction returned with failure: Error: The asset asset70 does not exist
+  peer=peer0.org2.example.com:9051, status=500, message=error in simulation: transaction returned with failure: Error: The asset asset70 does not exist
+Expected an error on UpdateAsset of non-existing Asset: Error: No valid responses from any peers. Errors:
+  peer=peer0.org1.example.com:7051, status=500, message=error in simulation: transaction returned with failure: Error: The asset asset70 does not exist
+  peer=peer0.org2.example.com:9051, status=500, message=error in simulation: transaction returned with failure: Error: The asset asset70 does not exist
+</code></pre>
+<h3 id="转移资产" tabindex="-1">转移资产</h3>
+<p>在示例应用程序交易序列的最后一部分中，应用程序提交交易以将现有资产转移到新所有者，然后从账本中读回资产以显示新所有者<code>Tom</code>。</p>
+<p>样例应用程序<code>'TransferAsset'</code>和<code>'ReadAsset'</code>调用</p>
+<pre><code class="language-bash">console.log('\n--&gt; Submit Transaction: TransferAsset asset1, transfer to new owner of Tom');
+await contract.submitTransaction('TransferAsset', 'asset1', 'Tom');
+console.log('*** Result: committed');
+
+console.log('\n--&gt; Evaluate Transaction: ReadAsset, function returns "asset1" attributes');
+result = await contract.evaluateTransaction('ReadAsset', 'asset1');
+console.log(`*** Result: ${prettyJSONString(result.toString())}`);
+</code></pre>
+<p>链码<code>'TransferAsset'</code>和<code>'ReadAsset'</code>功能</p>
+<pre><code class="language-js">// TransferAsset updates the owner field of asset with given id in the world state.
+async TransferAsset(ctx, id, newOwner) {
+    const assetString = await this.ReadAsset(ctx, id);
+    const asset = JSON.parse(assetString);
+    asset.Owner = newOwner;
+    return ctx.stub.putState(id, Buffer.from(JSON.stringify(asset)));
+}
+ // ReadAsset returns the asset stored in the world state with given id.
+async ReadAsset(ctx, id) {
+    const assetJSON = await ctx.stub.getState(id); // get the asset from chaincode state
+    if (!assetJSON || assetJSON.length === 0) {
+        throw new Error(`The asset ${id} does not exist`);
+    }
+    return assetJSON.toString();
+}
+</code></pre>
+<p>终端输出：</p>
+<pre><code class="language-bash">Submit Transaction: TransferAsset asset1, transfer to new owner of Tom
+Evaluate Transaction: ReadAsset, function returns "asset1" attributes
+Result: {
+  "ID": "asset1",
+  "Color": "blue",
+  "Size": "5",
+  "Owner": "Tom",
+  "AppraisedValue": "350"
+}
+</code></pre>
+<h2 id="仔细看看" tabindex="-1">仔细看看</h2>
+<p>让我们仔细研究一下示例javascript应用程序如何使用<a href="https://hyperledger.github.io/fabric-sdk-node/" target="_blank" rel="noopener">Fabric Node SDK</a>提供的API 与我们的Fabric网络进行交互。使用编辑器（例如原子或Visual Studio）来打开<code>app.js</code>位于该<code>asset-transfer-basic/application-javascript</code>目录。</p>
+<p>该应用程序首先从<code>fabric-network</code>模块中引入作用域两个关键类 。<code>Wallets</code>和<code>Gateway</code>。这些类将用于<code>appUser</code>在钱包中定位身份，并使用其连接到网络：</p>
+<pre><code class="language-js">const { Gateway, Wallets } = require('fabric-network');
+</code></pre>
+<p>首先，该程序使用存储在钱包中的userId设置网关连接，并指定发现选项。</p>
+<pre><code class="language-js">// setup the gateway instance
+// The user will now be able to create connections to the fabric network and be able to
+// submit transactions and query. All transactions submitted by this gateway will be
+// signed by this user using the credentials stored in the wallet.
+await gateway.connect(ccp, {
+  wallet,
+  identity: userId,
+  discovery: {enabled: true, asLocalhost: true} // using asLocalhost as this gateway is using a fabric network deployed locally
+});
+</code></pre>
+<p>请注意，在示例应用程序代码的顶部，我们需要外部实用程序文件来构建CAClient，registerUser，enrollAdmin，buildCCP（公共连接配置文件）和buildWallet。这些实用程序位于<code>AppUtil.js</code>，在<code>test-application/javascript</code>目录中。</p>
+<p>在<code>AppUtil.js</code>中，<code>ccpPath</code>描述了我们的应用程序将用于连接到我们的网络的连接配置文件的路径。连接配置文件是从<code>fabric-samples/test-network</code>目录内部加载的， 并解析为JSON文件：</p>
+<pre><code class="language-js">const ccpPath = path.resolve(__dirname, '..', '..', 'test-network','organizations','peerOrganizations','org1.example.com', 'connection-org1.json');
+</code></pre>
+<p>如果您想了解有关连接配置文件的结构以及它如何定义网络的更多信息，请查看 <a href="https://hyperledger-fabric.readthedocs.io/en/latest/developapps/connectionprofile.html" target="_blank" rel="noopener">连接配置文件主题</a>。</p>
+<p>一个网络可以分为多个通道，下一条重要的代码行将应用程序连接到网络<code>mychannel</code>中部署了我们的智能合约的特定通道 。请注意，我们在示例应用程序顶部附近分配了常量，以说明渠道名称和合同名称：</p>
+<pre><code class="language-js">const channelName = 'mychannel';
+const chaincodeName = 'basic';
+const network = await gateway.getNetwork(channelName);
+</code></pre>
+<p>在此渠道中，我们可以访问资产转移（“基本”）智能合约以与账本进行交互：</p>
+<pre><code>const contract = network.getContract(chaincodeName);
+</code></pre>
+<p>在资产转移（“基本”）中，有许多不同的<strong>事务</strong>，我们的应用程序最初使用该<code>InitLedger</code>事务向总账世界状态填充数据：</p>
+<pre><code class="language-js">await contract.submitTransaction('InitLedger');
+</code></pre>
+<p>该<code>evaluateTransaction</code>方法代表了与区块链网络中智能合约最简单的交互之一。它只是选择一个在连接配置文件中定义的对等体，然后将请求发送到该对等体，并在此对其进行评估。智能合约在对等方的账本副本上查询资产，并将结果返回给应用程序。这种交互不会导致账本的更新。</p>
+<p><code>submitTransaction</code>比<code>evaluateTransaction</code>。复杂得多。SDK不会与单个对等方进行交互，而是会发送 <code>submitTransaction</code>根据chaincode的背书策略向区块链网络中每个需要的组织对等方提出建议。这些对等方中的每一个都将使用该提议执行所请求的智能合约，以生成交易响应，该交易响应将其认可（签署）并返回到SDK。SDK将所有已认可的交易响应收集到一个交易中，然后将其提交给订购者。订购者将来自各种应用程序客户端的交易收集并排序为一个交易块。这些块被分发到网络中的每个对等点，在此对每个事务进行验证和提交。最后，通过事件通知SDK，使其可以将控制权返回给应用程序。</p>
+<p><strong>笔记</strong></p>
+<blockquote>
+<p><code>submitTransaction</code>包括一个事件侦听器，该侦听器进行检查以确保交易已通过验证并已提交到账本。应用程序应该利用提交侦听器，或者利用类似的API<code>submitTransaction</code>来为您完成此任务。否则，您的交易可能无法成功订购，验证并提交到账本。</p>
+</blockquote>
+<p><code>submitTransaction</code>为应用程序完成所有这些工作！应用程序，智能合约，对等方和订购服务一起工作以保持总帐在整个网络中一致的过程称为共识，<a href="https://hyperledger-fabric.readthedocs.io/en/latest/peers/peers.html" target="_blank" rel="noopener">本节</a>对此进行了详细说明。</p>
+<h2 id="更新账本" tabindex="-1">更新账本</h2>
+<p>从应用程序的角度来看，更新账本很简单。应用程序将交易提交到区块链网络，并且在验证和提交交易后，该应用程序会收到有关交易成功的通知。在幕后，这涉及共识过程，通过该过程，区块链网络的不同组件将共同努力，以确保对账本的每个建议更新均有效并以一致且一致的顺序执行。</p>
+<p align="center"><img src="https://hyperledger-fabric.readthedocs.io/en/latest/_images/write_first_app.diagram.2.png" alt="_images / write_first_app.diagram.2.png"></p>
+<h2 id="清理" tabindex="-1">清理</h2>
+<p>完成资产转移样本的使用后，您可以使用<code>network.sh</code>脚本关闭测试网络。</p>
+<pre><code>./network.sh down
+</code></pre>
+<p>此命令将关闭我们创建的网络的CA，对等方和订购节点。请注意，账本上的所有数据都将丢失。如果您想再次阅读本教程，则将从一个干净的初始状态开始。</p>
+<h2 id="额外资源" tabindex="-1">额外资源</h2>
+<p>正如我们在简介中所述，我们有一整节关于“ <a href="https://hyperledger-fabric.readthedocs.io/en/latest/developapps/developing_applications.html" target="_blank" rel="noopener">开发应用程序”的内容</a>，其中包括有关智能合约，流程和数据设计的深入信息，使用更深入的《商业论文》<a href="https://hyperledger-fabric.readthedocs.io/en/latest/tutorial/commercial_paper.html" target="_blank" rel="noopener">教程的教程</a>以及与之相关的大量其他材料。应用程序的开发。</p>
+<h1 id="编写你的第一个应用" tabindex="-1">编写你的第一个应用</h1>
+<p>（此处的fabcar例子是中文版本2.2才有的例子，英文版本则是2.1用的这个例子，2.2和2.3不是这个例子）</p>
+<h2 id="一-设置区块链网络" tabindex="-1">一、设置区块链网络</h2>
+<h3 id="启动网络并部署链码" tabindex="-1">启动网络并部署链码</h3>
+<p>该命令将部署具有两个对等体和一个订购服务的 Fabric 测试网络。我们将不使用cryptogen工具，而是使用Certificate Authorities来提起测试网络。我们将使用其中的一个CA来创建我们的应用程序在未来步骤中使用的证书和密钥。startFabric.sh脚本还将在通道mychannel上部署和初始化JavaScript版本的FabCar智能合约，然后调用智能合约将初始数据放在账本上。</p>
+<pre><code class="language-bash">cd fabric-samples/fabcar
+./startFabric.sh javascript
+</code></pre>
+<h2 id="二-示例应用程序" tabindex="-1">二、示例应用程序</h2>
+<p>安装相关依赖</p>
+<pre><code class="language-bash">cd javascript
+npm install
+</code></pre>
+<p>这个指令将安装应用程序的主要依赖，这些依赖定义在 <code>package.json</code> 中。其中最重要的是 <code>fabric-network</code> 类；它使得应用程序可以使用身份、钱包和连接到通道的网关，以及提交交易和等待通知。本教程也将使用 <code>fabric-ca-client</code> 类来注册用户以及他们的授权证书，生成一个 <code>fabric-network</code> 在后边会用到的合法身份。</p>
+<p>会有如下文件</p>
+<pre><code>enrollAdmin.js  node_modules       package.json  registerUser.js
+invoke.js       package-lock.json  query.js      wallet
+</code></pre>
+<h2 id="三-登记管理员用户" tabindex="-1">三、登记管理员用户</h2>
+<p><strong>注解</strong></p>
+<blockquote>
+<p>下边的部分执行和证书授权服务器通讯。你在运行下边的程序时，你会发现，打开一个新终端，并运行 <code>docker logs -f ca_org1</code> 来查看 CA 的日志流，会很有帮助。</p>
+</blockquote>
+<p>当我们创建网络的时候，一个管理员用户（ <code>admin</code>）被证书授权服务器（CA）创建成了 <strong>注册员</strong> 。我们第一步要使用 <code>enroll.js</code> 程序为 <code>admin</code> 生成私钥、公钥和 x.509 证书。这个程序使用一个 <strong>证书签名请求</strong> （CSR）——现在本地生成公钥和私钥，然后把公钥发送到 CA ，CA 会发布会一个让应用程序使用的证书。这三个证书会保存在钱包中，以便于我们以管理员的身份使用 CA 。</p>
+<p>我们登记一个 <code>admin</code> 用户：</p>
+<pre><code class="language-bash">node enrollAdmin.js
+</code></pre>
+<p>这个命令将 CA 管理员的证书保存在 <code>wallet/admin.id</code> 文件里。</p>
+<h2 id="四-注册和登记应用程序用户" tabindex="-1">四、注册和登记应用程序用户</h2>
+<p>我们的管理员是用来与CA合作的。现在我们在钱包中拥有管理员的证书，我们可以创建一个新的应用用户，它将用于与区块链进行交互。运行以下命令来注册和注册一个名为<code>appUser</code>的新用户。</p>
+<p>（这个应该叫做registerAndEnrollUser比较合适）</p>
+<pre><code class="language-bash">node registerUser.js
+</code></pre>
+<p>与管理员注册类似，该程序使用CSR来注册appUser，并将其凭证与管理员的凭证一起存储在钱包中。现在我们有了两个独立用户的身份&#8211;admin和appUser，可以被我们的应用程序使用。</p>
+<h2 id="五-查询账本" tabindex="-1">五、查询账本</h2>
+<p>区块链网络中的每个节点都拥有一个 账本 &lt;./ledger/ledger.html&gt; 的副本，应用程序可以通过执行智能合约查询账本上最新的数据来实现来查询账本，并将查询结果返回给应用程序。</p>
+<p>这里是一个查询工作如何进行的简单说明：</p>
+<p>最常用的查询是查寻账本中询当前的值，也就是 <a href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/ledger/ledger.html#world-state" target="_blank" rel="noopener">世界状态</a> 。世界状态是一个键值对的集合，应用程序可以根据一个键或者多个键来查询数据。而且，当键值对是以 JSON 值模式组织的时候，世界状态可以通过配置使用数据库（如 CouchDB ）来支持富查询。这对于查询所有资产来匹配特定的键的值是很有用的，比如查询一个人的所有汽车。</p>
+<p>首先，我们来运行我们的 <code>query.js</code> 程序来返回账本上所有汽车的侦听。这个程序使用我们的第二个身份——<code>user1</code>——来操作账本。</p>
+<pre><code class="language-bash">node query.js
+</code></pre>
+<p>输入结果应该类似下边：</p>
+<pre><code class="language-bash">Wallet path: ...fabric-samples/fabcar/javascript/wallet
+Transaction has been evaluated, result is:
+[{"Key":"CAR0","Record":{"color":"blue","docType":"car","make":"Toyota","model":"Prius","owner":"Tomoko"}},
+{"Key":"CAR1","Record":{"color":"red","docType":"car","make":"Ford","model":"Mustang","owner":"Brad"}},
+{"Key":"CAR2","Record":{"color":"green","docType":"car","make":"Hyundai","model":"Tucson","owner":"Jin Soo"}},
+{"Key":"CAR3","Record":{"color":"yellow","docType":"car","make":"Volkswagen","model":"Passat","owner":"Max"}},
+{"Key":"CAR4","Record":{"color":"black","docType":"car","make":"Tesla","model":"S","owner":"Adriana"}},
+{"Key":"CAR5","Record":{"color":"purple","docType":"car","make":"Peugeot","model":"205","owner":"Michel"}},
+{"Key":"CAR6","Record":{"color":"white","docType":"car","make":"Chery","model":"S22L","owner":"Aarav"}},
+{"Key":"CAR7","Record":{"color":"violet","docType":"car","make":"Fiat","model":"Punto","owner":"Pari"}},
+{"Key":"CAR8","Record":{"color":"indigo","docType":"car","make":"Tata","model":"Nano","owner":"Valeria"}},
+{"Key":"CAR9","Record":{"color":"brown","docType":"car","make":"Holden","model":"Barina","owner":"Shotaro"}}]
+</code></pre>
+<p>Let’s take a closer look at how query.js program uses the APIs provided by the <a href="https://hyperledger.github.io/fabric-sdk-node/" target="_blank" rel="noopener">Fabric Node SDK</a> to interact with our Fabric network。使用一个编辑器（比如， atom 或 visual studio）打开 <code>query.js</code> 。</p>
+<p>The application starts by bringing in scope two key classes from the <code>fabric-network</code> module; <code>Wallets</code> and <code>Gateway</code>. These classes will be used to locate the <code>appUser</code> identity in the wallet, and use it to connect to the network:</p>
+<pre><code>const { Gateway, Wallets } = require('fabric-network');
+</code></pre>
+<p>First, the program uses the Wallet class to get our application user from our file system.</p>
+<pre><code>const identity = await wallet.get('appUser');
+</code></pre>
+<p>Once the program has an identity, it uses the Gateway class to connect to our network.</p>
+<pre><code>const gateway = new Gateway();
+await gateway.connect(ccpPath, { wallet, identity: 'appUser', discovery: { enabled: true, asLocalhost: true } });
+</code></pre>
+<p><code>ccpPath</code> describes the path to the connection profile that our application will use to connect to our network. The connection profile was loaded from inside the <code>fabric-samples/test-network</code> directory and parsed as a JSON file:</p>
+<pre><code>const ccpPath = path.resolve(__dirname, '..', '..', 'test-network','organizations','peerOrganizations','org1.example.com', 'connection-org1.json');
+</code></pre>
+<p>如果你想了解更多关于连接配置文件的结构，和它是怎么定义网络的，请查阅 <a href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/developapps/connectionprofile.html" target="_blank" rel="noopener">链接配置主题</a> 。</p>
+<p>一个网络可以被差分成很多通道，代码中下一个很重的一行是将应用程序连接到网络中特定的通道 <code>mychannel</code> 上：</p>
+<pre><code>const network = await gateway.getNetwork('mychannel');
+</code></pre>
+<p>在这个通道中，我们可以通过 FabCar 智能合约来和账本进行交互：</p>
+<pre><code>const contract = network.getContract('fabcar');
+</code></pre>
+<p>在 <code>fabcar</code> 中有许多不同的 <strong>交易</strong> ，我们的应用程序先使用 <code>queryAllCars</code> 交易来查询账本世界状态的值：</p>
+<pre><code>const result = await contract.evaluateTransaction('queryAllCars');
+</code></pre>
+<p><code>evaluateTransaction</code> 方法代表了一种区块链网络中和智能合约最简单的交互。它只是的根据配置文件中的定义连接一个节点，然后向节点发送请求，请求内容将在节点中执行。智能合约查询节点账本上的所有汽车，然后把结果返回给应用程序。这次交互没有导致账本的更新。</p>
+<h2 id="fabcar-智能合约" tabindex="-1">FabCar 智能合约</h2>
+<p>FabCar smart contract sample is available in following languages:</p>
+<ul>
+<li><a href="https://github.com/hyperledger/fabric-samples/blob/master/chaincode/fabcar/go" target="_blank" rel="noopener">Golang</a></li>
+<li><a href="https://github.com/hyperledger/fabric-samples/blob/master/chaincode/fabcar/java" target="_blank" rel="noopener">Java</a></li>
+<li><a href="https://github.com/hyperledger/fabric-samples/blob/master/chaincode/fabcar/javascript" target="_blank" rel="noopener">JavaScript</a></li>
+<li><a href="https://github.com/hyperledger/fabric-samples/blob/master/chaincode/fabcar/typescript" target="_blank" rel="noopener">Typescript</a></li>
+</ul>
+<p>Let’s take a look at the transactions within the FabCar smart contract written in JavaScript. Open a new terminal and navigate to the JavaScript version of the FabCar Smart contract inside the <code>fabric-samples</code> repository:</p>
+<pre><code>cd fabric-samples/chaincode/fabcar/javascript/lib
+</code></pre>
+<p>Open the <code>fabcar.js</code> file in a text editor editor.</p>
+<p>See how our smart contract is defined using the <code>Contract</code> class:</p>
+<pre><code>class FabCar extends Contract {...
+</code></pre>
+<p>在这个类结构中，你将看到定义了以下交易： <code>initLedger</code>, <code>queryCar</code>, <code>queryAllCars</code>, <code>createCar</code> 和 <code>changeCarOwner</code> 。例如：</p>
+<pre><code>async queryCar(ctx, carNumber) {...}
+async queryAllCars(ctx) {...}
+</code></pre>
+<p>让我们更进一步看一下 <code>queryAllCars</code> ，看一下它是怎么和账本交互的。</p>
+<pre><code>async queryAllCars(ctx) {
+
+  const startKey = '';
+  const endKey = '';
+
+  const iterator = await ctx.stub.getStateByRange(startKey, endKey);
+</code></pre>
+<p>This code shows how to retrieve all cars from the ledger within a key range using <code>getStateByRange</code>. Giving empty startKey &amp; endKey is interpreted as all the keys from beginning to end. As another example, if you use <code>startKey = 'CAR0', endKey = 'CAR999'</code> , then <code>getStateByRange</code> will retrieve cars with keys between <code>CAR0</code> (inclusive) and <code>CAR999</code> (exclusive) in lexical order. The remainder of the code iterates through the query results and packages them into JSON for the sample application to use.</p>
+<p>下面展示了应用程序如何调用智能合约中的不同交易。每一个交易都使用一组 API 比如 <code>getStateByRange</code> 来和账本进行交互。了解更多 API 请阅读 <a href="https://fabric-shim.github.io/master/index.html?redirect=true" target="_blank" rel="noopener">detail</a>.</p>
+<p align="center"><img src="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/_images/RunningtheSample.png" alt="_images/RunningtheSample.png"></p>
+<p>你可以看到我们的 <code>queryAllCars</code> 交易，还有另一个叫做 <code>createCar</code> 。我们稍后将在教程中使用他们来更细账本，和添加新的区块。</p>
+<p>但是在那之前，返回到 <code>query</code> 程序，更改 <code>evaluateTransaction</code> 的请求来查询 <code>CAR4</code> 。 <code>query</code> 程序现在看起来应该是这个样子：</p>
+<pre><code>const result = await contract.evaluateTransaction('queryCar', 'CAR4');
+</code></pre>
+<p>保存程序，然后返回到 <code>fabcar/javascript</code> 目录。现在，再次运行 <code>query</code> 程序：</p>
+<pre><code>node query.js
+</code></pre>
+<p>你应该会看到如下：</p>
+<pre><code>Wallet path: ...fabric-samples/fabcar/javascript/wallet
+Transaction has been evaluated, result is:
+{"color":"black","docType":"car","make":"Tesla","model":"S","owner":"Adriana"}
+</code></pre>
+<p>如果你回头去看一下 <code>queryAllCars</code> 的交易结果，你会看到 <code>CAR4</code> 是 Adriana 的黑色 Tesla model S，也就是这里返回的结果。</p>
+<p>我们可以使用 <code>queryCar</code> 交易来查询任意汽车，使用它的键 （比如 <code>CAR0</code> ）得到车辆的制造商、型号、颜色和车主等相关信息。</p>
+<p>很棒。现在你应该已经了解了智能合约中基础的查询交易，也手动修改了查询程序中的参数。</p>
+<p>账本更新时间。。。</p>
+<h2 id="更新账本-1" tabindex="-1">更新账本</h2>
+<p>现在我们已经完成一些账本的查询和添加了一些代码，我们已经准备好更新账本了。有很多的更新操作我们可以做，但是我们从创建一个 <strong>新</strong> 车开始。</p>
+<p>从一个应用程序的角度来说，更新一个账本很简单。应用程序向区块链网络提交一个交易，当交易被验证和提交后，应用程序会收到一个交易成功的提醒。但是在底层，区块链网络中各组件中不同的 <strong>共识</strong> 程序协同工作，来保证账本的每一个更新提案都是合法的，而且有一个大家一致认可的顺序。</p>
+<p align="center"><img src="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/_images/write_first_app.diagram.2.png" alt="_images/write_first_app.diagram.2.png"></p>
+<p>上图中，我们可以看到完成这项工作的主要组件。同时，多个节点中每一个节点都拥有一份账本的副本，并可选的拥有一份智能合约的副本，网络中也有一个排序服务。排序服务保证网络中交易的一致性；它也将连接到网络中不同的应用程序的交易以定义好的顺序生成区块。</p>
+<p>我们对账本的的第一个更新是创建一辆新车。我们有一个单独的程序叫做 <code>invoke.js</code> ，用来更新账本。和查询一样，使用一个编辑器打开程序定位到我们构建和提交交易到网络的代码段：</p>
+<pre><code>await contract.submitTransaction('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
+</code></pre>
+<p>看一下应用程序如何调用智能合约的交易 <code>createCar</code> 来创建一量车主为 Tom 的黑色 Honda Accord 汽车。我们使用 <code>CAR12</code> 作为这里的键，这也说明了我们不必使用连续的键。</p>
+<p>保存并运行程序：</p>
+<pre><code>node invoke.js
+</code></pre>
+<p>如果执行成功，你将看到类似输出：</p>
+<pre><code>Wallet path: ...fabric-samples/fabcar/javascript/wallet
+Transaction has been submitted
+</code></pre>
+<p>注意 <code>inovke</code> 程序是怎样使用 <code>submitTransaction</code> API 和区块链网络交互的，而不是 <code>evaluateTransaction</code> 。</p>
+<pre><code>await contract.submitTransaction('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
+</code></pre>
+<p><code>submitTransaction</code> 比 <code>evaluateTransaction</code> 更加复杂。除了跟一个单独的 peer 进行互动外，SDK 会将 <code>submitTransaction</code> 提案发送给在区块链网络中的每个需要的组织的 peer。其中的每个 peer 将会使用这个提案来执行被请求的智能合约，以此来产生一个建议的回复，它会为这个回复签名并将其返回给 SDK。SDK 搜集所有签过名的交易反馈到一个单独的交易中，这个交易会被发送给排序节点。排序节点从每个应用程序那里搜集并将交易排序，然后打包进一个交易的区块中。接下来它会将这些区块分发给网络中的每个 peer，在那里每笔交易会被验证并提交。最后，SDK 会被通知，这允许它能够将控制返回给应用程序。</p>
+<p>注解</p>
+<p><code>submitTransaction</code> 也包含一个监听者，它会检查来确保交易被验证并提交到账本中。应用程序应该使用一个提交监听者，或者使用像 <code>submitTransaction</code> 这样的 API 来给你做这件事情。如果不做这个，你的交易就可能没有被成功地排序、验证以及提交到账本。</p>
+<p>应用程序中的这些工作由 <code>submitTransaction</code> 完成！应用程序、智能合约、节点和排序服务一起工作来保证网络中账本一致性的程序被称为共识，它的详细解释在这里 <a href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/peers/peers.html" target="_blank" rel="noopener">section</a> 。</p>
+<p>为了查看这个被写入账本的交易，返回到 <code>query.js</code> 并将参数 <code>CAR4</code> 更改为 <code>CAR12</code> 。</p>
+<p>就是说，将：</p>
+<pre><code>const result = await contract.evaluateTransaction('queryCar', 'CAR4');
+</code></pre>
+<p>改为：</p>
+<pre><code>const result = await contract.evaluateTransaction('queryCar', 'CAR12');
+</code></pre>
+<p>再次保存，然后查询：</p>
+<pre><code>node query.js
+</code></pre>
+<p>应该返回这些：</p>
+<pre><code>Wallet path: ...fabric-samples/fabcar/javascript/wallet
+Transaction has been evaluated, result is:
+{"color":"Black","docType":"car","make":"Honda","model":"Accord","owner":"Tom"}
+</code></pre>
+<p>恭喜。你创建了一辆汽车并验证了它记录在账本上！</p>
+<p>现在我们已经完成了，我们假设 Tom 很大方，想把他的 Honda Accord 送给一个叫 Dave 的人。</p>
+<p>为了完成这个，返回到 <code>invoke.js</code> 然后利用输入的参数，将智能合约的交易从 <code>createCar</code> 改为 <code>changeCarOwner</code> ：</p>
+<pre><code>await contract.submitTransaction('changeCarOwner', 'CAR12', 'Dave');
+</code></pre>
+<p>第一个参数 <code>CAR12</code> 表示将要易主的车。第二个参数 <code>Dave</code> 表示车的新主人。</p>
+<p>再次保存并执行程序：</p>
+<pre><code>node invoke.js
+</code></pre>
+<p>现在我们来再次查询账本，以确定 Dave 和 <code>CAR12</code> 键已经关联起来了：</p>
+<pre><code>node query.js
+</code></pre>
+<p>将返回如下结果：</p>
+<pre><code>Wallet path: ...fabric-samples/fabcar/javascript/wallet
+Transaction has been evaluated, result is:
+{"color":"Black","docType":"car","make":"Honda","model":"Accord","owner":"Dave"}
+</code></pre>
+<p><code>CAR12</code> 的主人已经从 Tom 变成了 Dave。</p>
+<blockquote>
+<p>Wallet path: …fabric-samples/fabcar/javascript/wallet Transaction has been evaluated, result is: {“color”:”Black”,”docType”:”car”,”make”:”Honda”,”model”:”Accord”,”owner”:”Tom”}</p>
+</blockquote>
+<p>注解</p>
+<p>在真实世界中的一个应用程序里，智能合约应该有一些访问控制逻辑。比如，只有某些有权限的用户能够创建新车，并且只有车辆的拥有者才能够将车辆交换给其他人。</p>
+<h2 id="清理-1" tabindex="-1">清理</h2>
+<p>When you are finished using the FabCar sample, you can bring down the test network using <code>networkDown.sh</code> script.</p>
+<pre><code>./networkDown.sh
+</code></pre>
+<p>This command will bring down the CAs, peers, and ordering node of the network that we created. It will also remove the <code>admin</code> and <code>appUser</code> crypto material stored in the <code>wallet</code> directory. Note that all of the data on the ledger will be lost. If you want to go through the tutorial again, you will start from a clean initial state.</p>
+<h1 id="商业票据应用" tabindex="-1">商业票据应用</h1>
+<h2 id="enrolluserjs" tabindex="-1">enrollUser.js</h2>
+<p>大致步骤：</p>
+<ol>
+<li>加载网关配置文件</li>
+<li>获得配置文件中的CA信息</li>
+<li>获取TLS的CA证书</li>
+<li>获取组织的ca信息</li>
+<li>new一个钱包</li>
+<li>查查是不是有这个人了</li>
+<li>然后新建一个用户</li>
+<li>并且放到钱包里面</li>
+</ol>
+<h2 id="addtowalletjs" tabindex="-1">addToWallet.js</h2>
+<p>这是把已有的用户添加到钱包中，用的是test-network中的User1</p>
+<h2 id="issuejs" tabindex="-1">issue.js</h2>
+<p>发行商业票据</p>
+<ol>
+<li>先获取钱包</li>
+<li>然后去连接网关</li>
+<li>然后连接到通道</li>
+<li>然后链接到智能合约</li>
+<li>执行issue方法</li>
+</ol>
+	</div>
+
+	
+	
+	
+			<div class="post-tags">
+			<i class="fa fa-tags" aria-hidden="true"></i>
+			<a href="/tag/application/" target="_blank" class="tag badge badge-secondary post-meta-detail-tag">application</a><a href="/tag/fabric/" target="_blank" class="tag badge badge-secondary post-meta-detail-tag">Fabric</a><a href="/tag/node-js-sdk/" target="_blank" class="tag badge badge-secondary post-meta-detail-tag">node js SDK</a>		</div>
+	</article>
+<div id="share_container">
+	<div id="share" data-initialized="true">
+						<a class="no-pjax icon-wechat" tooltip="分享到微信">
+				<button class="btn btn-icon btn-success">
+					<span class="btn-inner--icon"><i class="fa fa-weixin"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-douban" tooltip="分享到豆瓣">
+				<button class="btn btn-icon btn-primary" style="background: #209261;border: none;">
+					<span aria-hidden="true">豆</span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-qq" tooltip="分享到 QQ">
+				<button class="btn btn-icon btn-primary" style="background: #2196f3;border: none;">
+					<span class="btn-inner--icon"><i class="fa fa-qq"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-qzone" tooltip="分享到 QQ 空间">
+				<button class="btn btn-icon btn-primary" style="background: #ffc107;border: none;">
+					<span class="btn-inner--icon"><i class="fa fa-star"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-weibo" tooltip="分享到微博">
+				<button class="btn btn-icon btn-warning">
+					<span class="btn-inner--icon"><i class="fa fa-weibo"></i></span>
+				</button>
+			</a>
+				<a target="_blank" class="no-pjax icon-copy-link" id="share_copy_link" tooltip="复制链接">
+			<button class="btn btn-icon btn-default">
+				<span class="btn-inner--icon"><i class="fa fa-link"></i></span>
+			</button>
+		</a>
+	</div>
+	<button id="share_show" class="btn btn-icon btn-primary" tooltip="分享">
+		<span class="btn-inner--icon"><i class="fa fa-share"></i></span>
+	</button>
+</div>
+<script type="text/javascript">
+	socialShare("#share", {
+	    title : '应用程序开发',
+	    description : '应用程序示例 https://hyperledger-fabric.readthedocs.io/e…',
+	    wechatQrcodeTitle : "分享到微信",
+	    wechatQrcodeHelper : '微信扫描二维码',
+	    source : '/%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e5%bc%80%e5%8f%91/'
+	});
+	$("#share_show")[0].onclick = function(){
+		$("#share_container").addClass("opened");
+	};
+	$("#share_copy_link")[0].onclick = function(){
+		let input = document.createElement('input');
+		document.body.appendChild(input);
+		input.setAttribute("value", window.location.href);
+		input.setAttribute("readonly", "readonly");
+		input.setAttribute("style", "opacity: 0;mouse-events:none;");
+		input.select();
+		if (document.execCommand('copy')){
+			iziToast.show({
+				title: '链接已复制',
+				message: "链接已复制到剪贴板",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#2dce89',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-check',
+				timeout: 5000
+			});
+		}else{
+			iziToast.show({
+				title: '复制失败',
+				message: "请手动复制链接",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#f5365c',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-close',
+				timeout: 5000
+			});
+		}
+		document.body.removeChild(input);
+	};
+</script>
+<div id="comments" class="comments-area card shadow-sm">
+	<div class="card-body">
+					<span>暂无评论</span>
+			</div>
+</div>
+
+
+<div id="post_comment" class="card shadow-sm  enable-qq-avatar">
+	<div class="card-body">
+		<h2 class="post-comment-title">
+			<i class="fa fa-commenting"></i>
+			<span class="hide-on-comment-editing">发送评论</span>
+			<span class="hide-on-comment-not-editing">编辑评论</span>
+		</h2>
+		<div id="post_comment_reply_info" class="post-comment-reply" style="display: none;">
+			<span>正在回复 <b><span id="post_comment_reply_name"></span></b> 的评论 :</span>
+			<div id="post_comment_reply_preview" class="post-comment-reply-preview"></div>
+			<button id="post_comment_reply_cancel" class="btn btn-outline-primary btn-sm">取消回复</button>
+		</div>
+		<form>
+			<div class="row">
+				<div class="col-md-12">
+					<textarea id="post_comment_content" class="form-control form-control-alternative" placeholder="评论内容" name="comment" style="height: 80px;"></textarea>
+				</div>
+				<div class="col-md-12" style="height: 0;overflow: hidden;">
+					<pre id="post_comment_content_hidden" class=""></pre>
+				</div>
+			</div>
+						<div class="row hide-on-comment-editing" style="margin-bottom: -10px;">
+				<div class="col-md-4">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+							</div>
+							<input id="post_comment_name" class="form-control" placeholder="昵称" type="text" name="author" value="">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+							</div>
+							<input id="post_comment_email" class="form-control" placeholder="邮箱 / QQ 号" type="email" name="email" value="">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4 post-comment-captcha-container">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-key"></i></span>
+							</div>
+							<input id="post_comment_captcha" class="form-control" placeholder="验证码" type="text">
+							<style>.post-comment-captcha-container:before{
+									content: "13 - 3 = ";
+								}</style>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row hide-on-comment-editing" id="post_comment_extra_input" style="display: none">
+				<div class="col-md-12" style="margin-bottom: -10px;">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4 post-comment-link-container">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-link"></i></span>
+							</div>
+							<input id="post_comment_link" class="form-control" placeholder="网站" type="text" name="url" value="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row hide-on-comment-editing " style="margin-top: 10px; ">
+				<div class="col-md-12">
+					<button id="post_comment_toggle_extra_input" type="button" class="btn btn-icon btn-outline-primary btn-sm" tooltip-show-extra-field="展开附加字段" tooltip-hide-extra-field="折叠附加字段">
+						<span class="btn-inner--icon"><i class="fa fa-angle-down"></i></span>
+					</button>
+				</div>
+</div>
+			<div class="row" style="margin-top: 5px; margin-bottom: 10px;">
+				<div class="col-md-12">
+											<div class="custom-control custom-checkbox comment-post-checkbox comment-post-use-markdown">
+							<input class="custom-control-input" id="comment_post_use_markdown" type="checkbox" checked>
+							<label class="custom-control-label" for="comment_post_use_markdown">Markdown</label>
+						</div>
+																					<div class="custom-control custom-checkbox comment-post-checkbox comment-post-mailnotice" tooltip="有回复时邮件通知我">
+							<input class="custom-control-input" id="comment_post_mailnotice" type="checkbox">
+							<label class="custom-control-label" for="comment_post_mailnotice">邮件提醒</label>
+						</div>
+										<button id="post_comment_send" class="btn btn-icon btn-primary comment-btn pull-right mr-0" type="button">
+						<span class="btn-inner--icon hide-on-comment-editing"><i class="fa fa-send"></i></span>
+						<span class="btn-inner--icon hide-on-comment-not-editing"><i class="fa fa-pencil"></i></span>
+						<span class="btn-inner--text hide-on-comment-editing" style="margin-right: 0;">发送</span>
+						<span class="btn-inner--text hide-on-comment-not-editing" style="margin-right: 0;">编辑</span>
+					</button>
+					<button id="post_comment_edit_cancel" class="btn btn-icon btn-danger comment-btn pull-right hide-on-comment-not-editing" type="button" style="margin-right: 8px;">
+						<span class="btn-inner--icon"><i class="fa fa-close"></i></span>
+						<span class="btn-inner--text">取消</span>
+					</button>
+											<button id="comment_emotion_btn" class="btn btn-icon btn-primary pull-right" type="button" title="表情">
+							<i class="fa fa-smile-o" aria-hidden="true"></i>
+						</button>
+						<div id="emotion_keyboard" class="emotion-keyboard card shadow-sm bg-white">
+	<div class="emotion-keyboard-content">
+		<div class="emotion-group" index="0">
+<div class="emotion-item" text="|´・ω・)ノ" title="">|´・ω・)ノ</div>
+<div class="emotion-item" text="ヾ(≧∇≦*)ゝ" title="">ヾ(≧∇≦*)ゝ</div>
+<div class="emotion-item" text="(☆ω☆)" title="">(☆ω☆)</div>
+<div class="emotion-item" text="（╯‵□′）╯︵┴─┴" title="">（╯‵□′）╯︵┴─┴</div>
+<div class="emotion-item" text="￣﹃￣" title="">￣﹃￣</div>
+<div class="emotion-item" text="(/ω＼)" title="">(/ω＼)</div>
+<div class="emotion-item" text="∠( ᐛ 」∠)＿" title="">∠( ᐛ 」∠)＿</div>
+<div class="emotion-item" text="(๑•̀ㅁ•́ฅ)" title="">(๑•̀ㅁ•́ฅ)</div>
+<div class="emotion-item" text="→_→" title="">→_→</div>
+<div class="emotion-item" text="୧(๑•̀⌄•́๑)૭" title="">୧(๑•̀⌄•́๑)૭</div>
+<div class="emotion-item" text="٩(ˊᗜˋ*)و" title="">٩(ˊᗜˋ*)و</div>
+<div class="emotion-item" text="(ノ°ο°)ノ" title="">(ノ°ο°)ノ</div>
+<div class="emotion-item" text="(´இ皿இ｀)" title="">(´இ皿இ｀)</div>
+<div class="emotion-item" text="⌇●﹏●⌇" title="">⌇●﹏●⌇</div>
+<div class="emotion-item" text="(ฅ´ω`ฅ)" title="">(ฅ´ω`ฅ)</div>
+<div class="emotion-item" text="(╯°A°)╯︵○○○" title="">(╯°A°)╯︵○○○</div>
+<div class="emotion-item" text="φ(￣∇￣o)" title="">φ(￣∇￣o)</div>
+<div class="emotion-item" text="ヾ(´･ ･｀｡)ノ&quot;" title="">ヾ(´･ ･｀｡)ノ&quot;</div>
+<div class="emotion-item" text="( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃" title="">( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃</div>
+<div class="emotion-item" text="(ó﹏ò｡)" title="">(ó﹏ò｡)</div>
+<div class="emotion-item" text="Σ(っ °Д °;)っ" title="">Σ(っ °Д °;)っ</div>
+<div class="emotion-item" text="( ,,´･ω･)ﾉ&quot;(´っω･｀｡)" title="">( ,,´･ω･)ﾉ&quot;(´っω･｀｡)</div>
+<div class="emotion-item" text="╮(╯▽╰)╭" title="">╮(╯▽╰)╭</div>
+<div class="emotion-item" text="o(*////▽////*)q" title="">o(*////▽////*)q</div>
+<div class="emotion-item" text="＞﹏＜" title="">＞﹏＜</div>
+<div class="emotion-item" text="( ๑´•ω•) &quot;(ㆆᴗㆆ)" title="">( ๑´•ω•) &quot;(ㆆᴗㆆ)</div>
+</div>
+<div class="emotion-group d-none" index="1">
+<div class="emotion-item" text="😂" title="">😂</div>
+<div class="emotion-item" text="😀" title="">😀</div>
+<div class="emotion-item" text="😅" title="">😅</div>
+<div class="emotion-item" text="😊" title="">😊</div>
+<div class="emotion-item" text="🙂" title="">🙂</div>
+<div class="emotion-item" text="🙃" title="">🙃</div>
+<div class="emotion-item" text="😌" title="">😌</div>
+<div class="emotion-item" text="😍" title="">😍</div>
+<div class="emotion-item" text="😘" title="">😘</div>
+<div class="emotion-item" text="😜" title="">😜</div>
+<div class="emotion-item" text="😝" title="">😝</div>
+<div class="emotion-item" text="😏" title="">😏</div>
+<div class="emotion-item" text="😒" title="">😒</div>
+<div class="emotion-item" text="🙄" title="">🙄</div>
+<div class="emotion-item" text="😳" title="">😳</div>
+<div class="emotion-item" text="😡" title="">😡</div>
+<div class="emotion-item" text="😔" title="">😔</div>
+<div class="emotion-item" text="😫" title="">😫</div>
+<div class="emotion-item" text="😱" title="">😱</div>
+<div class="emotion-item" text="😭" title="">😭</div>
+<div class="emotion-item" text="💩" title="">💩</div>
+<div class="emotion-item" text="👻" title="">👻</div>
+<div class="emotion-item" text="🙌" title="">🙌</div>
+<div class="emotion-item" text="🖕" title="">🖕</div>
+<div class="emotion-item" text="👍" title="">👍</div>
+<div class="emotion-item" text="👫" title="">👫</div>
+<div class="emotion-item" text="👬" title="">👬</div>
+<div class="emotion-item" text="👭" title="">👭</div>
+<div class="emotion-item" text="🌚" title="">🌚</div>
+<div class="emotion-item" text="🌝" title="">🌝</div>
+<div class="emotion-item" text="🙈" title="">🙈</div>
+<div class="emotion-item" text="💊" title="">💊</div>
+<div class="emotion-item" text="😶" title="">😶</div>
+<div class="emotion-item" text="🙏" title="">🙏</div>
+<div class="emotion-item" text="🍦" title="">🍦</div>
+<div class="emotion-item" text="🍉" title="">🍉</div>
+<div class="emotion-item" text="😣" title="">😣</div>
+</div>
+<div class="emotion-group d-none" index="2">
+<div class="emotion-item emotion-item-sticker" code="dinosaur-shy" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/1.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-daze" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/2.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-sweat" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/3.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-proud" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/4.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-powerless" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/5.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-pouting" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/6.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-eating" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/7.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-ok" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/8.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-doubt" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/9.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-depressed" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/10.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-close-eyes" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/11.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-sleeping" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/12.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-puzzled" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/13.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-agree" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/14.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-crazy" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/15.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-angry" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/16.jpg"></div>
+</div>
+<div class="emotion-group d-none" index="3">
+<div class="emotion-item emotion-item-sticker" code="flower-flower" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/1.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-grass" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/2.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-leaf" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/3.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-star" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/4.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-sun" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/5.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-moon" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/6.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-water" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/7.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-heihei" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/8.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-lemon" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/9.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-birthday" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/10.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-sea" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/11.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-vegetable" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/12.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-tile" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/13.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-utf" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/14.jpg"></div>
+<div class="emotion-group-description">Source: github.com/k4yt3x/flowerhd</div>
+</div>	</div>
+	<div class="emotion-keyboard-bar">
+		<div class="emotion-group-name active" index="0">颜文字</div>
+<div class="emotion-group-name" index="1">Emoji</div>
+<div class="emotion-group-name" index="2">小恐龙</div>
+<div class="emotion-group-name" index="3">花!</div>	</div>
+</div>									</div>
+			</div>
+			<input id="post_comment_captcha_seed" value="" style="display: none;">
+			<input id="post_comment_post_id" value="661" style="display: none;">
+		</form>
+	</div>
+</div>
+<div id="comment_edit_history" class="modal fade" tabindex="-1" role="dialog" aria-modal="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" style="font-size: 20px;"></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body" style="word-break: break-word;"></div>
+		</div>
+	</div>
+</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content"></div>
+	</div>
+</div>
+<div class="post-navigation card shadow-sm">
+<div class="post-navigation-item post-navigation-pre">
+<span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/%e9%93%be%e7%a0%81%e5%bc%80%e5%8f%91%e5%ad%a6%e4%b9%a0/" rel="prev">链码开发学习</a>
+</div>
+<div class="post-navigation-item post-navigation-next">
+<span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/makefile%e5%ad%a6%e4%b9%a0/" rel="next">Makefile学习</a>
+</div>
+</div>
+<div class="related-posts card shadow-sm">
+                    <h2 class="post-comment-title" style="margin-top: 1.2rem;margin-left: 1.5rem;margin-right: 1.5rem;">
+                    <i class="fa fa-book"></i>
+			        <span>推荐文章</span>
+		            </h2>
+		            <div style="overflow-x: auto;padding: 1.5rem;padding-top: 0.8rem;padding-bottom: 0.8rem;}">
+<a class="related-post-card" href="/%e9%93%be%e7%a0%81%e5%bc%80%e5%8f%91%e5%ad%a6%e4%b9%a0/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">链码开发学习</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/09/erciyuan27.webp"></a><a class="related-post-card" href="/fabric%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e4%bd%bf%e7%94%a8docker%e6%90%ad%e5%bb%ba/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">fabric开发环境使用docker搭建</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/09/erciyuan26-scaled.webp"></a><a class="related-post-card" href="/fabric%e5%8e%8b%e5%8a%9b%e6%b5%8b%e8%af%95/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">fabric压力测试</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/08/erciyuan19-1.webp"></a><a class="related-post-card" href="/fabric%e6%80%a7%e8%83%bd%e7%9b%91%e6%8e%a7/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">fabric性能监控</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/08/erciyuan20-1.webp"></a><a class="related-post-card" href="/hyperledger-fabric%e5%ae%89%e8%a3%85%e6%8c%87%e5%8d%97/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">Hyperledger fabric安装指南</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/07/erciyuan2.webp"></a>
+</div>
+</div>
+					<footer id="footer" class="site-footer card shadow-sm border-0">
+						<div>
+    Copyright © 2021
+    <a href="/">xaotuman's home</a>
+    | Worked in <span id="run_time"></span> days
+</div>
+<div>
+    <img src="/wp-content/uploads/2021/08/工信部.webp" href="http://beian.miit.gov.cn">
+    <a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备2021021402号-1</a> ｜
+    <img src="/wp-content/uploads/2021/08/备案图标.png" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030302001119">
+    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030302001119">浙公网安备
+        33030302001119号</a>｜
+     <img src="/wp-content/uploads/2021/09/萌国icon.webp" href="https://icp.gov.moe/?keyword=20218257">
+    <a href="https://icp.gov.moe/?keyword=20218257" target="_blank">萌ICP备20218257号</a>
+</div>
+						<div>Theme <a href="https://github.com/solstice23/argon-theme" target="_blank"><strong>Argon</strong></a>
+</div>
+					</footer>
+				</main>
+			</div>
+		</div>
+		<script src="/wp-content/themes/argon/argontheme.js?v1.2.5"></script>
+						
+					<link rel="stylesheet" href="/wp-content/themes/argon/assets/vendor/highlight/styles/gradient-light.css">
+		
+	
+
+</body>
+
+<script>
+function runTime() {
+    var d = new Date(), str = '';
+    BirthDay = new Date("2021-7-14");
+    today = new Date();
+    timeold = (today.getTime() - BirthDay.getTime());
+    msPerDay = 24 * 60 * 60 * 1000
+    e_daysold = timeold / msPerDay
+    daysold = Math.floor(e_daysold);
+    str = daysold;
+    return str;
+}
+$('#run_time').html(runTime())
+setInterval(function () {
+    $('#run_time').html(runTime())
+}, 3600000);
+</script>
+
+
+<!-- Dynamic page generated in 0.075 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2021-10-01 15:03:35 -->
+
+<!-- super cache -->
+</html>

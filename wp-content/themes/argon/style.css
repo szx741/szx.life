@@ -3,7 +3,7 @@ Theme Name: argon
 Author: solstice23
 Author URI: https://solstice23.top/
 Description: 轻盈、简洁、美观的 Wordpress 主题
-Version: 1.2.5
+Version: 1.2.6.1
 License: GNU General Public License v3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: 简约, 两栏, 侧栏在左边, 浮动侧栏, 文章目录, 自适应, 夜间模式, 可自定义
@@ -779,6 +779,10 @@ html:not(.is-home) .cover-scroll-down{
 	opacity: 0;
 	pointer-events: none;
 }
+.cover-scroll-down.hidden {
+	opacity: 0;
+	pointer-events: none;
+}
 
 /*左侧栏*/
 .leftbar-banner {
@@ -964,10 +968,22 @@ html.navbar-absolute #leftbar_part2.sticky {
 	padding: 10px;
 }
 #leftbar_part2_inner::-webkit-scrollbar {
-	width: 5px;
+	width: 6px;
 }
 #leftbar_part2_inner::-webkit-scrollbar-track {
 	background: transparent;
+}
+#leftbar_part2_inner::-webkit-scrollbar-thumb {
+	border-width: 1px;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+html.darkmode #leftbar_part2_inner::-webkit-scrollbar-thumb {
+	border-width: 1px;
+	background-color: rgba(255, 255, 255, 0.2);
+}
+#leftbar_part2_inner::-webkit-scrollbar-button {
+	height: 5px;
+	pointer-events: none;
 }
 .sidebar-tab-switcher {
 	font-size: 13px;
@@ -1108,7 +1124,7 @@ html.darkmode.amoled-dark .site-state-item {
 	padding-top: 8px;
 	opacity: 0.9;
 }
-#leftbar_tab_tools ul {
+#leftbar_tab_tools ul, #leftbar_tab_tools ol {
 	list-style: none;
 	padding: 0;
 }
@@ -1126,14 +1142,14 @@ html.darkmode.amoled-dark #leftbar_tab_tools ul li {
 #leftbar_tab_tools ul li:first-child {
 	padding-top: 5px;
 }
-#leftbar_tab_tools > div > h6:first-child {
+#leftbar_tab_tools > div > h6:first-child, #leftbar_tab_tools .wp-block-group__inner-container > h6:first-child {
 	font-size: 17px;
-	text-align: center;
+	font-weight: 600;
 	position: relative;
 	display: block;
 	width: max-content;
 }
-#leftbar_tab_tools > div > h6:first-child:after {
+#leftbar_tab_tools > div > h6:first-child:after, #leftbar_tab_tools .wp-block-group__inner-container > h6:first-child:after {
 	content: "";
 	display: block;
 	background: var(--themecolor);
@@ -1181,6 +1197,10 @@ html.darkmode.amoled-dark #leftbar_tab_tools ul li {
 }
 #float_action_buttons:not(.fabtns-float-left) .fabtn-show-on-left {
 	display: none;
+}
+html.is-home.banner-as-cover #float_action_buttons.hidden {
+	opacity: 0;
+	pointer-events: none;
 }
 .fabtns-unloaded {
 	opacity: 0;
@@ -2091,6 +2111,36 @@ html.darkmode.amoled-dark a.related-post-card:hover {
 }
 #comments li {
 	list-style: none;
+	position: relative;
+}
+#comments li:target:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: -10px;
+	right: -10px;
+	top: 0;
+	bottom: 0;
+	background: var(--themecolor);
+	opacity: .15;
+	border-radius: var(--card-radius);
+	pointer-events: none;
+	animation: comment-focus-breath 2s linear;
+	animation-fill-mode: forwards;
+}
+@keyframes comment-focus-breath{
+	0%{
+		opacity: .5;
+	}
+	33%{
+		opacity: .05;
+	}
+	66%{
+		opacity: .3;
+	}
+	100%{
+		opacity: .15;
+	}
 }
 .comments-title {
 	font-size: 20px;
@@ -2120,8 +2170,11 @@ html.darkmode.amoled-dark a.related-post-card:hover {
 	height: 40px;
 	width: 40px;
 }
-.comment-text-avatar {
+.text-avatar {
 	user-select: none;
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
 }
 .comment-item-inner {
 	display: block;
@@ -2146,6 +2199,13 @@ html.darkmode.amoled-dark a.related-post-card:hover {
 .comment-item-title .badge-unapproved {
 	transform: translateY(-2px);
 	margin-left: 5px;
+}
+.comment-item-text p:last-child {
+	margin-bottom: 0;
+}
+.comment-item-text {
+	min-height: 24px;
+	margin-bottom: 1rem;
 }
 .comment-name {
 	flex: 1;
@@ -3143,7 +3203,7 @@ html.darkmode.amoled-dark .friend-links-style1 .friend-link-description:after {
 	padding-bottom: 10px;
 }
 .argon-timeline-time {
-	position: absolute;
+	position: absolute !important;
 	left: -110px;
 	margin-top: 12px;
 	width: 85px;
@@ -3959,20 +4019,45 @@ html[lang] {
 .archive-timeline-year {
 	font-size: 30px;
 	color: var(--themecolor);
+	margin-top: 12px !important;
+	margin-bottom: 0;
+}
+.archive-timeline-month {
+	font-size: 24px;
+	color: var(--themecolor);
+	opacity: .8;
+	margin-top: 12px !important;
+	margin-bottom: 0;
+	font-weight: unset;
 }
 .archive-timeline-year + .archive-timeline-title {
 	height: 50px;
 	margin-top: 30px;
 }
-.archive-timeline-year + .archive-timeline-title {
-	height: 50px;
-	margin-top: 30px;
+.archive-timeline *:not(.archive-timeline-year) + .archive-timeline-title:before {
+	width: 12px;
+	height: 12px;
+	left: -34px;
+	top: 18px;
+}
+.archive-timeline-month + .archive-timeline-title {
+	height: 30px;
+}
+.archive-timeline-month.first-month-of-year + .archive-timeline-title {
+	margin-top: -10px;
+}
+.archive-timeline-title > a {
+	width: max-content;
+	max-width: 100%;
 }
 .archive-timeline-title > a:before {
 	display: none;
 }
 .argon-timeline-node:first-child > .archive-timeline-year + .archive-timeline-title {
 	margin-top: 0;
+}
+.archive-timeline h2:before, .archive-timeline h3:before, .archive-timeline h2:after, .archive-timeline h3:after {
+	display: none !important;
 }
 /*Loading Dot*/
 .loading-css-animation {
@@ -5072,4 +5157,7 @@ html.using-safari #blog_setting_toggle_darkmode_and_amoledarkmode:before,
 html.using-safari #blog_setting_card_radius_to_default:before {
 	transform: translate3d(-50%, 0, 0) !important;
 	white-space: nowrap;
+}
+html.using-safari html.darkmode .friend-links-style1 .friend-link-description:after{
+	display: none;
 }

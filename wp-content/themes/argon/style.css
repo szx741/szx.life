@@ -3,7 +3,7 @@ Theme Name: argon
 Author: solstice23
 Author URI: https://solstice23.top/
 Description: 轻盈、简洁、美观的 Wordpress 主题
-Version: 1.2.6.1
+Version: 1.2.7
 License: GNU General Public License v3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: 简约, 两栏, 侧栏在左边, 浮动侧栏, 文章目录, 自适应, 夜间模式, 可自定义
@@ -582,6 +582,9 @@ html.triple-column #content {
 #navbar-main {
 	--toolbar-color: var(--themecolor-rgbstr);
 }
+.headroom--pinned{
+	z-index: 100;
+}
 html.darkmode #navbar-main {
 	--toolbar-color: 33, 33, 33;
 }
@@ -1005,6 +1008,11 @@ html.darkmode .sidebar-tab-switcher > a.active {
 	margin-top: 15px;
 	font-size: 18px;
 }
+#leftbar_overview_author_description {
+	font-size: 14px;
+	margin-top: -4px;
+	opacity: .8;
+}
 .site-state {
 	overflow: hidden;
 	line-height: 1.4;
@@ -1161,6 +1169,63 @@ html.darkmode.amoled-dark #leftbar_tab_tools ul li {
 	border-radius: 10px;
 	opacity: 0.25;
 	pointer-events: none;
+}
+.wp-calendar-table caption{
+	font-size: 14px;
+	text-align: center;
+	opacity: .7;
+}
+.wp-block-calendar table * {
+	background: transparent !important;
+	border: none !important;
+	padding-top: 5px;
+	padding-bottom: 8px;
+}
+.wp-block-calendar table th {
+	opacity: .6;
+}
+.wp-block-calendar tbody td a {
+	position: relative;
+	text-decoration: none;
+}
+.wp-block-calendar tbody td a:before {
+	content: '';
+	display: block;
+	background: var(--themecolor);
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	border-radius: 20px;
+	opacity: .2;
+	left: -8px;
+	z-index: 0;
+}
+.wp-calendar-nav-prev a, .wp-calendar-nav-next a {
+	text-decoration: none !important;
+	border: 1px solid var(--themecolor);
+	color: var(--themecolor);
+	padding: 1px 8px;
+	border-radius: 19px;
+	font-size: 14px;
+	transition: all .25s ease;
+	user-select: none;
+}
+.wp-calendar-nav-prev a:hover, .wp-calendar-nav-next a:hover {
+	background-color: var(--themecolor);
+	color: #fff !important;
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+.wp-calendar-nav {
+	padding-bottom: 12px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+html.darkmode .wp-calendar-table caption, html.darkmode .wp-block-calendar tbody td{
+	color: #eee;
 }
 /*底栏*/
 #footer {
@@ -4050,7 +4115,7 @@ html[lang] {
 	width: max-content;
 	max-width: 100%;
 }
-.archive-timeline-title > a:before {
+.argon-timeline-time > a:before, .archive-timeline-title > a:before {
 	display: none;
 }
 .argon-timeline-node:first-child > .archive-timeline-year + .archive-timeline-title {

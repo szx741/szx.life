@@ -3,47 +3,47 @@
 <head>
 	<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta property="og:title" content="CSS高级教程 &#8211; 巷子深的生活">
+		<meta property="og:title" content="ssh到内网服务器 &#8211; 巷子深的生活">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="/css-gao-ji-jiao-cheng">
-				<meta name="description" content="CSS高级教程
+	<meta property="og:url" content="/ssh-dao-nei-wang-fu-wu-qi">
+				<meta name="description" content="ssh到内网服务器
 
 
 
-因为Typora的老毛病，代码和文字一多，就会卡的不行，因此另开一篇水文。接上文CSS慢学
-
-
-
-
-圆角
-
-
-
-CSS border-radius 属性定义元素角的半径。
-
-
-用...">
-			<meta property="og:description" content="CSS高级教程
-
-
-
-因为Typora的老毛病，代码和文字一多，就会卡的不行，因此另开一篇水文。接上文CSS慢学
+使用frp连接内网和公网服务器，这样子就能通过ssh连接到内网的服务器，设置也比较的简单。
 
 
 
 
-圆角
+服务器端
 
 
 
-CSS border-radius 属性定义元素角的半径。
+在服务器端下载
 
 
-用...">
+wget https://github...">
+			<meta property="og:description" content="ssh到内网服务器
+
+
+
+使用frp连接内网和公网服务器，这样子就能通过ssh连接到内网的服务器，设置也比较的简单。
+
+
+
+
+服务器端
+
+
+
+在服务器端下载
+
+
+wget https://github...">
 	
-				<meta name="keywords" content="CSS">
+				<meta name="keywords" content="frp,ssh">
 	
-					<meta property="og:image" content="/wp-content/uploads/2021/10/erciyuan75.webp">
+					<meta property="og:image" content="/wp-content/uploads/2021/10/erciyuan52.webp">
 	
 	<meta name="theme-color" content="#fb7ea2">
 	<meta name="theme-color-rgb" content="251,126,162">
@@ -57,18 +57,18 @@ CSS border-radius 属性定义元素角的半径。
 	<meta name="theme-version" content="1.2.7">
 
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-			<title>CSS高级教程 &#8211; 巷子深的生活</title>
-<meta name="description" content="CSS高级教程  因为Typora的老毛病，代码和文字一多，就会卡的不行，因此另开一篇水文。接上文CSS慢学   圆角  CSS border-radius 属性定义元素角的半径。  用...">
-<meta name="keywords" content="CSS">
+			<title>ssh到内网服务器 &#8211; 巷子深的生活</title>
+<meta name="description" content="ssh到内网服务器  使用frp连接内网和公网服务器，这样子就能通过ssh连接到内网的服务器，设置也比较的简单。   服务器端  在服务器端下载  wget https://github...">
+<meta name="keywords" content="frp,ssh">
 <meta name="robots" content="max-image-preview:large">
 <link rel="stylesheet" id="argon_css_merged-css" href="/wp-content/themes/argon/assets/argon_css_merged.css?ver=1.2.7" type="text/css" media="all">
 <link rel="stylesheet" id="style-css" href="/wp-content/themes/argon/style.css?ver=1.2.7" type="text/css" media="all">
 <link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=5.8.2" type="text/css" media="all">
 <script type="text/javascript" src="/wp-content/themes/argon/assets/argon_js_merged.js?ver=1.2.7" id="argon_js_merged-js"></script>
 <script type="text/javascript" src="/wp-content/themes/argon/assets/js/argon.min.js?ver=1.2.7" id="argonjs-js"></script>
-<link rel="canonical" href="/css-gao-ji-jiao-cheng/">
+<link rel="canonical" href="/ssh-dao-nei-wang-fu-wu-qi/">
 <!-- Analytics by WP-Statistics v13.1.2 - https://wp-statistics.com/ -->
-<script>var WP_Statistics_http = new XMLHttpRequest();WP_Statistics_http.open('GET', '/wp-json/wp-statistics/v2/hit?_=1636892421&_wpnonce=69849c9624&wp_statistics_hit_rest=yes&browser=WordPress&platform=未知&version=未知&referred=/css-gao-ji-jiao-cheng/&ip=82.157.179.143&exclusion_match=yes&exclusion_reason=CrawlerDetect&ua=WordPress/5.8.2; &track_all=1&timestamp=1636921221&current_page_type=post&current_page_id=983&search_query&page_uri=/css-gao-ji-jiao-cheng/&user_id=0', true);WP_Statistics_http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");WP_Statistics_http.send(null);</script>
+<script>var WP_Statistics_http = new XMLHttpRequest();WP_Statistics_http.open('GET', '/wp-json/wp-statistics/v2/hit?_=1636892419&_wpnonce=69849c9624&wp_statistics_hit_rest=yes&browser=WordPress&platform=未知&version=未知&referred=/ssh-dao-nei-wang-fu-wu-qi/&ip=82.157.179.143&exclusion_match=yes&exclusion_reason=CrawlerDetect&ua=WordPress/5.8.2; &track_all=1&timestamp=1636921219&current_page_type=post&current_page_id=993&search_query&page_uri=/ssh-dao-nei-wang-fu-wu-qi/&user_id=0', true);WP_Statistics_http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");WP_Statistics_http.send(null);</script>
 <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>	
 		<!-- Baidu Tongji Start -->
 	<script type="text/javascript">
@@ -213,7 +213,7 @@ mjx-container[jax="SVG"][display="true"] {
 		--card-radius: 15px;
 	}</style>
 
-<body class="post-template-default single single-post postid-983 single-format-standard">
+<body class="post-template-default single single-post postid-993 single-format-standard">
 <div id="toolbar">
 	<header class="header-global">
 		<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light bg-primary headroom--not-bottom headroom--not-top headroom--pinned">
@@ -364,7 +364,7 @@ mjx-container[jax="SVG"][display="true"] {
 </div>
 			</div>
 			<style>section.banner{
-				background-image: url(/wp-content/random-image/picture/banner/fm3.webp) !important;
+				background-image: url(/wp-content/random-image/picture/banner/fm6.webp) !important;
 			}</style>
 		</section>
 
@@ -785,486 +785,120 @@ mjx-container[jax="SVG"][display="true"] {
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
-		<article class="post post-full card bg-white shadow-sm border-0" id="post-983">
+		<article class="post post-full card bg-white shadow-sm border-0" id="post-993">
 	<header class="post-header text-center post-header-with-thumbnail">
-		<img class="post-thumbnail" src="/wp-content/uploads/2021/10/erciyuan75.webp"><div class="post-header-text-container">		<a class="post-title" href="/css-gao-ji-jiao-cheng/">CSS高级教程</a>
+		<img class="post-thumbnail" src="/wp-content/uploads/2021/10/erciyuan52.webp"><div class="post-header-text-container">		<a class="post-title" href="/ssh-dao-nei-wang-fu-wu-qi/">ssh到内网服务器</a>
 		<div class="post-meta">
 			<div class="post-meta-detail post-meta-detail-time">
 					<i class="fa fa-clock-o" aria-hidden="true"></i>
-					<time title="发布于 2021-11-02 19:57:43 | 编辑于 2021-11-02 19:57:43">2021-11-02 19:57
+					<time title="发布于 2021-11-10 16:59:37 | 编辑于 2021-11-10 16:59:37">2021-11-10 16:59
 					</time>
 				</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-edittime">
 					<i class="fa fa-clock-o" aria-hidden="true"></i>
-					<time title="发布于 2021-11-02 19:57:43 | 编辑于 2021-11-02 19:57:43">2021-11-02 19:57
+					<time title="发布于 2021-11-10 16:59:37 | 编辑于 2021-11-10 16:59:37">2021-11-10 16:59
 					</time>
 				</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-views">
-					<i class="fa fa-eye" aria-hidden="true"></i> 5</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-comments">
+					<i class="fa fa-eye" aria-hidden="true"></i> 2</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-comments">
 					<i class="fa fa-comments-o" aria-hidden="true"></i> 0</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-categories">
-				<i class="fa fa-bookmark-o" aria-hidden="true"></i> <a href="/category/study/front-end/" target="_blank" class="post-meta-detail-catagory-link">前端</a>
+				<i class="fa fa-bookmark-o" aria-hidden="true"></i> <a href="/category/solve_problem/" target="_blank" class="post-meta-detail-catagory-link">解决问题</a>
 </div>					</div>
 		</div>	</header>
 
 	<div class="post-content" id="post_content">
-		<h1 id="css高级教程" tabindex="-1">CSS高级教程</h1>
-<p>因为Typora的老毛病，代码和文字一多，就会卡的不行，因此另开一篇水文。接上文<a href="/css-man-xue/" target="_blank" rel="noopener">CSS慢学</a></p>
-<h2 id="圆角" tabindex="-1">圆角</h2>
-<p>CSS <code>border-radius</code> 属性定义元素角的半径。</p>
-<p>用法大概清楚，有个椭圆角的，有点牛。</p>
-<p>上面这个是x长移动，y短一点，下面这个就变成了完全的椭圆。</p>
-<pre><code class="language-css">#rcorners1 {
-  border-radius: 50px / 15px;
-  background: #73AD21;
-  padding: 20px; 
-  width: 200px;
-  height: 150px; 
-}
+		<h1 id="ssh到内网服务器" tabindex="-1">ssh到内网服务器</h1>
+<p>使用frp连接内网和公网服务器，这样子就能通过ssh连接到内网的服务器，设置也比较的简单。</p>
+<h2 id="服务器端" tabindex="-1">服务器端</h2>
+<p>在服务器端下载</p>
+<pre><code class="language-bash">wget https://github.com/fatedier/frp/releases/download/v0.38.0/frp_0.38.0_linux_amd64.tar.gz
+tar zxvf frp_0.38.0_linux_amd64.tar.gz
+cd frp_0.38.0_linux_amd64
+</code></pre>
+<p>服务端的配置是frps.ini，默认绑定了7000端口</p>
+<p>启动</p>
+<pre><code class="language-bash">./frps -c ./frps.ini
+</code></pre>
+<p>同时注意要去腾讯云开启7000的访问端口，ubuntu的防火墙也要开启7000端口，这样子外界才能连上。</p>
+<pre><code class="language-bash">sudo ufw allow 7000
+</code></pre>
+<h2 id="客户端" tabindex="-1">客户端</h2>
+<p>同样的在客户端进行安装配置</p>
+<pre><code class="language-bash">wget https://github.com/fatedier/frp/releases/download/v0.38.0/frp_0.38.0_linux_amd64.tar.gz
+tar zxvf frp_0.38.0_linux_amd64.tar.gz
+cd frp_0.38.0_linux_amd64
+</code></pre>
+<p>客户端的配置文件在<strong>frpc.ini</strong>，不过在修改下面的文件的同时，先去看看<code>/etc/ssh/sshd_config</code>里面的端口，因为我的是在虚拟机内，用vnc连接的端口是映射的真实端口。比如我的真实端口是23000，虚拟机内的端口是8880，我用vnc连接的是23000，所以我frpc设置的端口是23000，死活连不上，其实不是的，因为frpc在虚拟机内运行，所以直接使用虚拟机内的端口8880，这样子才能行。</p>
+<pre><code>[common]
+server_addr = #你的服务器的ip
+server_port = 7000 #刚才服务器开启的端口
 
-#rcorners3 {
-  border-radius: 50%;
-  background: #73AD21;
-  padding: 20px; 
-  width: 200px;
-  height: 150px;
-}
+[ssh_1] #这个名字可以取不一样，如果有多台被控机子都需要，那么不能都取ssh，否则会有冲突
+type = tcp
+local_ip = 127.0.0.1
+local_port = 8880 #本地sshd的端口
+remote_port = 23001 #服务器访问的映射端口
 </code></pre>
-<h2 id="边框图像" tabindex="-1">边框图像</h2>
-<p><code>border-image</code>属性，该属性有三部分：</p>
-<ul>
-<li>用作边框的图像</li>
-<li>在哪里裁切图像</li>
-<li>定义中间部分应重复还是拉伸</li>
-</ul>
-<p>border-image 属性接受图像，并将其切成九部分，就像井字游戏板。然后，将拐角放置在拐角处，并根据您的设置重复或拉伸中间部分。</p>
-<p>**注意：**为了使 <strong>border-image</strong> 起作用，该元素还需要设置 <strong>border</strong> 属性！</p>
-<p>**提示：**border-image 属性实际上是以下属性的简写属性：</p>
-<ul>
-<li>border-image-source</li>
-<li>border-image-slice</li>
-<li>border-image-width</li>
-<li>border-image-outset</li>
-<li>border-image-repeat</li>
-</ul>
-<pre><code class="language-css">#borderimg {
-  border: 10px solid transparent;
-  padding: 15px;
-  border-image: url(border.png) 30 stretch;
-}
+<p>然后运行，要么后台运行，要么用screen，具体可以百度</p>
+<pre><code class="language-bash">./frpc -c ./frpc.ini
 </code></pre>
-<h2 id="多重背景" tabindex="-1">多重背景</h2>
-<p>CSS 允许您通过 background-image 属性为一个元素添加多幅背景图像。</p>
-<p>不同的背景图像用逗号隔开，并且图像会彼此堆叠，其中的第一幅图像最靠近观看者。</p>
-<p>下面的例子有两幅背景图像，第一幅图像是花朵（与底部和右侧对齐），第二幅图像是纸张背景（与左上角对齐）：</p>
-<pre><code class="language-css">#example1 {
-  background-image: url(flower.gif), url(paper.gif);
-  background-position: right bottom, left top;
-  background-repeat: no-repeat, repeat;
-}
+<p>这样子两台机子连接就会success了，然后要去腾讯云开启23001的访问端口，ubuntu的防火墙也要开启23001端口，这样子外界才能连上。</p>
+<h2 id="连接" tabindex="-1">连接</h2>
+<p>然后通过ssh命令连接，注意端口，用户名和ip。端口就是刚才设置的服务器映射端口23001，这个端口会映射到内网连上的8880端口。用户为内网的用户，但是ip是自己公网服务器的ip。</p>
+<pre><code class="language-bash">ssh -i ~/.ssh/id_rsa -p 23001 内网的用户@你的服务器ip
 </code></pre>
-<p>background-size 的其他两个可能的值是 <code>contain</code> 和 <code>cover</code>。</p>
-<p><code>contain</code> 关键字将背景图像缩放为尽可能大的尺寸（但其宽度和高度都必须适合内容区域）。这样，取决于背景图像和背景定位区域的比例，可能存在一些未被背景图像覆盖的背景区域。</p>
-<p><code>cover</code> 关键字会缩放背景图像，以使内容区域完全被背景图像覆盖（其宽度和高度均等于或超过内容区域）。这样，背景图像的某些部分可能在背景定位区域中不可见。</p>
-<h3 id="全尺寸背景图像" tabindex="-1">全尺寸背景图像</h3>
-<p>现在，我们希望网站上的背景图像始终覆盖整个浏览器窗口。</p>
-<p>具体要求如下：</p>
-<ul>
-<li>用图像填充整个页面（无空白）</li>
-<li>根据需要缩放图像</li>
-<li>在页面上居中图像</li>
-<li>不引发滚动条</li>
-</ul>
-<pre><code class="language-css">html {
-  background: url(img_man.jpg) no-repeat center fixed; 
-  background-size: cover;
-}
+<h1 id="下面为废弃的做法" tabindex="-1">下面为废弃的做法</h1>
+<h2 id="前言" tabindex="-1">前言</h2>
+<p>因为自己的论文实验环境需要部署一个分布式环境，但是环境不在本校，在其他的内网，所以需要用ssh反向代理到公网（云服务器），我们再从公网进行访问连接。</p>
+<p>客户端的机子直接叫C，我的公网机子叫T（腾讯云的）。</p>
+<h2 id="准备" tabindex="-1">准备</h2>
+<p>首先在自己的服务器T上面创建一个新的用户，用来连接远程服务器。</p>
+<h3 id="创建用户" tabindex="-1">创建用户</h3>
+<pre><code class="language-bash">#创建用户同时设置密码
+sudo adduser bju
+#设置密码，上一步设置过了，这一步跳过
+sudo passwd
+# 下面是给用户sudo的权限，我不给了，有需要的可以给
+#然后修改sudoers文件，需要先给写的权限，写完再改回来
+sudo chmod u+w /etc/sudoers
+#修改文件，在最下面添加 ubuntu  ALL=(ALL:ALL)
+sudo vi /etc/sudoers
+sudo chmod u-w /etc/sudoers
 </code></pre>
-<h3 id="带有文本的大图像" tabindex="-1">带有文本的大图像</h3>
-<p>这个也曾经是我想要的404界面设计。</p>
-<p><a href="https://www.w3school.com.cn/tiy/t.asp?f=css3_background_hero" target="_blank" rel="noopener">https://www.w3school.com.cn/tiy/t.asp?f=css3_background_hero</a></p>
-<h3 id="指定背景图像的位置" tabindex="-1">指定背景图像的位置</h3>
-<p><code>background-origin</code></p>
-<p>该属性接受三个不同的值：</p>
-<ul>
-<li>border-box &#8211; 背景图片从边框的左上角开始</li>
-<li>padding-box -背景图像从内边距边缘的左上角开始（默认）</li>
-<li>content-box &#8211; 背景图片从内容的左上角开始</li>
-</ul>
-<h3 id="指定背景的绘制区域" tabindex="-1">指定背景的绘制区域</h3>
-<p><code>background-clip</code> 属性指定背景的绘制区域。</p>
-<p>CSS background-clip 属性指定背景的绘制区域。</p>
-<p>该属性接受三个不同的值：</p>
-<ul>
-<li>border-box &#8211; 背景绘制到边框的外部边缘（默认）</li>
-<li>padding-box &#8211; 背景绘制到内边距的外边缘</li>
-<li>content-box &#8211; 在内容框中绘制背景</li>
-</ul>
-<h2 id="其他" tabindex="-1">其他</h2>
-<p>渐变颜色：<a href="https://www.w3school.com.cn/css/css3_gradients.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_gradients.asp</a></p>
-<p>文字阴影：<a href="https://www.w3school.com.cn/css/css3_shadows.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_shadows.asp</a></p>
-<p>元素阴影：<a href="https://www.w3school.com.cn/css/css3_shadows_box.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_shadows_box.asp</a></p>
-<p>文本效果，包括文字溢出，字换行，换行规则，书写模式：<a href="https://www.w3school.com.cn/css/css3_text_effects.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_text_effects.asp</a></p>
-<p>web字体：<a href="https://www.w3school.com.cn/css/css3_fonts.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_fonts.asp</a></p>
-<p>工具提示：<a href="https://www.w3school.com.cn/css/css_tooltip.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css_tooltip.asp</a></p>
-<p>图像样式：<a href="https://www.w3school.com.cn/css/css3_images.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_images.asp</a></p>
-<p>object-fit 属性：<a href="https://www.w3school.com.cn/css/css3_object-fit.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_object-fit.asp</a></p>
-<p>按钮：<a href="https://www.w3school.com.cn/css/css3_buttons.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_buttons.asp</a></p>
-<p>分页实例：<a href="https://www.w3school.com.cn/css/css3_pagination.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_pagination.asp</a></p>
-<p>多列：<a href="https://www.w3school.com.cn/css/css3_multiple_columns.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_multiple_columns.asp</a></p>
-<p>用户界面：<a href="https://www.w3school.com.cn/css/css3_user_interface.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_user_interface.asp</a></p>
-<h2 id="2d转换" tabindex="-1">2D转换</h2>
-<p>通过使用 CSS transform 属性，您可以利用以下 2D 转换方法：</p>
-<ul>
-<li>translate()</li>
-<li>rotate()</li>
-<li>scaleX()</li>
-<li>scaleY()</li>
-<li>scale()</li>
-<li>skewX()</li>
-<li>skewY()</li>
-<li>skew()</li>
-<li>matrix()</li>
-</ul>
-<h3 id="translate-方法" tabindex="-1">translate() 方法</h3>
-<p>方法从其当前位置移动元素（根据为 X 轴和 Y 轴指定的参数）。</p>
-<pre><code class="language-css">div {
-  transform: translate(50px, 100px);
-}
+<h3 id="ssh连接" tabindex="-1">ssh连接</h3>
+<p>需要生成ssh-keygen，防止权限问题，先切到bju用户，然后生成</p>
+<pre><code class="language-bash">#切换用户，然后删除
+su bju
+cd
+#生成秘钥
+ssh-keygen
+# 然后需要修改公钥的名称
+mv id_rsa.pub authorized_keys
 </code></pre>
-<h3 id="rotate-方法" tabindex="-1">rotate() 方法</h3>
-<p>rotate() 方法根据给定的角度顺时针或逆时针旋转元素。正值是顺时针，负值是逆时针</p>
-<pre><code class="language-css">/*顺时针旋转20度*/
-div {
-  transform: rotate(20deg);
-}
+<p>权限如下所示。</p>
+<pre><code>drwx------ 2 bju bju 4096 Nov  9 20:40 ./
+drwxr-xr-x 4 bju bju 4096 Nov  9 20:48 ../
+-rw-r--r-- 1 bju bju  571 Nov  9 20:03 authorized_keys
+-rw------- 1 bju bju 2602 Nov  9 20:03 id_rsa
 </code></pre>
-<h3 id="scale-方法" tabindex="-1">scale() 方法</h3>
-<p>scale() 方法增加或减少元素的大小（根据给定的宽度和高度参数）。</p>
-<p>下面的例子把 </p>
-<div> 元素增大为其原始宽度的两倍和其原始高度的三倍：
-<pre><code class="language-css">div {
-  transform: scale(2, 3);
-}
+<p>然后需要把id_rsa拷贝出来，因为直接拷贝文字不行，就用原来的ubuntu用户移动出来，然后通过sftp弄出来</p>
+<pre><code class="language-bash">#在ubuntu用户下，移动过来
+sudo mv /home/bju/.ssh/id_rsa .
+#然后所有人可读，否则弄出不来
+sudo chmod a+r id_rsa
+#然后通过xftp等软件可以拷贝出来了，或者直接ssh命令，但我不会
+#然后删掉这个秘钥
+sudo rm id_rsa
 </code></pre>
-<p>scaleX() 宽度，scaleY() 高度</p>
-<h3 id="skew-方法" tabindex="-1">skew() 方法</h3>
-<p>skew() 方法使元素沿 X 和 Y 轴倾斜给定角度。</p>
-<p>skewX() 方法使元素沿 X 轴倾斜给定角度。</p>
-<p>skewY() 方法使元素沿 Y 轴倾斜给定角度。</p>
-<h3 id="matrix-方法" tabindex="-1">matrix() 方法</h3>
-<p>matrix() 方法把所有 2D 变换方法组合为一个。</p>
-<p>matrix() 方法可接受六个参数，其中包括数学函数，这些参数使您可以旋转、缩放、移动（平移）和倾斜元素。</p>
-<p>参数如下：matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY())</p>
-<h2 id="3d转换" tabindex="-1">3D转换</h2>
-<p>通过 CSS transform 属性，您可以使用以下 3D 转换方法：</p>
-<ul>
-<li>rotateX()</li>
-<li>rotateY()</li>
-<li>rotateZ()</li>
-</ul>
-<h3 id="rotatex-方法" tabindex="-1">rotateX() 方法</h3>
-<p>rotateX() 方法使元素绕其 X 轴旋转给定角度（这种是我想象中的，因为是3D的）</p>
-<pre><code class="language-css">#myDiv {
-  transform: rotateX(150deg);
-}
+<p>现在就能通过秘钥连接到bju用户了（麻烦死了）</p>
+<pre><code class="language-bash">ssh -i ~/.ssh/bju/bju_rsa bju@你的云服务器ip
 </code></pre>
-<h3 id="rotatey-方法" tabindex="-1">rotateY() 方法</h3>
-<p>rotateY() 方法使元素绕其 Y 轴旋转给定角度：</p>
-<h3 id="rotatez-方法" tabindex="-1">rotateZ() 方法</h3>
-<p>rotateZ() 方法使元素绕其 Z 轴旋转给定角度：</p>
-<h2 id="过渡" tabindex="-1">过渡</h2>
-<p>这个更需要看实例：<a href="https://www.w3school.com.cn/css/css3_transitions.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_transitions.asp</a></p>
-<ul>
-<li>transition</li>
-<li>transition-delay</li>
-<li>transition-duration</li>
-<li>transition-property</li>
-<li>transition-timing-function</li>
-</ul>
-<h3 id="指定过渡的速度曲线" tabindex="-1">指定过渡的速度曲线</h3>
-<p>transition-timing-function 属性规定过渡效果的速度曲线。</p>
-<p>transition-timing-function 属性可接受以下值：</p>
-<ul>
-<li>ease &#8211; 规定过渡效果，先缓慢地开始，然后加速，然后缓慢地结束（默认）</li>
-<li>linear &#8211; 规定从开始到结束具有相同速度的过渡效果</li>
-<li>ease-in -规定缓慢开始的过渡效果</li>
-<li>ease-out &#8211; 规定缓慢结束的过渡效果</li>
-<li>ease-in-out &#8211; 规定开始和结束较慢的过渡效果</li>
-<li>cubic-bezier(n,n,n,n) &#8211; 允许您在三次贝塞尔函数中定义自己的值</li>
-</ul>
-<h3 id="延迟过渡效果" tabindex="-1">延迟过渡效果</h3>
-<p>transition-delay 属性规定过渡效果的延迟（以秒计）。</p>
-<h2 id="动画" tabindex="-1">动画</h2>
-<p>这个挺重要的！</p>
-<p><a href="https://www.w3school.com.cn/css/css3_animations.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_animations.asp</a></p>
-<p>动画和过渡的区别：<a href="https://zhuanlan.zhihu.com/p/145929287" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/145929287</a></p>
-<p>其主要区别在于：transition需要触发一个事件才会随着时间改变其CSS属性；animation在不需要触发任何事件的情况下，也可以显式的随时间变化来改变元素CSS属性，达到一种动画的效果。</p>
-<p>1）动画不需要事件触发，过渡需要。</p>
-<p>2）过渡只有一组（两个：开始-结束） 关键帧，动画可以设置多个。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">属性</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_keyframes.asp" target="_blank" rel="noopener">@keyframes</a></td>
-<td style="text-align:left">规定动画模式。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_animation.asp" target="_blank" rel="noopener">animation</a></td>
-<td style="text-align:left">设置所有动画属性的简写属性。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_animation-delay.asp" target="_blank" rel="noopener">animation-delay</a></td>
-<td style="text-align:left">规定动画开始的延迟。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_animation-direction.asp" target="_blank" rel="noopener">animation-direction</a></td>
-<td style="text-align:left">定动画是向前播放、向后播放还是交替播放。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_animation-duration.asp" target="_blank" rel="noopener">animation-duration</a></td>
-<td style="text-align:left">规定动画完成一个周期应花费的时间。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_animation-fill-mode.asp" target="_blank" rel="noopener">animation-fill-mode</a></td>
-<td style="text-align:left">规定元素在不播放动画时的样式（在开始前、结束后，或两者同时）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_animation-iteration-count.asp" target="_blank" rel="noopener">animation-iteration-count</a></td>
-<td style="text-align:left">规定动画应播放的次数。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_animation-name.asp" target="_blank" rel="noopener">animation-name</a></td>
-<td style="text-align:left">规定 @keyframes 动画的名称。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_animation-play-state.asp" target="_blank" rel="noopener">animation-play-state</a></td>
-<td style="text-align:left">规定动画是运行还是暂停。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_animation-timing-function.asp" target="_blank" rel="noopener">animation-timing-function</a></td>
-<td style="text-align:left">规定动画的速度曲线。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="变量" tabindex="-1">变量</h2>
-<p>var() 函数用于插入 CSS 变量的值。</p>
-<p>var() 函数的语法如下：</p>
-<pre><code class="language-css">var(name, value)
+<h2 id="反向代理" tabindex="-1">反向代理</h2>
+<p>当然首先要先连到客户端的机子，有点尿，这里我用vnc viewer先连接到对面的树莓派，这样子就连上了内网，然后再ssh到内网的客户端C。</p>
+<p>首先先拷贝密钥到对面的客户端C</p>
+<pre><code class="language-bash">scp -i ./id_rsa -P 23000 /home/pi/ root@162.105.159.107:/root/
 </code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><em>name</em></td>
-<td style="text-align:left">必需。变量名（以两条破折号开头）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>value</em></td>
-<td style="text-align:left">可选。回退值（在未找到变量时使用）。</td>
-</tr>
-</tbody>
-</table>
-<p>**注释：**变量名称必须以两个破折号（&#8211;）开头，且区分大小写！</p>
-<h3 id="var-如何工作" tabindex="-1">var() 如何工作</h3>
-<p>首先：CSS 变量可以有全局或局部作用域。</p>
-<p>全局变量可以在整个文档中进行访问/使用，而局部变量只能在声明它的选择器内部使用。</p>
-<p>如需创建具有全局作用域的变量，请在 <strong>:root</strong> 选择器中声明它。 :root 选择器匹配文档的根元素。</p>
-<p>如需创建具有局部作用域的变量，请在将要使用它的选择器中声明它。</p>
-<p>下面的例子与上面的例子相同，但是在这里我们使用 var() 函数。</p>
-<p>首先，我们声明两个全局变量（&#8211;blue 和 &#8211;white）。然后，我们使用 var() 函数稍后在样式表中插入变量的值：</p>
-<pre><code class="language-css">:root {
-  --blue: #1e90ff;
-  --white: #ffffff;
-}
-
-body { background-color: var(--blue); }
-
-h2 { border-bottom: 2px solid var(--blue); }
-
-.container {
-  color: var(--blue);
-  background-color: var(--white);
-  padding: 15px;
-}
-
-button {
-  background-color: var(--white);
-  color: var(--blue);
-  border: 1px solid var(--blue);
-  padding: 5px;
-}
+<p>由于我直接是root，所以下面的命令都不需要ssh</p>
+<pre><code class="language-bassh">ssh -CfNg -R(命令行的关键) 2222(远程服务器端口)：127.0.0.1:22(本地端口) -o ServerAliveInterval=60 bju@123.45.67.8(远程服务器) 
 </code></pre>
-<h3 id="局部申明" tabindex="-1">局部申明</h3>
-<pre><code class="language-css">:root {
-  --blue: #1e90ff;
-  --white: #ffffff;
-}
-
-body {
-  background-color: var(--blue);
-}
-
-h2 {
-  border-bottom: 2px solid var(--blue);
-}
-
-.container {
-  color: var(--blue);
-  background-color: var(--white);
-  padding: 15px;
-}
-
-button {
-  --blue: #0000ff;
-  background-color: var(--white);
-  color: var(--blue);
-  border: 1px solid var(--blue);
-  padding: 5px;
-}
-</code></pre>
-<h3 id="在媒体查询中使用变量" tabindex="-1">在媒体查询中使用变量</h3>
-<p><a href="https://www.w3school.com.cn/css/css3_variables_mediaqueries.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_variables_mediaqueries.asp</a></p>
-<h2 id="flexbox" tabindex="-1">Flexbox</h2>
-<p><a href="https://www.w3school.com.cn/css/css3_flexbox.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_flexbox.asp</a></p>
-<p>在 Flexbox 布局模块（问世）之前，可用的布局模式有以下四种：</p>
-<ul>
-<li>块（Block），用于网页中的部分（节）</li>
-<li>行内（Inline），用于文本</li>
-<li>表，用于二维表数据</li>
-<li>定位，用于元素的明确位置</li>
-</ul>
-<p>弹性框布局模块，可以更轻松地设计灵活的响应式布局结构，而无需使用浮动或定位。</p>
-<h3 id="父元素容器" tabindex="-1">父元素（容器）</h3>
-<p>通过将 display 属性设置为 flex，flex 容器将可伸缩：</p>
-<pre><code class="language-css">.flex-container {
-  display: flex;
-}
-</code></pre>
-<p>以下是 flex 容器属性：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">属性</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_class_display.asp" target="_blank" rel="noopener">display</a></td>
-<td style="text-align:left">规定用于 HTML 元素的盒类型。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/css3_pr_flex-direction.asp" target="_blank" rel="noopener">flex-direction</a></td>
-<td style="text-align:left">规定弹性容器内的弹性项目的方向。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/css3_pr_justify-content.asp" target="_blank" rel="noopener">justify-content</a></td>
-<td style="text-align:left">当弹性项目没有用到主轴上的所有可用空间时，水平对齐这些项目。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/css3_pr_align-items.asp" target="_blank" rel="noopener">align-items</a></td>
-<td style="text-align:left">当弹性项目没有用到主轴上的所有可用空间时，垂直对齐这些项。（垂直对齐）</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/css3_pr_flex-wrap.asp" target="_blank" rel="noopener">flex-wrap</a></td>
-<td style="text-align:left">规定弹性项目是否应该换行，若一条 flex 线上没有足够的空间容纳它们。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/css3_pr_align-content.asp" target="_blank" rel="noopener">align-content</a></td>
-<td style="text-align:left">修改 flex-wrap 属性的行为。与 align-items 相似，但它不对齐弹性项目，而是对齐 flex 线。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/css3_pr_flex-flow.asp" target="_blank" rel="noopener">flex-flow</a></td>
-<td style="text-align:left">flex-direction 和 flex-wrap 的简写属性。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/css3_pr_order.asp" target="_blank" rel="noopener">order</a></td>
-<td style="text-align:left">规定弹性项目相对于同一容器内其余弹性项目的顺序。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/css3_pr_align-self.asp" target="_blank" rel="noopener">align-self</a></td>
-<td style="text-align:left">用于弹性项目。覆盖容器的 align-items 属性。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.w3school.com.cn/cssref/pr_flex.asp" target="_blank" rel="noopener">flex</a></td>
-<td style="text-align:left">flex-grow、flex-shrink 以及 flex-basis 属性的简写属性。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="justify-content" tabindex="-1">justify-content</h3>
-<p>center 中心对齐</p>
-<p>flex-start ：开头对齐</p>
-<p>flex-end：末段对齐</p>
-<p><code>space-around</code>：有点两端对齐内味，space-around 值显示行之前、之间和之后带有空格的 flex 项目：</p>
-<p><code>space-between</code>：之间有空格，但是行首和行尾没有空格</p>
-<h3 id="完美居中" tabindex="-1">完美居中</h3>
-<pre><code class="language-css">.flex-container {
-  display: flex;
-  height: 300px;
-  justify-content: center;
-  align-items: center;
-}
-</code></pre>
-<h2 id="媒体查询" tabindex="-1">媒体查询</h2>
-<p><a href="https://www.w3school.com.cn/css/css3_mediaqueries.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css3_mediaqueries.asp</a></p>
-<h3 id="媒体查询语法" tabindex="-1">媒体查询语法</h3>
-<p>媒体查询由一种媒体类型组成，并可包含一个或多个表达式，这些表达式可以解析为 true 或 false。</p>
-<pre><code class="language-css">@media not|only mediatype and (expressions) {
-  CSS-Code;
-}
-</code></pre>
-<p>如果指定的媒体类型与正在显示文档的设备类型匹配，并且媒体查询中的所有表达式均为 true，则查询结果为 true。当媒体查询为 true 时，将应用相应的样式表或样式规则，并遵循正常的级联规则。</p>
-<p>除非您使用 not 或 only 运算符，否则媒体类型是可选的，且隐含 all 类型。</p>
-<p>您还可以针对不同的媒体使用不同的样式表：</p>
-<pre><code class="language-css">&lt;link rel="stylesheet" media="mediatype and|not|only (expressions)" href="print.css"&gt;
-</code></pre>
-<h3 id="css3-媒体类型" tabindex="-1">CSS3 媒体类型</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">all</td>
-<td style="text-align:left">用于所有媒体类型设备。</td>
-</tr>
-<tr>
-<td style="text-align:left">print</td>
-<td style="text-align:left">用于打印机。</td>
-</tr>
-<tr>
-<td style="text-align:left">screen</td>
-<td style="text-align:left">用于计算机屏幕、平板电脑、智能手机等等。</td>
-</tr>
-<tr>
-<td style="text-align:left">speech</td>
-<td style="text-align:left">用于大声“读出”页面的屏幕阅读器。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="响应式布局" tabindex="-1">响应式布局</h2>
-<p>视口：<a href="https://www.w3school.com.cn/css/css_rwd_viewport.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css/css_rwd_viewport.asp</a></p>
-<h2 id="设置视口" tabindex="-1">设置视口</h2>
-<p>HTML5 引入了一种方法，使 Web 设计者可以通过 <code>&lt;meta&gt;</code> 标签来控制视口。</p>
-<p>您应该在所有网页中包含以下 <code>&lt;meta&gt;</code> 视口元素：</p>
-<pre><code class="language-css">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-</code></pre>
-<p>它为浏览器提供了关于如何控制页面尺寸和缩放比例的指令。</p>
-<p>width=device-width 部分将页面的宽度设置为跟随设备的屏幕宽度（视设备而定）。</p>
-<p>当浏览器首次加载页面时，initial-scale=1.0 部分设置初始缩放级别。</p>
-<p>下面分别是不带视口 meta 标签的网页、以及带视口 meta 标签的网页的例子：</p>
-</div>
 	</div>
 
 	
@@ -1272,7 +906,7 @@ button {
 	
 			<div class="post-tags">
 			<i class="fa fa-tags" aria-hidden="true"></i>
-			<a href="/tag/css/" target="_blank" class="tag badge badge-secondary post-meta-detail-tag">CSS</a>		</div>
+			<a href="/tag/frp/" target="_blank" class="tag badge badge-secondary post-meta-detail-tag">frp</a><a href="/tag/ssh/" target="_blank" class="tag badge badge-secondary post-meta-detail-tag">ssh</a>		</div>
 	</article>
 <div id="share_container">
 	<div id="share" data-initialized="true">
@@ -1313,11 +947,11 @@ button {
 </div>
 <script type="text/javascript">
 	socialShare("#share", {
-	    title : 'CSS高级教程',
-	    description : 'CSS高级教程 因为Typora的老毛病，代码和文字一多，就会卡的不行，因此另开一篇水文。接上文CS…',
+	    title : 'ssh到内网服务器',
+	    description : 'ssh到内网服务器 使用frp连接内网和公网服务器，这样子就能通过ssh连接到内网的服务器，设置也比…',
 	    wechatQrcodeTitle : "分享到微信",
 	    wechatQrcodeHelper : '微信扫描二维码',
-	    source : '/css-gao-ji-jiao-cheng/'
+	    source : '/ssh-dao-nei-wang-fu-wu-qi/'
 	});
 	$("#share_show")[0].onclick = function(){
 		$("#share_container").addClass("opened");
@@ -1418,7 +1052,7 @@ button {
 							</div>
 							<input id="post_comment_captcha" class="form-control" placeholder="验证码" type="text">
 							<style>.post-comment-captcha-container:before{
-									content: "8 * 7 = ";
+									content: "4 + 9 = ";
 								}</style>
 						</div>
 					</div>
@@ -1578,7 +1212,7 @@ button {
 </div>									</div>
 			</div>
 			<input id="post_comment_captcha_seed" value="" style="display: none;">
-			<input id="post_comment_post_id" value="983" style="display: none;">
+			<input id="post_comment_post_id" value="993" style="display: none;">
 		</form>
 	</div>
 </div>
@@ -1602,10 +1236,10 @@ button {
 </div>
 <div class="post-navigation card shadow-sm">
 <div class="post-navigation-item post-navigation-pre">
-<span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/leetcode-4/" rel="prev">LeetCode-4</a>
+<span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/leetcode-5/" rel="prev">LeetCode-5</a>
 </div>
 <div class="post-navigation-item post-navigation-next">
-<span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/jing-dong-qian-dao/" rel="next">京东签到</a>
+<span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/leetcode-6/" rel="next">LeetCode-6</a>
 </div>
 </div>
 <div class="related-posts card shadow-sm">
@@ -1614,23 +1248,15 @@ button {
 			        <span>推荐文章</span>
 		            </h2>
 		            <div style="overflow-x: auto;padding: 1.5rem;padding-top: 0.8rem;padding-bottom: 0.8rem;}">
-<a class="related-post-card" href="/css-man-xue/"><div class="related-post-card-container has-thumbnail">
-							<div class="related-post-title clamp" clamp-line="3">CSS慢学</div>
+<a class="related-post-card" href="/vscode-pei-zhi-c/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">vscode配置C++</div>
 							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
 							</div>
-<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/10/erciyuan50.webp"></a><a class="related-post-card" href="/html-su-xue/"><div class="related-post-card-container has-thumbnail">
-							<div class="related-post-title clamp" clamp-line="3">HTML速学</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/10/erciyuan68.webp"></a><a class="related-post-card" href="/ssh%e8%bf%9e%e6%8e%a5%e5%88%b0%e8%99%9a%e6%8b%9f%e6%9c%ba/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">ssh连接到虚拟机</div>
 							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
 							</div>
-<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/10/erciyuan73.webp"></a><a class="related-post-card" href="/qian-duan-wang-luo-ji-chu/"><div class="related-post-card-container has-thumbnail">
-							<div class="related-post-title clamp" clamp-line="3">前端网络基础</div>
-							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
-							</div>
-<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/10/erciyuan70.webp"></a><a class="related-post-card" href="/qian-duan-liu-lan-qi-zhi-shi/"><div class="related-post-card-container has-thumbnail">
-							<div class="related-post-title clamp" clamp-line="3">前端浏览器知识</div>
-							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
-							</div>
-<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/10/erciyuan62.webp"></a>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/08/erciyuan25.webp"></a>
 </div>
 </div>
 					<footer id="footer" class="site-footer card shadow-sm border-0">
@@ -1682,8 +1308,8 @@ setInterval(function () {
 </script>
 
 
-<!-- Dynamic page generated in 0.119 seconds. -->
-<!-- Cached page generated by WP-Super-Cache on 2021-11-14 20:20:21 -->
+<!-- Dynamic page generated in 0.121 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2021-11-14 20:20:19 -->
 
 <!-- super cache -->
 </html>

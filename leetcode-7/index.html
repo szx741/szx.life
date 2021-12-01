@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js use-big-shadow article-header-style-2 ">
+<head>
+	<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta property="og:title" content="LeetCode-7 &#8211; 巷子深的生活">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="/leetcode-7">
+				<meta name="description" content="LeetCode-7
+
+
+刷啊，有点有心无力，有些题目可能之后再刷了。
+
+
+
+318 最大单词长度乘积
+
+
+刷题时间：2021-11-17
+
+垃圾时间和垃圾空间，自己写的果然不行，主要拉在了单词对比上。
+
+var maxProduct = ...">
+			<meta property="og:description" content="LeetCode-7
+
+
+刷啊，有点有心无力，有些题目可能之后再刷了。
+
+
+
+318 最大单词长度乘积
+
+
+刷题时间：2021-11-17
+
+垃圾时间和垃圾空间，自己写的果然不行，主要拉在了单词对比上。
+
+var maxProduct = ...">
+	
+	
+					<meta property="og:image" content="/wp-content/uploads/2021/10/erciyuan53.webp">
+	
+	<meta name="theme-color" content="#fb7ea2">
+	<meta name="theme-color-rgb" content="251,126,162">
+	<meta name="theme-color-origin" content="#fb7ea2">
+	<meta name="argon-enable-custom-theme-color" content="true">
+
+
+	<meta name="theme-card-radius" content="15">
+	<meta name="theme-card-radius-origin" content="15">
+
+	<meta name="theme-version" content="1.2.8">
+
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+			<title>LeetCode-7 &#8211; 巷子深的生活</title>
+<meta name="description" content="LeetCode-7  刷啊，有点有心无力，有些题目可能之后再刷了。  318 最大单词长度乘积  刷题时间：2021-11-17 垃圾时间和垃圾空间，自己写的果然不行，主要拉在了单词对比上。 var maxProduct = ...">
+<meta name="robots" content="max-image-preview:large">
+<link rel="stylesheet" id="argon_css_merged-css" href="/wp-content/themes/argon/assets/argon_css_merged.css?ver=1.2.8" type="text/css" media="all">
+<link rel="stylesheet" id="style-css" href="/wp-content/themes/argon/style.css?ver=1.2.8" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=5.8.2" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/themes/argon/assets/argon_js_merged.js?ver=1.2.8" id="argon_js_merged-js"></script>
+<script type="text/javascript" src="/wp-content/themes/argon/assets/js/argon.min.js?ver=1.2.8" id="argonjs-js"></script>
+<link rel="canonical" href="/leetcode-7/">
+<!-- Analytics by WP-Statistics v13.1.2 - https://wp-statistics.com/ -->
+<script>var WP_Statistics_http = new XMLHttpRequest();WP_Statistics_http.open('GET', '/wp-json/wp-statistics/v2/hit?_=1638340425&_wpnonce=8320c417dd&wp_statistics_hit_rest=yes&browser=WordPress&platform=未知&version=未知&referred=/leetcode-7/&ip=82.157.179.143&exclusion_match=yes&exclusion_reason=CrawlerDetect&ua=WordPress/5.8.2; &track_all=1&timestamp=1638369225&current_page_type=post&current_page_id=1024&search_query&page_uri=/leetcode-7/&user_id=0', true);WP_Statistics_http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");WP_Statistics_http.send(null);</script>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>	
+		<!-- Baidu Tongji Start -->
+	<script type="text/javascript">
+	var _hmt = _hmt || [];
+		_hmt.push(['_trackPageview']);
+			(function() {
+	var hm = document.createElement("script");
+	hm.src = "//hm.baidu.com/hm.js?948edc23fd8e36ba6feef017d95f4638";
+	hm.setAttribute('async', 'true');
+	document.getElementsByTagName('head')[0].appendChild(hm);
+	})();
+	</script>
+	<!-- Baidu Tongji  End -->
+	<link rel="icon" href="/wp-content/uploads/2021/06/cropped-websiteIcon-150x150.jpg" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2021/06/cropped-websiteIcon-300x300.jpg" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2021/06/cropped-websiteIcon-300x300.jpg">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2021/06/cropped-websiteIcon-300x300.jpg">
+		<style type="text/css" id="wp-custom-css">*:not([class*="icon"]):not(i) {
+font-family: Helvetica, Tahoma, Arial, STHeiti, "华文黑体", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体","Droid Sans", sans-serif !important;
+}
+#primary {
+    opacity: .98;
+}
+mjx-container[jax="SVG"][display="true"] {
+    display: block;
+    text-align: center;
+    margin: 1em 0;
+}</style>
+				<script>
+		document.documentElement.classList.remove("no-js");
+		var argonConfig = {
+			wp_path: "/",
+			language: "zh_CN",
+			dateFormat: "YMD",
+							zoomify: false,
+						pangu: "false",
+							lazyload: {
+					threshold: 800,
+					effect: "fadeIn"
+				},
+						fold_long_comments: false,
+			disable_pjax: false,
+			pjax_animation_durtion: 600,
+			headroom: "true",
+			waterflow_columns: "2",
+			code_highlight: {
+				enable: true,
+				hide_linenumber: false,
+				break_line: false			}
+		}
+	</script>
+	<script>
+		var darkmodeAutoSwitch = "system";
+		function setDarkmode(enable){
+			if (enable == true){
+				$("html").addClass("darkmode");
+			}else{
+				$("html").removeClass("darkmode");
+			}
+			$(window).trigger("scroll");
+		}
+		function toggleDarkmode(){
+			if ($("html").hasClass("darkmode")){
+				setDarkmode(false);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "false");
+			}else{
+				setDarkmode(true);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "true");
+			}
+		}
+		if (sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true"){
+			setDarkmode(true);
+		}
+		function toggleDarkmodeByPrefersColorScheme(media){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			if (media.matches){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		function toggleDarkmodeByTime(){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			let hour = new Date().getHours();
+			if (hour < 7 || hour >= 22){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		if (darkmodeAutoSwitch == 'system'){
+			var darkmodeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+			darkmodeMediaQuery.addListener(toggleDarkmodeByPrefersColorScheme);
+			toggleDarkmodeByPrefersColorScheme(darkmodeMediaQuery);
+		}
+		if (darkmodeAutoSwitch == 'time'){
+			toggleDarkmodeByTime();
+		}
+		if (darkmodeAutoSwitch == 'alwayson'){
+			setDarkmode(true);
+		}
+
+		function toggleAmoledDarkMode(){
+			$("html").toggleClass("amoled-dark");
+			if ($("html").hasClass("amoled-dark")){
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "true");
+			}else{
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "false");
+			}
+		}
+		if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "true"){
+			$("html").addClass("amoled-dark");
+		}else if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "false"){
+			$("html").removeClass("amoled-dark");
+		}
+	</script>
+	<script>
+		if (navigator.userAgent.indexOf("Safari") !== -1 && navigator.userAgent.indexOf("Chrome") === -1){
+			$("html").addClass("using-safari");
+		}
+	</script>
+
+	</head>
+
+
+<style id="themecolor_css">:root{
+		--themecolor: #fb7ea2;
+		--themecolor-dark0: #FB7299;
+		--themecolor-dark: #FA6590;
+		--themecolor-dark2: #F94D7E;
+		--themecolor-dark3: #F9346D;
+		--themecolor-light: #FDAFC6;
+		--themecolor-rgbstr: 251,126,162;
+		--themecolor-gradient: linear-gradient(150deg,var(--themecolor-light) 15%, var(--themecolor) 70%, var(--themecolor-dark0) 94%);
+
+	}</style>
+<style id="theme_cardradius_css">:root{
+		--card-radius: 15px;
+	}</style>
+
+<body class="post-template-default single single-post postid-1024 single-format-standard">
+<div id="toolbar">
+	<header class="header-global">
+		<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light bg-primary headroom--not-bottom headroom--not-top headroom--pinned">
+			<div class="container">
+				<button id="open_sidebar" class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle sidebar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-brand mr-0">
+															<a class="navbar-brand navbar-title" href="/">巷子深的生活</a>
+				</div>
+				<div class="navbar-collapse collapse" id="navbar_global">
+					<div class="navbar-collapse-header">
+						<div class="row" style="display: none;">
+							<div class="col-6 collapse-brand"></div>
+							<div class="col-6 collapse-close">
+								<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+									<span></span>
+									<span></span>
+								</button>
+							</div>
+						</div>
+						<div class="input-group input-group-alternative">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-search"></i></span>
+							</div>
+							<input id="navbar_search_input_mobile" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+						</div>
+					</div>
+					<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+
+										<li class="nav-item">
+											<a href="/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-home" aria-hidden="true"></i>首页</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e5%bd%92%e6%a1%a3/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-clock-o" aria-hidden="true"></i>归档</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e7%95%99%e8%a8%80%e6%9d%bf/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-comments" aria-hidden="true"></i>留言板</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/shuoshuo/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-weibo" aria-hidden="true"></i>说说</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="/%e5%8f%8b%e6%83%85%e9%93%be%e6%8e%a5/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-link" aria-hidden="true"></i>友链</span>
+										  </a>
+</li>
+
+										<li class="nav-item dropdown">
+											<a href="/%e5%85%b3%e4%ba%8e%e6%9c%ac%e7%ab%99/" class="nav-link" data-toggle="dropdown" no-pjax onclick="return false;" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-user-circle" aria-hidden="true"></i>关于</span>
+										  </a>
+<div class="dropdown-menu">
+<a href="/%e5%85%b3%e4%ba%8e%e6%9c%ac%e7%ab%99/" class="dropdown-item" target="" title="">关于本站</a><a href="/guan-yu-ben-ren/" class="dropdown-item" target="" title="">关于本人</a><a href="/ge-ren-ji-hua/" class="dropdown-item" target="" title="">个人计划</a>
+</div>
+
+</li>
+
+										<li class="nav-item">
+											<a href="https://travellings.link/" class="nav-link" target="_blank" title="随机跳转到一个开往的网页">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text"><i class="fa fa-subway" aria-hidden="true"></i>开往</span>
+										  </a>
+</li>
+</ul>					<ul class="navbar-nav align-items-lg-center ml-lg-auto">
+						<li id="navbar_search_container" class="nav-item" data-toggle="modal">
+							<div id="navbar_search_input_container">
+								<div class="input-group input-group-alternative">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fa fa-search"></i></span>
+									</div>
+									<input id="navbar_search_input" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="navbar_menu_mask" data-toggle="collapse" data-target="#navbar_global"></div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-toggler-searcg-icon"></span>
+				</button>
+			</div>
+		</nav>
+	</header>
+</div>
+<div class="modal fade" id="argon_search_modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">搜索</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="argon_serach_form" method="get" action="">
+	<div class="form-group mb-3">
+		<div class="input-group input-group-alternative">
+			<div class="input-group-prepend">
+				<span class="input-group-text"><i class="fa fa-search"></i></span>
+			</div>
+			<input name="s" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+		</div>
+	</div>
+	<div class="text-center">
+		<button onclick="if($('#argon_serach_form input[name=\'s\']').val() != '') {document.getElementById('argon_serach_form').submit();}" type="button" class="btn btn-primary">搜索</button>
+	</div>
+</form>			</div>
+		</div>
+	</div>
+</div>
+<!--Banner-->
+<section id="banner" class="banner section section-lg section-shaped">
+	<div class="shape  shape-default">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+		<div id="banner_container" class="banner-container container text-center">
+					<div class="banner-title text-white" data-interval="100">
+<span data-text="书香不怕巷子深" class="banner-title-inner">&nbsp;</span>
+			<span data-text="勤修内功，只要自己有真才实学，就一定不会被埋没" class="banner-subtitle d-block">&nbsp;</span>
+</div>
+			</div>
+			<style>section.banner{
+				background-image: url(/wp-content/random-image/picture/banner/fm6.webp) !important;
+			}</style>
+		</section>
+
+	<style>#content:before {
+			content: '';
+			display: block;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: -2;
+			background: url(/wp-content/uploads/2021/09/无标题-1.png);
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 1;
+			transition: opacity .5s ease;
+		}
+		html.darkmode #content:before{
+			filter: brightness(0.65);
+		}
+					#content:after {
+				content: '';
+				display: block;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				z-index: -2;
+				background: url(/wp-content/uploads/2021/09/夜间背景.png);
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+				opacity: 0;
+				transition: opacity .5s ease;
+			}
+			html.darkmode #content:after {
+				opacity: 1;
+			}
+			html.darkmode #content:before {
+				opacity: 0;
+			}</style>
+
+	<style>#banner:after {
+			content: '';
+			width: 100vw;
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 120px;
+			background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0) 100%);
+			display: block;
+			z-index: -1;
+		}
+		.banner-title {
+			text-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+		}</style>
+
+<div id="float_action_buttons" class="float-action-buttons fabtns-unloaded">
+	<button id="fabtn_toggle_sides" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip-move-to-left="移至左侧" tooltip-move-to-right="移至右侧">
+		<span class="btn-inner--icon fabtn-show-on-right"><i class="fa fa-caret-left"></i></span>
+		<span class="btn-inner--icon fabtn-show-on-left"><i class="fa fa-caret-right"></i></span>
+	</button>
+	<button id="fabtn_back_to_top" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Back To Top" tooltip="回到顶部">
+		<span class="btn-inner--icon"><i class="fa fa-angle-up"></i></span>
+	</button>
+	<button id="fabtn_go_to_comment" class="btn btn-icon btn-neutral fabtn shadow-sm d-none" type="button" style="display: none;" aria-label="Comment" tooltip="评论">
+		<span class="btn-inner--icon"><i class="fa fa-comment-o"></i></span>
+	</button>
+	<button id="fabtn_toggle_darkmode" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Toggle Darkmode" tooltip-darkmode="夜间模式" tooltip-blackmode="暗黑模式" tooltip-lightmode="日间模式">
+		<span class="btn-inner--icon"><i class="fa fa-moon-o"></i><i class="fa fa-lightbulb-o"></i></span>
+	</button>
+	<button id="fabtn_toggle_blog_settings_popup" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" style="display: none;" aria-label="Open Blog Settings Menu" tooltip="设置">
+		<span class="btn-inner--icon"><i class="fa fa-cog"></i></span>
+	</button>
+	<div id="fabtn_blog_settings_popup" class="card shadow-sm" style="opacity: 0;" aria-hidden="true">
+		<div id="close_blog_settings"><i class="fa fa-close"></i></div>
+		<div class="blog-setting-item mt-3">
+			<div style="transform: translateY(-4px);"><div id="blog_setting_toggle_darkmode_and_amoledarkmode" tooltip-switch-to-darkmode="切换到夜间模式" tooltip-switch-to-blackmode="切换到暗黑模式">
+<span>夜间模式</span><span>暗黑模式</span>
+</div></div>
+			<div style="flex: 1;"></div>
+			<label id="blog_setting_darkmode_switch" class="custom-toggle">
+				<span class="custom-toggle-slider rounded-circle"></span>
+			</label>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">字体</div>
+			<div>
+				<button id="blog_setting_font_sans_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-left">Sans Serif</button><button id="blog_setting_font_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-right">Serif</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">阴影</div>
+			<div>
+				<button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button><button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3 mb-3">
+			<div style="flex: 1;">滤镜</div>
+			<div id="blog_setting_filters" class="ml-3">
+				<button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0" filter-name="off">关闭</button>
+				<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
+				<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
+				<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mb-3">
+			<div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
+			<div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
+				<div id="blog_setting_card_radius"></div>
+			</div>
+		</div>
+					<div class="blog-setting-item mt-1 mb-3">
+				<div style="flex: 1;">主题色</div>
+				<div id="theme-color-picker" class="ml-3"></div>
+			</div>
+			</div>
+	<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip="阅读进度">
+		<div id="fabtn_reading_progress_bar" style="width: 0%;"></div>
+		<span id="fabtn_reading_progress_details">0%</span>
+	</button>
+</div>
+
+<div id="content" class="site-content">
+
+<div class="page-information-card-container"></div>
+
+<div id="sidebar_mask"></div>
+<aside id="leftbar" class="leftbar widget-area" role="complementary">
+				<div id="leftbar_part1" class="widget widget_search card bg-white shadow-sm border-0">
+			<div class="leftbar-banner card-body">
+				<span class="leftbar-banner-title text-white">xaotuman's home</span>
+
+													<span class="leftbar-banner-subtitle text-white">U1S1，二次元才是第一生产力</span>
+				
+			</div>
+
+			<ul id="leftbar_part1_menu" class="leftbar-menu">
+
+						<li class="leftbar-menu-item">
+							<a href="/" target=""><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e5%bd%92%e6%a1%a3/" target=""><i class="fa fa-clock-o" aria-hidden="true"></i>归档</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e7%95%99%e8%a8%80%e6%9d%bf/" target=""><i class="fa fa-comments" aria-hidden="true"></i>留言板</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/shuoshuo/" target=""><i class="fa fa-weibo" aria-hidden="true"></i>说说</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/%e5%8f%8b%e6%83%85%e9%93%be%e6%8e%a5/" target=""><i class="fa fa-link" aria-hidden="true"></i>友链</a>
+</li>
+
+						<li class="leftbar-menu-item leftbar-menu-item-haschildren">
+							<a href="/%e5%85%b3%e4%ba%8e%e6%9c%ac%e7%ab%99/" no-pjax onclick="return false;" target=""><i class="fa fa-user-circle" aria-hidden="true"></i>关于</a>
+<ul class="leftbar-menu-item leftbar-menu-subitem shadow-sm">
+
+
+						<li class="leftbar-menu-item">
+							<a href="/%e5%85%b3%e4%ba%8e%e6%9c%ac%e7%ab%99/" target="">关于本站</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/guan-yu-ben-ren/" target="">关于本人</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="/ge-ren-ji-hua/" target="">个人计划</a>
+</li>
+</ul>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="https://travellings.link/" target="_blank"><i class="fa fa-subway" aria-hidden="true"></i>开往</a>
+</li>
+</ul>			<div class="card-body text-center leftbar-search-button">
+				<button id="leftbar_search_container" class="btn btn-secondary btn-lg active btn-sm btn-block border-0" role="button">
+					<i class="menu-item-icon fa fa-search mr-0"></i> 搜索					<input id="leftbar_search_input" type="text" placeholder="搜索什么..." class="form-control form-control-alternative" autocomplete="off">
+				</button>
+			</div>
+		</div>
+		<div id="leftbar_part2" class="widget widget_search card bg-white shadow-sm border-0">
+			<div id="leftbar_part2_inner" class="card-body">
+								<div class="nav-wrapper" style="padding-top: 5px;">
+	                <ul class="nav nav-pills nav-fill" role="tablist">
+													<li class="nav-item sidebar-tab-switcher">
+								<a class="active show" id="leftbar_tab_catalog_btn" data-toggle="tab" href="#leftbar_tab_catalog" role="tab" aria-controls="leftbar_tab_catalog" no-pjax>文章目录</a>
+							</li>
+												<li class="nav-item sidebar-tab-switcher">
+							<a class="" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax>站点概览</a>
+						</li>
+													<li class="nav-item sidebar-tab-switcher">
+								<a class="" id="leftbar_tab_tools_btn" data-toggle="tab" href="#leftbar_tab_tools" role="tab" aria-controls="leftbar_tab_tools" no-pjax>功能</a>
+							</li>
+							                </ul>
+				</div>
+				<div>
+					<div class="tab-content" style="padding: 10px 10px 0 10px;">
+													<div class="tab-pane fade active show" id="leftbar_tab_catalog" role="tabpanel" aria-labelledby="leftbar_tab_catalog_btn">
+								<div id="leftbar_catalog"></div>
+								<script type="text/javascript">
+									$(function () {
+										$(document).headIndex({
+											articleWrapSelector: '#post_content',
+											indexBoxSelector: '#leftbar_catalog',
+											subItemBoxClass: "index-subItem-box",
+											itemClass: "index-item",
+											linkClass: "index-link",
+											offset: 80,
+										});
+									})
+								</script>
+															</div>
+												<div class="tab-pane fade text-center" id="leftbar_tab_overview" role="tabpanel" aria-labelledby="leftbar_tab_overview_btn">
+							<img id="leftbar_overview_author_image" src="/wp-content/uploads/2021/07/erciyuan4.webp" class="img-fluid rounded-circle shadow-sm" style="width: 100px;" alt="avatar">
+							<h6 id="leftbar_overview_author_name">szx</h6>
+														<nav class="site-state">
+								<div class="site-state-item site-state-posts">
+									<a style="cursor: default;">
+										<span class="site-state-item-count">74</span>
+										<span class="site-state-item-name">文章</span>
+									</a>
+								</div>
+								<div class="site-state-item site-state-categories">
+									<a data-toggle="modal" data-target="#blog_categories">
+										<span class="site-state-item-count">22</span>
+										<span class="site-state-item-name">分类</span>
+									</a>
+								</div>      
+								<div class="site-state-item site-state-tags">
+									<a data-toggle="modal" data-target="#blog_tags">
+										<span class="site-state-item-count">106</span>
+										<span class="site-state-item-name">标签</span>
+									</a>
+								</div>
+							</nav>
+							<div class="site-author-links">
+
+											<div class="site-author-links-item">
+												<a href="https://github.com/szx741" rel="noopener" target="_blank"><i class="fa fa-github"></i> Github</a>
+</div>
+
+											<div class="site-author-links-item">
+												<a href="https://gitee.com/xaotuman" rel="noopener" target="_blank"><img src="/wp-content/uploads/2021/07/gitee-fill-round.png" width="14.55px" height="15px"> Gitee</a>
+</div>
+</div>							<div style="height: 20px;"></div>													</div>
+													<div class="tab-pane fade" id="leftbar_tab_tools" role="tabpanel" aria-labelledby="leftbar_tab_tools_btn">
+								<div id="archives-4" class="widget widget_archive card bg-white border-0">
+<h6 class="font-weight-bold text-black">归档</h6>
+			<ul>
+					<li>
+<a href="/2021/11/">2021年11月</a>&nbsp;(11)</li>
+	<li>
+<a href="/2021/10/">2021年10月</a>&nbsp;(21)</li>
+	<li>
+<a href="/2021/09/">2021年9月</a>&nbsp;(18)</li>
+	<li>
+<a href="/2021/08/">2021年8月</a>&nbsp;(10)</li>
+	<li>
+<a href="/2021/07/">2021年7月</a>&nbsp;(13)</li>
+	<li>
+<a href="/2020/08/">2020年8月</a>&nbsp;(1)</li>
+			</ul>
+
+			</div>
+<div id="categories-4" class="widget widget_categories card bg-white border-0">
+<h6 class="font-weight-bold text-black">分类</h6>
+<form action="" method="get">
+<label class="screen-reader-text" for="cat">分类</label><select name="cat" id="cat" class="postform">
+	<option value="-1">选择分类</option>
+	<option class="level-0" value="2">图一乐&nbsp;&nbsp;(19)</option>
+	<option class="level-1" value="34">&nbsp;&nbsp;&nbsp;分享&nbsp;&nbsp;(12)</option>
+	<option class="level-0" value="3">学习文档&nbsp;&nbsp;(43)</option>
+	<option class="level-1" value="101">&nbsp;&nbsp;&nbsp;BitTorrent&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="113">&nbsp;&nbsp;&nbsp;CPP&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="39">&nbsp;&nbsp;&nbsp;docker&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="71">&nbsp;&nbsp;&nbsp;GIS&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="79">&nbsp;&nbsp;&nbsp;Golang&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="95">&nbsp;&nbsp;&nbsp;LeetCode&nbsp;&nbsp;(10)</option>
+	<option class="level-1" value="109">&nbsp;&nbsp;&nbsp;前端&nbsp;&nbsp;(7)</option>
+	<option class="level-2" value="131">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;js&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="10">&nbsp;&nbsp;&nbsp;区块链&nbsp;&nbsp;(6)</option>
+	<option class="level-1" value="4">&nbsp;&nbsp;&nbsp;操作系统&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="5">&nbsp;&nbsp;&nbsp;数据库&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="6">&nbsp;&nbsp;&nbsp;深度学习&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="9">&nbsp;&nbsp;&nbsp;软件开发&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="1">未分类&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="7">游戏&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="11">&nbsp;&nbsp;&nbsp;我的世界&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="35">生活&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="8">网站建设&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="61">解决问题&nbsp;&nbsp;(3)</option>
+</select>
+</form>
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			dropdown.parentNode.submit();
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+			</div>
+<div id="calendar-3" class="widget widget_calendar card bg-white border-0">
+<h6 class="font-weight-bold text-black">日历</h6>
+<div id="calendar_wrap" class="calendar_wrap">
+<table id="wp-calendar" class="wp-calendar-table">
+	<caption>2021年 12月</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="星期一">一</th>
+		<th scope="col" title="星期二">二</th>
+		<th scope="col" title="星期三">三</th>
+		<th scope="col" title="星期四">四</th>
+		<th scope="col" title="星期五">五</th>
+		<th scope="col" title="星期六">六</th>
+		<th scope="col" title="星期日">日</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td colspan="2" class="pad">&nbsp;</td>
+<td id="today">1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+	</tr>
+	<tr>
+		<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+	</tr>
+	<tr>
+		<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+	</tr>
+	<tr>
+		<td>20</td>
+<td>21</td>
+<td>22</td>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+	</tr>
+	<tr>
+		<td>27</td>
+<td>28</td>
+<td>29</td>
+<td>30</td>
+<td>31</td>
+		<td class="pad" colspan="2">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table>
+<nav aria-label="上个月及下个月" class="wp-calendar-nav">
+		<span class="wp-calendar-nav-prev"><a href="/2021/11/">&laquo; 11月</a></span>
+		<span class="pad">&nbsp;</span>
+		<span class="wp-calendar-nav-next">&nbsp;</span>
+	</nav>
+</div>
+</div>							</div>
+											</div>
+				</div>
+			</div>
+		</div>
+</aside>
+<div class="modal fade" id="blog_categories" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">分类</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<a href="/category/study/torrent/" class="badge badge-secondary tag">BitTorrent <span class="tag-num">4</span></a><a href="/category/study/cpp/" class="badge badge-secondary tag">CPP <span class="tag-num">1</span></a><a href="/category/study/docker/" class="badge badge-secondary tag">docker <span class="tag-num">3</span></a><a href="/category/study/gis/" class="badge badge-secondary tag">GIS <span class="tag-num">1</span></a><a href="/category/study/golang/" class="badge badge-secondary tag">Golang <span class="tag-num">4</span></a><a href="/category/study/front-end/js/" class="badge badge-secondary tag">js <span class="tag-num">1</span></a><a href="/category/study/leetcode/" class="badge badge-secondary tag">LeetCode <span class="tag-num">10</span></a><a href="/category/fun/share/" class="badge badge-secondary tag">分享 <span class="tag-num">12</span></a><a href="/category/study/front-end/" class="badge badge-secondary tag">前端 <span class="tag-num">6</span></a><a href="/category/study/blockchain/" class="badge badge-secondary tag">区块链 <span class="tag-num">6</span></a><a href="/category/fun/" class="badge badge-secondary tag">图一乐 <span class="tag-num">7</span></a><a href="/category/study/" class="badge badge-secondary tag">学习文档 <span class="tag-num">1</span></a><a href="/category/game/minecraft/" class="badge badge-secondary tag">我的世界 <span class="tag-num">1</span></a><a href="/category/study/system/" class="badge badge-secondary tag">操作系统 <span class="tag-num">1</span></a><a href="/category/study/database/" class="badge badge-secondary tag">数据库 <span class="tag-num">3</span></a><a href="/category/uncategorized/" class="badge badge-secondary tag">未分类 <span class="tag-num">2</span></a><a href="/category/study/deep-learning/" class="badge badge-secondary tag">深度学习 <span class="tag-num">1</span></a><a href="/category/game/" class="badge badge-secondary tag">游戏 <span class="tag-num">1</span></a><a href="/category/life/" class="badge badge-secondary tag">生活 <span class="tag-num">2</span></a><a href="/category/website/" class="badge badge-secondary tag">网站建设 <span class="tag-num">10</span></a><a href="/category/solve_problem/" class="badge badge-secondary tag">解决问题 <span class="tag-num">3</span></a><a href="/category/study/software-development/" class="badge badge-secondary tag">软件开发 <span class="tag-num">2</span></a>			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="blog_tags" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">标签</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<a href="/tag/application/" class="badge badge-secondary tag">application <span class="tag-num">1</span></a><a href="/tag/caliper/" class="badge badge-secondary tag">caliper <span class="tag-num">1</span></a><a href="/tag/cdn/" class="badge badge-secondary tag">CDN <span class="tag-num">2</span></a><a href="/tag/couchdb/" class="badge badge-secondary tag">couchdb <span class="tag-num">1</span></a><a href="/tag/cpp/" class="badge badge-secondary tag">cpp <span class="tag-num">1</span></a><a href="/tag/css/" class="badge badge-secondary tag">CSS <span class="tag-num">2</span></a><a href="/tag/dht/" class="badge badge-secondary tag">DHT <span class="tag-num">1</span></a><a href="/tag/docker/" class="badge badge-secondary tag">docker <span class="tag-num">6</span></a><a href="/tag/easton/" class="badge badge-secondary tag">easton <span class="tag-num">1</span></a><a href="/tag/english/" class="badge badge-secondary tag">english <span class="tag-num">0</span></a><a href="/tag/fabric/" class="badge badge-secondary tag">Fabric <span class="tag-num">6</span></a><a href="/tag/fabric-ca/" class="badge badge-secondary tag">fabric-ca <span class="tag-num">1</span></a><a href="/tag/frp/" class="badge badge-secondary tag">frp <span class="tag-num">1</span></a><a href="/tag/ftp/" class="badge badge-secondary tag">FTP <span class="tag-num">1</span></a><a href="/tag/geoserver/" class="badge badge-secondary tag">GeoServer <span class="tag-num">1</span></a><a href="/tag/geowebcache/" class="badge badge-secondary tag">Geowebcache <span class="tag-num">1</span></a><a href="/tag/github-pages/" class="badge badge-secondary tag">Github Pages <span class="tag-num">1</span></a><a href="/tag/golang/" class="badge badge-secondary tag">Golang <span class="tag-num">1</span></a><a href="/tag/go%e5%bc%80%e5%8f%91/" class="badge badge-secondary tag">Go开发 <span class="tag-num">1</span></a><a href="/tag/go%e8%af%ad%e8%a8%80/" class="badge badge-secondary tag">Go语言 <span class="tag-num">1</span></a><a href="/tag/grafana/" class="badge badge-secondary tag">grafana <span class="tag-num">1</span></a><a href="/tag/hastings/" class="badge badge-secondary tag">hastings <span class="tag-num">1</span></a><a href="/tag/hexo/" class="badge badge-secondary tag">Hexo <span class="tag-num">1</span></a><a href="/tag/html/" class="badge badge-secondary tag">HTML <span class="tag-num">1</span></a><a href="/tag/https/" class="badge badge-secondary tag">HTTP(S) <span class="tag-num">1</span></a><a href="/tag/keyi/" class="badge badge-secondary tag">keyi <span class="tag-num">0</span></a><a href="/tag/makefile/" class="badge badge-secondary tag">makefile <span class="tag-num">1</span></a><a href="/tag/map/" class="badge badge-secondary tag">map <span class="tag-num">1</span></a><a href="/tag/markdown/" class="badge badge-secondary tag">markdown <span class="tag-num">1</span></a><a href="/tag/mx-space/" class="badge badge-secondary tag">mx-space <span class="tag-num">1</span></a><a href="/tag/nginx/" class="badge badge-secondary tag">nginx <span class="tag-num">3</span></a><a href="/tag/node-js-sdk/" class="badge badge-secondary tag">node js SDK <span class="tag-num">1</span></a><a href="/tag/openlayers/" class="badge badge-secondary tag">Openlayers <span class="tag-num">1</span></a><a href="/tag/p2p/" class="badge badge-secondary tag">P2P <span class="tag-num">1</span></a><a href="/tag/pgbench/" class="badge badge-secondary tag">pgbench <span class="tag-num">1</span></a><a href="/tag/php/" class="badge badge-secondary tag">php <span class="tag-num">1</span></a><a href="/tag/ping/" class="badge badge-secondary tag">ping <span class="tag-num">1</span></a><a href="/tag/postgis/" class="badge badge-secondary tag">postgis <span class="tag-num">1</span></a><a href="/tag/postgresql/" class="badge badge-secondary tag">postgresql <span class="tag-num">3</span></a><a href="/tag/private-tracke/" class="badge badge-secondary tag">Private Tracke <span class="tag-num">1</span></a><a href="/tag/prometheus/" class="badge badge-secondary tag">prometheus <span class="tag-num">1</span></a><a href="/tag/push-markdown/" class="badge badge-secondary tag">push-markdown <span class="tag-num">1</span></a><a href="/tag/qinglong/" class="badge badge-secondary tag">qinglong <span class="tag-num">1</span></a><a href="/tag/ssh/" class="badge badge-secondary tag">ssh <span class="tag-num">2</span></a><a href="/tag/tag1/" class="badge badge-secondary tag">Tag1 <span class="tag-num">1</span></a><a href="/tag/tag222/" class="badge badge-secondary tag">Tag222 <span class="tag-num">1</span></a><a href="/tag/tag333333/" class="badge badge-secondary tag">Tag333333 <span class="tag-num">1</span></a><a href="/tag/tag4444444444/" class="badge badge-secondary tag">Tag4444444444 <span class="tag-num">1</span></a><a href="/tag/tag5/" class="badge badge-secondary tag">Tag5 <span class="tag-num">1</span></a><a href="/tag/tcp-ip/" class="badge badge-secondary tag">TCP/IP <span class="tag-num">1</span></a><a href="/tag/test1/" class="badge badge-secondary tag">test1 <span class="tag-num">0</span></a><a href="/tag/test2/" class="badge badge-secondary tag">test2 <span class="tag-num">0</span></a><a href="/tag/torrent/" class="badge badge-secondary tag">torrent <span class="tag-num">1</span></a><a href="/tag/typecho/" class="badge badge-secondary tag">Typecho <span class="tag-num">1</span></a><a href="/tag/ubuntu/" class="badge badge-secondary tag">Ubuntu <span class="tag-num">1</span></a><a href="/tag/vector/" class="badge badge-secondary tag">vector <span class="tag-num">1</span></a><a href="/tag/vscode/" class="badge badge-secondary tag">vscode <span class="tag-num">2</span></a><a href="/tag/webgis/" class="badge badge-secondary tag">WebGIS <span class="tag-num">1</span></a><a href="/tag/wordpress/" class="badge badge-secondary tag">wordpress <span class="tag-num">4</span></a><a href="/tag/yolo/" class="badge badge-secondary tag">yolo <span class="tag-num">1</span></a><a href="/tag/zero205/" class="badge badge-secondary tag">zero205 <span class="tag-num">1</span></a><a href="/tag/%e4%b8%ad%e6%96%87/" class="badge badge-secondary tag">中文 <span class="tag-num">0</span></a><a href="/tag/%e4%b8%bb%e9%a2%98/" class="badge badge-secondary tag">主题 <span class="tag-num">1</span></a><a href="/tag/%e4%ba%8c%e5%8f%89%e6%a0%91/" class="badge badge-secondary tag">二叉树 <span class="tag-num">1</span></a><a href="/tag/%e5%85%b3%e4%ba%8e%e6%9c%ac%e4%ba%ba/" class="badge badge-secondary tag">关于本人 <span class="tag-num">2</span></a><a href="/tag/%e5%89%8d%e7%ab%af/" class="badge badge-secondary tag">前端 <span class="tag-num">1</span></a><a href="/tag/%e5%8c%97%e9%82%ae%e4%ba%ba/" class="badge badge-secondary tag">北邮人 <span class="tag-num">1</span></a><a href="/tag/%e5%8c%ba%e5%9d%97%e9%93%be/" class="badge badge-secondary tag">区块链 <span class="tag-num">1</span></a><a href="/tag/%e5%8d%9a%e5%ae%a2/" class="badge badge-secondary tag">博客 <span class="tag-num">2</span></a><a href="/tag/%e5%8f%af%e4%bb%a5/" class="badge badge-secondary tag">可以 <span class="tag-num">0</span></a><a href="/tag/%e5%9b%be%e4%b8%80%e4%b9%90/" class="badge badge-secondary tag">图一乐 <span class="tag-num">8</span></a><a href="/tag/%e5%9e%83%e5%9c%be%e5%be%ae%e4%bf%a1/" class="badge badge-secondary tag">垃圾微信 <span class="tag-num">1</span></a><a href="/tag/%e5%a5%bd%e7%89%a9%e6%8e%a8%e8%8d%90/" class="badge badge-secondary tag">好物推荐 <span class="tag-num">2</span></a><a href="/tag/%e5%ad%97%e7%ac%a6%e4%b8%b2/" class="badge badge-secondary tag">字符串 <span class="tag-num">1</span></a><a href="/tag/%e5%ad%a6%e4%b9%a0/" class="badge badge-secondary tag">学习 <span class="tag-num">4</span></a><a href="/tag/%e5%af%86%e7%a0%81%e7%ae%a1%e7%90%86/" class="badge badge-secondary tag">密码管理 <span class="tag-num">1</span></a><a href="/tag/%e5%af%b9%e8%b1%a1%e5%ad%98%e5%82%a8/" class="badge badge-secondary tag">对象存储 <span class="tag-num">1</span></a><a href="/tag/%e5%b0%8f%e5%b7%a5%e5%85%b7/" class="badge badge-secondary tag">小工具 <span class="tag-num">2</span></a><a href="/tag/%e5%bd%92%e6%a1%a3/" class="badge badge-secondary tag">归档 <span class="tag-num">1</span></a><a href="/tag/%e6%88%91%e7%9a%84%e4%b8%96%e7%95%8c/" class="badge badge-secondary tag">我的世界 <span class="tag-num">1</span></a><a href="/tag/%e6%89%8b%e6%9c%ba/" class="badge badge-secondary tag">手机 <span class="tag-num">1</span></a><a href="/tag/%e6%8c%87%e5%8d%97%e7%b3%bb%e5%88%97/" class="badge badge-secondary tag">指南系列 <span class="tag-num">1</span></a><a href="/tag/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f/" class="badge badge-secondary tag">操作系统 <span class="tag-num">1</span></a><a href="/tag/%e6%95%b0%e6%8d%ae%e5%ba%93/" class="badge badge-secondary tag">数据库 <span class="tag-num">1</span></a><a href="/tag/%e6%95%b0%e7%bb%84/" class="badge badge-secondary tag">数组 <span class="tag-num">1</span></a><a href="/tag/%e6%99%ba%e8%83%bd%e5%90%88%e7%ba%a6/" class="badge badge-secondary tag">智能合约 <span class="tag-num">1</span></a><a href="/tag/%e6%9c%ac%e5%9c%b0/" class="badge badge-secondary tag">本地 <span class="tag-num">1</span></a><a href="/tag/%e6%b5%8f%e8%a7%88%e5%99%a8/" class="badge badge-secondary tag">浏览器 <span class="tag-num">1</span></a><a href="/tag/%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0/" class="badge badge-secondary tag">深度学习 <span class="tag-num">1</span></a><a href="/tag/%e7%94%9f%e6%b4%bb/" class="badge badge-secondary tag">生活 <span class="tag-num">1</span></a><a href="/tag/%e7%94%b5%e5%bd%b1/" class="badge badge-secondary tag">电影 <span class="tag-num">1</span></a><a href="/tag/%e7%94%b5%e8%a7%86%e5%89%a7/" class="badge badge-secondary tag">电视剧 <span class="tag-num">1</span></a><a href="/tag/%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b/" class="badge badge-secondary tag">目标检测 <span class="tag-num">1</span></a><a href="/tag/%e7%a7%8d%e5%ad%90/" class="badge badge-secondary tag">种子 <span class="tag-num">1</span></a><a href="/tag/%e7%bb%83%e4%b9%a0%e7%94%9f/" class="badge badge-secondary tag">练习生 <span class="tag-num">1</span></a><a href="/tag/%e7%bd%91%e7%ab%99%e5%bb%ba%e8%ae%be/" class="badge badge-secondary tag">网站建设 <span class="tag-num">6</span></a><a href="/tag/%e7%bd%91%e7%bb%9c%e5%ae%89%e5%85%a8/" class="badge badge-secondary tag">网络安全 <span class="tag-num">3</span></a><a href="/tag/%e8%8f%9c%e9%b8%9f%e6%95%99%e7%a8%8b/" class="badge badge-secondary tag">菜鸟教程 <span class="tag-num">1</span></a><a href="/tag/%e8%90%8c%e5%9b%bd/" class="badge badge-secondary tag">萌国 <span class="tag-num">1</span></a><a href="/tag/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="badge badge-secondary tag">虚拟机 <span class="tag-num">1</span></a><a href="/tag/%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91/" class="badge badge-secondary tag">软件开发 <span class="tag-num">1</span></a><a href="/tag/%e9%80%9f%e6%88%90/" class="badge badge-secondary tag">速成 <span class="tag-num">1</span></a><a href="/tag/%e9%93%be%e7%a0%81/" class="badge badge-secondary tag">链码 <span class="tag-num">1</span></a><a href="/tag/%e9%93%be%e8%a1%a8/" class="badge badge-secondary tag">链表 <span class="tag-num">1</span></a><a href="/tag/%e9%98%bf%e9%87%8c/" class="badge badge-secondary tag">阿里 <span class="tag-num">1</span></a><a href="/tag/%e9%9d%99%e6%80%81%e9%a1%b5%e9%9d%a2/" class="badge badge-secondary tag">静态页面 <span class="tag-num">1</span></a>			</div>
+		</div>
+	</div>
+</div>
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+		<article class="post post-full card bg-white shadow-sm border-0" id="post-1024">
+	<header class="post-header text-center post-header-with-thumbnail">
+		<img class="post-thumbnail" src="/wp-content/uploads/2021/10/erciyuan53.webp"><div class="post-header-text-container">		<a class="post-title" href="/leetcode-7/">LeetCode-7</a>
+		<div class="post-meta">
+			<div class="post-meta-detail post-meta-detail-time">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<time title="发布于 2021-11-20 17:37:23 | 编辑于 2021-11-28 13:28:58">2021-11-20 17:37
+					</time>
+				</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-edittime">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<time title="发布于 2021-11-20 17:37:23 | 编辑于 2021-11-28 13:28:58">2021-11-28 13:28
+					</time>
+				</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-views">
+					<i class="fa fa-eye" aria-hidden="true"></i> 7</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-comments">
+					<i class="fa fa-comments-o" aria-hidden="true"></i> 0</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-categories">
+				<i class="fa fa-bookmark-o" aria-hidden="true"></i> <a href="/category/study/leetcode/" target="_blank" class="post-meta-detail-catagory-link">LeetCode</a>
+</div>					</div>
+		</div>	</header>
+
+	<div class="post-content" id="post_content">
+		<h1 id="leetcode-7" tabindex="-1">LeetCode-7</h1>
+<p>刷啊，有点有心无力，有些题目可能之后再刷了。</p>
+<h2 id="318-最大单词长度乘积" tabindex="-1">318 最大单词长度乘积</h2>
+<p>刷题时间：2021-11-17</p>
+<p>垃圾时间和垃圾空间，自己写的果然不行，主要拉在了单词对比上。</p>
+<pre><code class="language-js">var maxProduct = function (words) {
+    let res = 0;
+    const n = words.length;
+    for (let i = 0; i &lt; n; i++) {
+        for (let j = i; j &lt; n; j++) {
+            if (isUnique(words[i], words[j]) &amp;&amp; res &lt; words[i].length * words[j].length) {
+                res = words[i].length * words[j].length;
+            }
+        }
+    }
+    return res;
+};
+
+const isUnique = function (a, b) {
+    const num_a = 'a'.charCodeAt();
+    const res = new Array(26).fill(0);
+
+    for (const i of a) {
+        res[i.charCodeAt() - num_a]++;
+    }
+    for (const j of b) {
+        res[j.charCodeAt() - num_a]--;
+    }
+    let sum = 0;
+    for (const r of res) {
+        sum += Math.abs(r);
+    }
+    if (sum != a.length + b.length) {
+        return false;
+    }
+    return true;
+};
+</code></pre>
+<p>上个官解的，用了位运算，这样子预处理的时候还是要遍历word的每一字字符，只不过比较的时候，只需要与一下，这样子就能判断是不是相同的。比我的方法快了不知道哪里去了，我这也太慢了。</p>
+<pre><code class="language-js">var maxProduct = function(words) {
+    const length = words.length;
+    const masks = new Array(length).fill(0);
+    for (let i = 0; i &lt; length; i++) {
+        const word = words[i];
+        const wordLength = word.length;
+        for (let j = 0; j &lt; wordLength; j++) {
+            masks[i] |= 1 &lt;&lt; (word[j].charCodeAt() - 'a'.charCodeAt());
+        }
+    }
+    let maxProd = 0;
+    for (let i = 0; i &lt; length; i++) {
+        for (let j = i + 1; j &lt; length; j++) {
+            if ((masks[i] &amp; masks[j]) === 0) {
+                maxProd = Math.max(maxProd, words[i].length * words[j].length);
+            }
+        }
+    }
+    return maxProd;
+};
+</code></pre>
+<p>还有更优化一点的，因为字母相同，但是长度不相同的，比如meet和met，他们的掩码都一样，那么只需要最长的那个长度留下来，met就可以去掉了，用map来保存，给个go的解法</p>
+<pre><code class="language-go">func maxProduct(words []string) (ans int) {
+    masks := map[int]int{}
+    for _, word := range words {
+        mask := 0
+        for _, ch := range word {
+            mask |= 1 &lt;&lt; (ch - 'a')
+        }
+        if len(word) &gt; masks[mask] {
+            masks[mask] = len(word)
+        }
+    }
+
+    for x, lenX := range masks {
+        for y, lenY := range masks {
+            if x&amp;y == 0 &amp;&amp; lenX*lenY &gt; ans {
+                ans = lenX * lenY
+            }
+        }
+    }
+    return
+}
+</code></pre>
+<h2 id="39-组合总和" tabindex="-1">39 组合总和</h2>
+<p>这类递归我真的不行，不知道为什么我这么菜，我之后一定要着重学习一下这类题目</p>
+<pre><code class="language-js">var combinationSum = function (candidates, target) {
+    const ans = [];
+    const dfs = (target, combine, idx) =&gt; {
+        if (idx === candidates.length) {
+            return;
+        }
+        if (target === 0) {
+            ans.push(combine);
+            return;
+        }
+        // 直接跳过
+        dfs(target, combine, idx + 1);
+        // 选择当前数
+        if (target - candidates[idx] &gt;= 0) {
+            dfs(target - candidates[idx], [...combine, candidates[idx]], idx);
+        }
+    };
+    dfs(target, [], 0);
+    return ans;
+};
+</code></pre>
+<p>这个方法更像我自己写的，我没有写个start，有点尿了</p>
+<pre><code class="language-js">const combinationSum = (candidates, target) =&gt; {
+  const res = [];
+  const dfs = (start, temp, sum) =&gt; {
+    if (sum &gt;= target) {        // 爆掉了，不用继续选数了
+      if (sum == target) {      // 加入解集
+        res.push(temp.slice()); // temp的拷贝
+      }
+      return;                   // 结束当前递归
+    }
+    for (let i = start; i &lt; candidates.length; i++) { // 枚举出选择，从start开始
+      temp.push(candidates[i]);          // 加入“部分解”
+      dfs(i, temp, sum + candidates[i]); // 往下继续选择，同时sum累加上当前数字
+      temp.pop();                        // 撤销选择
+    }
+  };
+  dfs(0, [], 0);
+  return res;
+};
+</code></pre>
+<h2 id="40-组合总和-ii" tabindex="-1">40 组合总和 II</h2>
+<p>放弃了，以后把这类回溯问题都看一遍</p>
+<pre><code class="language-js">
+var combinationSum2 = function(candidates, target) {
+    const res = []; path = [], len = candidates.length;
+    candidates.sort();
+    backtracking(0, 0);
+    return res;
+    function backtracking(sum, i) {
+        if (sum &gt; target) return;
+        if (sum === target) {
+            res.push(Array.from(path));
+            return;
+        }
+        let f = -1;
+        for(let j = i; j &lt; len; j++) {
+            const n = candidates[j];
+            if(n &gt; target - sum || n === f) continue;
+            path.push(n);
+            sum += n;
+            f = n;
+            backtracking(sum, j + 1);
+            path.pop();
+            sum -= n;
+        }
+    }
+};
+</code></pre>
+<h2 id="594-最长和谐子序列" tabindex="-1">594 最长和谐子序列</h2>
+<p>刷题时间：2021-11-20</p>
+<p>最近两天有点忙，没有空刷题，今天重新开刷，这题目说实话有点难的，没想到是简单题目，先用排序进行排序，然后就没有然后了。</p>
+<pre><code class="language-js">var findLHS = function (nums) {
+    nums.sort((a, b) =&gt; a - b);
+    let ans = 0,
+        l = 0;
+
+    for (let i = 0; i &lt; nums.length; i++) {
+        while (nums[i] - nums[l] &gt; 1) {
+            l++;
+        }
+        if (nums[i] - nums[l] == 1) {
+            ans = Math.max(i - l + 1, ans);
+        }
+    }
+    return ans;
+};
+</code></pre>
+<p>用这个哈希表，有点牛逼的，直接统计每个数的个数，然后再遍历哈希表，找x+1，就很快</p>
+<pre><code class="language-js">var findLHS = function(nums) {
+    const cnt = new Map();
+    let res = 0;
+    for (const num of nums) {
+        cnt.set(num, (cnt.get(num) || 0) + 1);
+    }
+    for (const key of cnt.keys()) {
+        if (cnt.has(key + 1)) {
+            res = Math.max(res, cnt.get(key) + cnt.get(key + 1));
+        }
+    }
+    return res;
+};
+</code></pre>
+<h2 id="559-n-叉树的最大深度" tabindex="-1">559 N 叉树的最大深度</h2>
+<p>刷题时间：2021-11-21</p>
+<p>就这个多节点我是没想到是怎么表示的，没想到是遍历children来获取的</p>
+<pre><code>var maxDepth = function (root) {
+    if (!root) return 0;
+    let res = 0;
+    for (const child of root.children) {
+        res = Math.max(res, maxDepth(child));
+    }
+    return res + 1;
+};
+
+</code></pre>
+<p>广度优先，这个也简单</p>
+<pre><code class="language-js">var maxDepth = function (root) {
+    if (!root) return 0;
+    const queue = [];
+    queue.push(root);
+    let res = 0;
+    while (queue.length) {
+        let size = queue.length;
+        for (let i = 0; i &lt; size; i++) {
+            const node = queue.shift();
+            const children = node.children;
+            for (const child of children) {
+                queue.push(child);
+            }
+        }
+        res++;
+    }
+    return res;
+};
+</code></pre>
+<h2 id="384-打乱数组" tabindex="-1">384 打乱数组</h2>
+<p>刷题时间：2021-11-22</p>
+<p>每次遇到这种题目，我基本上都是直接看题解的，自己有点没思路的感觉，虽然挺简单的，不过我觉得OJ应该也不会出这种题目。</p>
+<pre><code class="language-js">var Solution = function (nums) {
+    this.nums = nums;
+    this.original = nums.slice();
+};
+
+/**
+ * @return {number[]}
+ */
+Solution.prototype.reset = function () {
+    this.nums = this.original.slice();
+    return this.nums;
+};
+
+/**
+ * @return {number[]}
+ */
+Solution.prototype.shuffle = function () {
+    const shuffled = new Array(this.nums.length).fill(0);
+    const list = this.nums.slice();
+    // const list = [];
+    // this.nums.forEach((num) =&gt; list.push(num));
+    for (let i = 0; i &lt; this.nums.length; ++i) {
+        const j = Math.random() * list.length;
+        shuffled[i] = list.splice(j, 1);
+    }
+    this.nums = shuffled.slice();
+    return this.nums;
+};
+</code></pre>
+<p>Fisher-Yates 洗牌算法这个看起来挺牛的，就是原地洗牌，在第i次循环中，从[i,n)中随机抽取一个下标j；将第i个元素与第j个元素交换，这样子时间只用O(n)，来个Go版本的</p>
+<pre><code class="language-go">type Solution struct {
+	nums, original []int
+}
+
+func Constructor(nums []int) Solution {
+	return Solution{nums, append([]int(nil), nums...)}
+}
+
+func (s *Solution) Reset() []int {
+	copy(s.nums, s.original)
+	return s.nums
+}
+
+func (s *Solution) Shuffle() []int {
+	n := len(s.nums)
+	for i := range s.nums {
+		j := i + rand.Intn(n-i)
+		s.nums[i], s.nums[j] = s.nums[j], s.nums[i]
+	}
+	return s.nums
+}
+</code></pre>
+<h2 id="17-电话号码的字母组合" tabindex="-1">17 电话号码的字母组合</h2>
+<p>刷题时间：2021-11-22</p>
+<p>又是我想不出来，查看答案的一天，尿了。</p>
+<pre><code class="language-js">var letterCombinations = function (digits) {
+    if (digits == '') {
+        return [];
+    }
+    const number = new Map([
+        ['2', 'abc'],
+        ['3', 'def'],
+        ['4', 'ghi'],
+        ['5', 'jkl'],
+        ['6', 'mno'],
+        ['7', 'pqrs'],
+        ['8', 'tuv'],
+        ['9', 'wxyz']
+    ]);
+    const res = [];
+    const dfs = function (index, str) {
+        if (index == digits.length) {
+            res.push(str);
+        } else {
+            const tmp = number.get(digits[index]);
+            for (let t of tmp) {
+                dfs(index + 1, str + t);
+            }
+        }
+    };
+    dfs(0, '');
+    return res;
+};
+</code></pre>
+<h2 id="22-括号生成" tabindex="-1">22 括号生成</h2>
+<p>我可真是five，只能抄别人答案，算什么男人！</p>
+<pre><code class="language-js">var generateParenthesis = function (n) {
+    const res = [];
+    const dfs = function (left, right, str) {
+        if (left == n &amp;&amp; right == n) {
+            res.push(str);
+        } else {
+            if (left &gt; right) {
+                if (left &lt; n) {
+                    dfs(left + 1, right, str + '(');
+                }
+                dfs(left, right + 1, str + ')');
+            } else if (left == right) {
+                dfs(left + 1, right, str + '(');
+            }
+        }
+    };
+    dfs(0, 0, '');
+    return res;
+};
+</code></pre>
+<h2 id="79-单词搜索" tabindex="-1">79 单词搜索</h2>
+<p>呜呜呜，错了几次总算写出来了，就这种题目真的是太难了。</p>
+<pre><code class="language-js">var exist = function (board, word) {
+    const m = board.length;
+    const n = board[0].length;
+
+    const flag = Array.from(new Array(m), () =&gt; {
+        return new Array(n).fill(false);
+    });
+    const dfs = function (i, j, index) {
+        if (index == word.length) return true;
+        if (i &lt; 0 || i &gt;= m || j &lt; 0 || j &gt;= n || flag[i][j]) {
+            return false;
+        }
+        if (word[index] == board[i][j] &amp;&amp; !flag[i][j]) {
+            flag[i][j] = true;
+            if (dfs(i + 1, j, index + 1)) return true;
+            if (dfs(i, j + 1, index + 1)) return true;
+            if (dfs(i - 1, j, index + 1)) return true;
+            if (dfs(i, j - 1, index + 1)) return true;
+        }
+        flag[i][j] = false;
+        return false;
+    };
+    for (let i = 0; i &lt; m; i++) {
+        for (let j = 0; j &lt; n; j++) {
+            if (board[i][j] == word[0]) {
+                if (dfs(i, j, 0)) return true;
+            }
+        }
+    }
+    return false;
+};
+</code></pre>
+<h2 id="213-打家劫舍-ii" tabindex="-1">213 打家劫舍 II</h2>
+<p>刷题时间：2021-11-22</p>
+<p>在打家劫舍1的基础上进行学习，其实就是遍历两遍，要么只要[0,n-1]，要么就是[1,n]。</p>
+<pre><code class="language-js">const rob = function (nums) {
+    const n = nums.length;
+    if (n == 1) {
+        return nums[0];
+    } else if (n == 2) {
+        return Math.max(nums[0], nums[1]);
+    }
+    return Math.max(func(nums, 0, n - 1), func(nums, 1, n));
+};
+const func = function (nums, start, end) {
+    const n = nums.length;
+    let q = 0,
+        p = 0,
+        r = nums[start];
+
+    for (let i = start + 1; i &lt; end; i++) {
+        q = p;
+        p = r;
+        r = Math.max(p, q + nums[i]);
+    }
+    return Math.max(r, p);
+};
+</code></pre>
+<h2 id="859-亲密字符串" tabindex="-1">859 亲密字符串</h2>
+<p>刷题日期：2021-11-23</p>
+<p>就不贴一开始的代码了，优化了一下，直接先判断两个是不是相同的，然后找出不同之处，直接截断，这样子时间会大大加快。</p>
+<pre><code class="language-js">var buddyStrings = function (s, goal) {
+    if (s.length != goal.length) return false;
+    const n = s.length;
+    const map = new Map();
+    let diff = [];
+    if (s == goal) {
+        for (let i of s) {
+            if (map.get(i) == 1) {
+                return true;
+            } else {
+                map.set(i, 1);
+            }
+        }
+    }
+    for (let i = 0; i &lt; n; i++) {
+        if (s[i] != goal[i]) {
+            diff.push(s[i], goal[i]);
+        }
+    }
+    if (diff.length == 4 &amp;&amp; diff[0] == diff[3] &amp;&amp; diff[1] == diff[2]) {
+        return true;
+    }
+    return false;
+};
+</code></pre>
+<h2 id="55-跳跃游戏" tabindex="-1">55 跳跃游戏</h2>
+<p>dp为最远距离，也不知道为什么这么慢是怎么回事</p>
+<pre><code class="language-js">var canJump = function (nums) {
+    const n = nums.length;
+    let dp = 0;
+    for (let i = 0; i &lt; n - 1; i++) {
+        if (dp &lt; i) return false;
+        dp = Math.max(dp, nums[i] + i);
+    }
+    if (dp &gt;= n - 1) {
+        return true;
+    }
+    return false;
+};
+</code></pre>
+<p>干，看了别人的，稍微优化了一下，就直接能行，确实，但时间怎么差的这么多</p>
+<pre><code class="language-js">var canJump = function (nums) {
+    const n = nums.length;
+    let dp = 0;
+    for (let i = 0; i &lt; n; i++) {
+        if (dp &lt; i) return false;
+        dp = Math.max(dp, nums[i] + i);
+    }
+    return true;
+};
+</code></pre>
+<h2 id="45-跳跃游戏-ii" tabindex="-1">45 跳跃游戏 II</h2>
+<p>干，又要看提示，其实和我想的差不多，只不过还差一点意思。</p>
+<pre><code class="language-js">var jump = function (nums) {
+    const n = nums.length;
+    let dp = 0;
+    let res = 0;
+    let end = 0;
+    for (let i = 0; i &lt; n - 1; i++) {
+        dp = Math.max(dp, nums[i] + i);
+        if (i == end) {
+            end = dp;
+            res++;
+        }
+    }
+    return res;
+};
+</code></pre>
+<h2 id="62-不同路径" tabindex="-1">62 不同路径</h2>
+<p>直接抄以前的C++解法，舒服了</p>
+<pre><code class="language-js">var uniquePaths = function (m, n) {
+    const dp = new Array(m).fill(new Array(n).fill(0));
+    for (let i = 0; i &lt; m; i++) {
+        for (let j = 0; j &lt; n; j++) {
+            if (i == 0 || j == 0) {
+                dp[i][j] = 1;
+            } else {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+    }
+    return dp[m - 1][n - 1];
+};
+</code></pre>
+<p>还有个组合数学的方法，就离谱，我不会</p>
+<pre><code class="language-js">var uniquePaths = function(m, n) {
+    let ans = 1;
+    for (let x = n, y = 1; y &lt; m; ++x, ++y) {
+        ans = Math.floor(ans * x / y);
+    }
+    return ans;
+};
+</code></pre>
+<h2 id="5-最长回文子串" tabindex="-1">5 最长回文子串</h2>
+<p>就最简单的思想，遍历每一个文字，从中间往外扩散看看有没有回文，需要注意要有两个，一个是单字符，还有一个是双字符，两种情况都是不一样的，都要考虑进去</p>
+<pre><code class="language-js">var longestPalindrome = function (s) {
+    const n = s.length;
+    const expand = function (left, right) {
+        while (left &gt;= 0 &amp;&amp; right &lt; n &amp;&amp; s[left] == s[right]) {
+            --left;
+            ++right;
+        }
+        // console.log(left);
+        return [left + 1, right - 1];
+    };
+    let end = 0,
+        start = 0;
+    for (let i = 0; i &lt; n; i++) {
+        let arr = expand(i, i);
+        let left = arr[0];
+        let right = arr[1];
+        if (right - left &gt; end - start) {
+            end = right;
+            start = left;
+        }
+        arr = expand(i, i + 1);
+        left = arr[0];
+        right = arr[1];
+        if (right - left &gt; end - start) {
+            end = right;
+            start = left;
+        }
+    }
+    return s.substring(start, end + 1);
+};
+</code></pre>
+<h2 id="413-等差数列划分" tabindex="-1">413 等差数列划分</h2>
+<p>我直接背一遍题解，抄下来，tmp就是有点连续子序列的个数吧，如果连续的，那么就是上次连续的个数+1，比如，1234，123的个数是1，到4的时候，是1+1，也就是上一个连续次数的+1，如果还有5的话，那么就是2+1，就相当于直接把上次的拿来用，然后多出5这种情况，反正就有点怪怪的。</p>
+<pre><code class="language-js">var numberOfArithmeticSlices = function (nums) {
+    let dp = nums[0] - nums[1];
+    let res = 0;
+    let tmp = 0;
+    for (let i = 2; i &lt; nums.length; i++) {
+        if (nums[i - 1] - nums[i] == dp) {
+            tmp++;
+        } else {
+            dp = nums[i - 1] - nums[i];
+            tmp = 0;
+        }
+        res += tmp;
+    }
+    return res;
+};
+</code></pre>
+<h2 id="91-解码方法" tabindex="-1">91 解码方法</h2>
+<p>刷题时间：2021-11-23</p>
+<p>这道题写了好久，干，就是有好多情况需要考虑，尽在不言处啊。</p>
+<pre><code class="language-js">var numDecodings = function (s) {
+    if (s[0] == '0') {
+        return 0;
+    }
+    const dp = new Array(s.length + 1).fill(0);
+    dp[0] = 1;
+    dp[1] = 1;
+    for (let i = 1; i &lt; s.length; i++) {
+        if ((s[i] != '0' &amp;&amp; s[i - 1] == '1') || (['1', '2', '3', '4', '5', '6'].includes(s[i]) &amp;&amp; s[i - 1] == '2')) {
+            dp[i + 1] += dp[i] + dp[i - 1];
+        } else if (s[i] == '0') {
+            if (!['1', '2'].includes(s[i - 1])) {
+                return 0;
+            } else if (i - 2 &gt;= 0 &amp;&amp; (s[i - 2] == '1' || s[i - 2] == '2')) {
+                dp[i + 1] = dp[i - 1];
+            } else dp[i + 1] = dp[i];
+        } else {
+            dp[i + 1] = dp[i];
+        }
+    }
+    return dp[s.length];
+};
+</code></pre>
+<p>日，官解的好简单</p>
+<pre><code class="language-js">var numDecodings = function (s) {
+    const n = s.length;
+    const f = new Array(n + 1).fill(0);
+    f[0] = 1;
+    for (let i = 1; i &lt;= n; ++i) {
+        if (s[i - 1] !== '0') {
+            f[i] = f[i - 1];
+        }
+        if (i &gt; 1 &amp;&amp; s[i - 2] != '0' &amp;&amp; (s[i - 2] - '0') * 10 + (s[i - 1] - '0') &lt;= 26) {
+            f[i] += f[i - 2];
+        }
+    }
+    return f[n];
+};
+</code></pre>
+<p>然后用三个变量进行替代，然后加上一个小剪枝。</p>
+<pre><code class="language-js">var numDecodings = function (s) {
+    const n = s.length;
+    // a = f[i-2], b = f[i-1], c = f[i]
+    let a = 0,
+        b = 1,
+        c = 0;
+    for (let i = 1; i &lt;= n; ++i) {
+        if (b == 0) return 0;
+        c = 0;
+        if (s[i - 1] !== '0') {
+            c += b;
+        }
+        if (i &gt; 1 &amp;&amp; s[i - 2] != '0' &amp;&amp; (s[i - 2] - '0') * 10 + (s[i - 1] - '0') &lt;= 26) {
+            c += a;
+        }
+        a = b;
+        b = c;
+    }
+    return c;
+};
+
+</code></pre>
+<p>我再把我的方法精简一下，换成三个变量，这样子空间和用时都快多了。</p>
+<pre><code class="language-js">var numDecodings = function (s) {
+    if (s[0] == '0') {
+        return 0;
+    }
+    let a = 1,
+        b = 1,
+        c = 0;
+
+    for (let i = 0; i &lt; s.length; i++) {
+        c = 0;
+        if ((s[i] != '0' &amp;&amp; s[i - 1] == '1') || (['1', '2', '3', '4', '5', '6'].includes(s[i]) &amp;&amp; s[i - 1] == '2')) {
+            c += b + a;
+        } else if (s[i] == '0') {
+            if (!['1', '2'].includes(s[i - 1])) {
+                return 0;
+            } else if (i - 2 &gt;= 0 &amp;&amp; (s[i - 2] == '1' || s[i - 2] == '2')) {
+                c = a;
+            } else c = b;
+        } else {
+            c = b;
+        }
+        a = b;
+        b = c;
+    }
+    return c;
+};
+</code></pre>
+<h2 id="139-单词拆分" tabindex="-1">139 单词拆分</h2>
+<p>就硬抄官解，自己只有一个很模糊的想法</p>
+<pre><code class="language-js">var wordBreak = function (s, wordDict) {
+    const n = s.length;
+    const wordDictSet = new Set(wordDict);
+    const dp = new Array(n + 1).fill(false);
+    dp[0] = true;
+    for (let i = 1; i &lt;= n; i++) {
+        for (let j = 0; j &lt; i; j++) {
+            if (dp[j] &amp;&amp; wordDictSet.has(s.substr(j, i - j))) {
+                dp[i] = true;
+                break;
+            }
+        }
+    }
+    return dp[n];
+};
+</code></pre>
+<h2 id="423-从英文中重建数字" tabindex="-1">423 从英文中重建数字</h2>
+<p>刷题时间：2021-11-24</p>
+<p>自己写的拉了，还是用官解好了</p>
+<pre><code class="language-js">var originalDigits = function (s) {
+    const c = new Map();
+    for (const ch of s) {
+        c.set(ch, (c.get(ch) || 0) + 1);
+    }
+
+    const cnt = new Array(10).fill(0);
+    cnt[0] = c.get('z') || 0;
+    cnt[2] = c.get('w') || 0;
+    cnt[4] = c.get('u') || 0;
+    cnt[6] = c.get('x') || 0;
+    cnt[8] = c.get('g') || 0;
+
+    cnt[3] = (c.get('h') || 0) - cnt[8];
+    cnt[5] = (c.get('f') || 0) - cnt[4];
+    cnt[7] = (c.get('s') || 0) - cnt[6];
+
+    cnt[1] = (c.get('o') || 0) - cnt[0] - cnt[2] - cnt[4];
+
+    cnt[9] = (c.get('i') || 0) - cnt[5] - cnt[6] - cnt[8];
+
+    const ans = [];
+    for (let i = 0; i &lt; 10; ++i) {
+        for (let j = 0; j &lt; cnt[i]; ++j) {
+            ans.push(String.fromCharCode(i + '0'.charCodeAt()));
+        }
+    }
+    return ans.join('');
+};
+</code></pre>
+<h2 id="300-最长递增子序列" tabindex="-1">300 最长递增子序列</h2>
+<p>刷题时间：2021-11-24</p>
+<p>O(n2)的方法，还行就。 dp[i] 严格比目前值小的长度</p>
+<pre><code class="language-js">var lengthOfLIS = function (nums) {
+    const n = nums.length;
+    const dp = new Array(n).fill(1);
+    for (let i = 0; i &lt; n; i++) {
+        let max = 0;
+        for (let j = i; j &gt;= 0; j--) {
+            if (nums[j] &lt; nums[i]) {
+                max = Math.max(dp[j], max);
+            }
+        }
+        dp[i] += max;
+    }
+    return Math.max.apply(null, dp);
+};
+</code></pre>
+<p>这个O(nlogn)的速度是真的快啊</p>
+<p>d[i] ，表示长度为 i的最长上升子序列的末尾元素的最小值</p>
+<p>用 len 记录目前最长上升子序列的长度</p>
+<pre><code class="language-js">var lengthOfLIS = function (nums) {
+    const n = nums.length;
+    if (n == 0) {
+        return 0;
+    }
+    let len = 1;
+
+    const d = new Array(n + 1).fill(0);
+    d[len] = nums[0];
+    for (let i = 1; i &lt; n; ++i) {
+        if (nums[i] &gt; d[len]) {
+            d[++len] = nums[i];
+        } else {
+            let l = 1,
+                r = len,
+                pos = 0; // 如果找不到说明所有的数都比 nums[i] 大，此时要更新 d[1]，所以这里将 pos 设为 0
+            while (l &lt;= r) {
+                let mid = (l + r) &gt;&gt; 1;
+                if (d[mid] &lt; nums[i]) {
+                    pos = mid;
+                    l = mid + 1;
+                } else {
+                    r = mid - 1;
+                }
+            }
+            d[pos + 1] = nums[i];
+        }
+    }
+    return len;
+};
+</code></pre>
+<h2 id="673-最长递增子序列的个数" tabindex="-1">673 最长递增子序列的个数</h2>
+<p>拉胯O(n2)</p>
+<p>dp[i] 以nums[i]为结尾的，严格比目前值小的长度</p>
+<p>cnt[i] 以nums[i]为结尾的，比目前小的最长序列的个数</p>
+<pre><code class="language-js">var findNumberOfLIS = function (nums) {
+    const n = nums.length;
+    let maxLen = 0,
+        ans = 0;
+    const dp = new Array(n).fill(1);
+    const cnt = new Array(n).fill(1);
+    for (let i = 0; i &lt; n; i++) {
+        for (let j = 0; j &lt; i; j++) {
+            if (nums[j] &lt; nums[i]) {
+                if (dp[j] + 1 &gt; dp[i]) {
+                    dp[i] = dp[j] + 1;
+                    cnt[i] = cnt[j]; // 重置计数
+                } else if (dp[j] + 1 === dp[i]) {
+                    cnt[i] += cnt[j];
+                }
+            }
+        }
+        console.log(cnt);
+        if (dp[i] &gt; maxLen) {
+            maxLen = dp[i];
+            ans = cnt[i]; // 重置计数
+        } else if (dp[i] === maxLen) {
+            ans += cnt[i];
+        }
+    }
+    return ans;
+};
+</code></pre>
+<h2 id="1143-最长公共子序列" tabindex="-1">1143 最长公共子序列</h2>
+<p>这题真的是二维动态数组的经典，虽然我写不出来，但可以回味复习，典中典。</p>
+<p><code>dp[i][j]</code>代表text1[0:i]和text2[0:j]的最长公共子序列长度。</p>
+<pre><code class="language-js">var longestCommonSubsequence = function(text1, text2) {
+    const m = text1.length, n = text2.length;
+    const dp = new Array(m + 1).fill(0).map(() =&gt; new Array(n + 1).fill(0));
+    for (let i = 1; i &lt;= m; i++) {
+        const c1 = text1[i - 1];
+        for (let j = 1; j &lt;= n; j++) {
+            const c2 = text2[j - 1];
+            if (c1 === c2) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            } else {
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+    return dp[m][n];
+};
+</code></pre>
+<h2 id="583-两个字符串的删除操作" tabindex="-1">583 两个字符串的删除操作</h2>
+<p>就是最长公共子序列，最后返回那里改一下就行了，就这？</p>
+<pre><code class="language-js">var minDistance = function (word1, word2) {
+    const m = word1.length,
+        n = word2.length;
+    const dp = new Array(m + 1).fill(0).map(() =&gt; new Array(n + 1).fill(0));
+    for (let i = 1; i &lt;= m; i++) {
+        const c1 = word1[i - 1];
+        for (let j = 1; j &lt;= n; j++) {
+            const c2 = word2[j - 1];
+            if (c1 === c2) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            } else {
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+    return m + n - 2 * dp[m][n];
+};
+</code></pre>
+<h2 id="1091-二进制矩阵中的最短路径" tabindex="-1">1091 二进制矩阵中的最短路径</h2>
+<p>居然是bfs，可惜我做不出来，不过这题看懂了就简单了</p>
+<pre><code class="language-js">/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var shortestPathBinaryMatrix = function (grid) {
+    // 缓存矩阵的终点位置
+    const m = grid.length - 1;
+    const n = grid[0].length - 1;
+
+    // 当起点和终点为1时，必然无法到达终点
+    if (grid[0][0] === 1 || grid[m][n] === 1) {
+        return -1;
+    }
+
+    // 如果矩阵只有1个点，且为0，路径为1
+    if (m === 0 &amp;&amp; n === 0 &amp;&amp; grid[0][0] === 0) {
+        return 1;
+    }
+
+    let queue = [[0, 0]]; // 使用队列进行BFS搜索
+    let level = 1; // 缓存路径长度，起点的长度为1
+    // 可以向四周所有方向行走，缓存8个方向
+    const direction = [
+        [-1, 1], // 右上
+        [0, 1], // 右
+        [1, 1], // 右下
+        [1, 0], // 下
+        [1, -1], // 左下
+        [-1, 0], // 上
+        [0, -1], // 左
+        [-1, -1] // 左上
+    ];
+
+    // 如果队列中有值，则继续搜索
+    while (queue.length) {
+        // 缓存当前层的节点数量
+        let queueLength = queue.length;
+
+        // 每次只遍历当前一层的节点
+        while (--queueLength &gt;= 0) {
+            // 出队一个坐标，计算它可以行走的下一步位置
+            const [x, y] = queue.shift();
+
+            for (let i = 0; i &lt; direction.length; i++) {
+                // 下一步可以向四周行走，计算出相应新坐标
+                const newX = x + direction[i][0];
+                const newY = y + direction[i][1];
+
+                // 如果新坐标超出网格，或者被标记为1，表示无法行走，则跳过
+                if (newX &lt; 0 || newY &lt; 0 || newX &gt; m || newY &gt; n || grid[newX][newY] === 1) {
+                    continue;
+                }
+
+                // 如果新坐标是终点，表示找到路径，返回长度即可
+                if (newX === m &amp;&amp; newY === n) {
+                    return level + 1;
+                }
+                // 将走过的位置标记为1，避免重复行走
+                grid[newX][newY] = 1;
+                // 将下一步的坐标存入队列，用于下一层循环
+                queue.push([newX, newY]);
+            }
+        }
+
+        level++; // 每向前走一层，将步数加1
+    }
+
+    return -1;
+};
+</code></pre>
+	</div>
+
+	
+	
+	
+	</article>
+<div id="share_container">
+	<div id="share" data-initialized="true">
+						<a class="no-pjax icon-wechat" tooltip="分享到微信">
+				<button class="btn btn-icon btn-success">
+					<span class="btn-inner--icon"><i class="fa fa-weixin"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-douban" tooltip="分享到豆瓣">
+				<button class="btn btn-icon btn-primary" style="background: #209261;border: none;">
+					<span aria-hidden="true">豆</span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-qq" tooltip="分享到 QQ">
+				<button class="btn btn-icon btn-primary" style="background: #2196f3;border: none;">
+					<span class="btn-inner--icon"><i class="fa fa-qq"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-qzone" tooltip="分享到 QQ 空间">
+				<button class="btn btn-icon btn-primary" style="background: #ffc107;border: none;">
+					<span class="btn-inner--icon"><i class="fa fa-star"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-weibo" tooltip="分享到微博">
+				<button class="btn btn-icon btn-warning">
+					<span class="btn-inner--icon"><i class="fa fa-weibo"></i></span>
+				</button>
+			</a>
+				<a target="_blank" class="no-pjax icon-copy-link" id="share_copy_link" tooltip="复制链接">
+			<button class="btn btn-icon btn-default">
+				<span class="btn-inner--icon"><i class="fa fa-link"></i></span>
+			</button>
+		</a>
+	</div>
+	<button id="share_show" class="btn btn-icon btn-primary" tooltip="分享">
+		<span class="btn-inner--icon"><i class="fa fa-share"></i></span>
+	</button>
+</div>
+<script type="text/javascript">
+	socialShare("#share", {
+	    title : 'LeetCode-7',
+	    description : 'LeetCode-7 刷啊，有点有心无力，有些题目可能之后再刷了。 318 最大单词长度乘积 刷题时…',
+	    wechatQrcodeTitle : "分享到微信",
+	    wechatQrcodeHelper : '微信扫描二维码',
+	    source : '/leetcode-7/'
+	});
+	$("#share_show")[0].onclick = function(){
+		$("#share_container").addClass("opened");
+	};
+	$("#share_copy_link")[0].onclick = function(){
+		let input = document.createElement('input');
+		document.body.appendChild(input);
+		input.setAttribute("value", window.location.href);
+		input.setAttribute("readonly", "readonly");
+		input.setAttribute("style", "opacity: 0;mouse-events:none;");
+		input.select();
+		if (document.execCommand('copy')){
+			iziToast.show({
+				title: '链接已复制',
+				message: "链接已复制到剪贴板",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#2dce89',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-check',
+				timeout: 5000
+			});
+		}else{
+			iziToast.show({
+				title: '复制失败',
+				message: "请手动复制链接",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#f5365c',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-close',
+				timeout: 5000
+			});
+		}
+		document.body.removeChild(input);
+	};
+</script>
+<div id="comments" class="comments-area card shadow-sm">
+	<div class="card-body">
+					<span>暂无评论</span>
+			</div>
+</div>
+
+
+<div id="post_comment" class="card shadow-sm  enable-qq-avatar">
+	<div class="card-body">
+		<h2 class="post-comment-title">
+			<i class="fa fa-commenting"></i>
+			<span class="hide-on-comment-editing">发送评论</span>
+			<span class="hide-on-comment-not-editing">编辑评论</span>
+		</h2>
+		<div id="post_comment_reply_info" class="post-comment-reply" style="display: none;">
+			<span>正在回复 <b><span id="post_comment_reply_name"></span></b> 的评论 :</span>
+			<div id="post_comment_reply_preview" class="post-comment-reply-preview"></div>
+			<button id="post_comment_reply_cancel" class="btn btn-outline-primary btn-sm">取消回复</button>
+		</div>
+		<form>
+			<div class="row">
+				<div class="col-md-12">
+					<textarea id="post_comment_content" class="form-control form-control-alternative" placeholder="评论内容" name="comment" style="height: 80px;"></textarea>
+				</div>
+				<div class="col-md-12" style="height: 0;overflow: hidden;">
+					<pre id="post_comment_content_hidden" class=""></pre>
+				</div>
+			</div>
+						<div class="row hide-on-comment-editing" style="margin-bottom: -10px;">
+				<div class="col-md-4">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+							</div>
+							<input id="post_comment_name" class="form-control" placeholder="昵称" type="text" name="author" value="">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+							</div>
+							<input id="post_comment_email" class="form-control" placeholder="邮箱 / QQ 号" type="email" name="email" value="">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4 post-comment-captcha-container">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-key"></i></span>
+							</div>
+							<input id="post_comment_captcha" class="form-control" placeholder="验证码" type="text">
+							<style>.post-comment-captcha-container:before{
+									content: "9 * 3 = ";
+								}</style>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row hide-on-comment-editing" id="post_comment_extra_input" style="display: none">
+				<div class="col-md-12" style="margin-bottom: -10px;">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4 post-comment-link-container">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-link"></i></span>
+							</div>
+							<input id="post_comment_link" class="form-control" placeholder="网站" type="text" name="url" value="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row hide-on-comment-editing " style="margin-top: 10px; ">
+				<div class="col-md-12">
+					<button id="post_comment_toggle_extra_input" type="button" class="btn btn-icon btn-outline-primary btn-sm" tooltip-show-extra-field="展开附加字段" tooltip-hide-extra-field="折叠附加字段">
+						<span class="btn-inner--icon"><i class="fa fa-angle-down"></i></span>
+					</button>
+				</div>
+</div>
+			<div class="row" style="margin-top: 5px; margin-bottom: 10px;">
+				<div class="col-md-12">
+											<div class="custom-control custom-checkbox comment-post-checkbox comment-post-use-markdown">
+							<input class="custom-control-input" id="comment_post_use_markdown" type="checkbox" checked>
+							<label class="custom-control-label" for="comment_post_use_markdown">Markdown</label>
+						</div>
+																					<div class="custom-control custom-checkbox comment-post-checkbox comment-post-mailnotice" tooltip="有回复时邮件通知我">
+							<input class="custom-control-input" id="comment_post_mailnotice" type="checkbox">
+							<label class="custom-control-label" for="comment_post_mailnotice">邮件提醒</label>
+						</div>
+										<button id="post_comment_send" class="btn btn-icon btn-primary comment-btn pull-right mr-0" type="button">
+						<span class="btn-inner--icon hide-on-comment-editing"><i class="fa fa-send"></i></span>
+						<span class="btn-inner--icon hide-on-comment-not-editing"><i class="fa fa-pencil"></i></span>
+						<span class="btn-inner--text hide-on-comment-editing" style="margin-right: 0;">发送</span>
+						<span class="btn-inner--text hide-on-comment-not-editing" style="margin-right: 0;">编辑</span>
+					</button>
+					<button id="post_comment_edit_cancel" class="btn btn-icon btn-danger comment-btn pull-right hide-on-comment-not-editing" type="button" style="margin-right: 8px;">
+						<span class="btn-inner--icon"><i class="fa fa-close"></i></span>
+						<span class="btn-inner--text">取消</span>
+					</button>
+											<button id="comment_emotion_btn" class="btn btn-icon btn-primary pull-right" type="button" title="表情">
+							<i class="fa fa-smile-o" aria-hidden="true"></i>
+						</button>
+						<div id="emotion_keyboard" class="emotion-keyboard card shadow-sm bg-white">
+	<div class="emotion-keyboard-content">
+		<div class="emotion-group" index="0">
+<div class="emotion-item" text="|´・ω・)ノ" title="">|´・ω・)ノ</div>
+<div class="emotion-item" text="ヾ(≧∇≦*)ゝ" title="">ヾ(≧∇≦*)ゝ</div>
+<div class="emotion-item" text="(☆ω☆)" title="">(☆ω☆)</div>
+<div class="emotion-item" text="（╯‵□′）╯︵┴─┴" title="">（╯‵□′）╯︵┴─┴</div>
+<div class="emotion-item" text="￣﹃￣" title="">￣﹃￣</div>
+<div class="emotion-item" text="(/ω＼)" title="">(/ω＼)</div>
+<div class="emotion-item" text="∠( ᐛ 」∠)＿" title="">∠( ᐛ 」∠)＿</div>
+<div class="emotion-item" text="(๑•̀ㅁ•́ฅ)" title="">(๑•̀ㅁ•́ฅ)</div>
+<div class="emotion-item" text="→_→" title="">→_→</div>
+<div class="emotion-item" text="୧(๑•̀⌄•́๑)૭" title="">୧(๑•̀⌄•́๑)૭</div>
+<div class="emotion-item" text="٩(ˊᗜˋ*)و" title="">٩(ˊᗜˋ*)و</div>
+<div class="emotion-item" text="(ノ°ο°)ノ" title="">(ノ°ο°)ノ</div>
+<div class="emotion-item" text="(´இ皿இ｀)" title="">(´இ皿இ｀)</div>
+<div class="emotion-item" text="⌇●﹏●⌇" title="">⌇●﹏●⌇</div>
+<div class="emotion-item" text="(ฅ´ω`ฅ)" title="">(ฅ´ω`ฅ)</div>
+<div class="emotion-item" text="(╯°A°)╯︵○○○" title="">(╯°A°)╯︵○○○</div>
+<div class="emotion-item" text="φ(￣∇￣o)" title="">φ(￣∇￣o)</div>
+<div class="emotion-item" text="ヾ(´･ ･｀｡)ノ&quot;" title="">ヾ(´･ ･｀｡)ノ&quot;</div>
+<div class="emotion-item" text="( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃" title="">( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃</div>
+<div class="emotion-item" text="(ó﹏ò｡)" title="">(ó﹏ò｡)</div>
+<div class="emotion-item" text="Σ(っ °Д °;)っ" title="">Σ(っ °Д °;)っ</div>
+<div class="emotion-item" text="( ,,´･ω･)ﾉ&quot;(´っω･｀｡)" title="">( ,,´･ω･)ﾉ&quot;(´っω･｀｡)</div>
+<div class="emotion-item" text="╮(╯▽╰)╭" title="">╮(╯▽╰)╭</div>
+<div class="emotion-item" text="o(*////▽////*)q" title="">o(*////▽////*)q</div>
+<div class="emotion-item" text="＞﹏＜" title="">＞﹏＜</div>
+<div class="emotion-item" text="( ๑´•ω•) &quot;(ㆆᴗㆆ)" title="">( ๑´•ω•) &quot;(ㆆᴗㆆ)</div>
+</div>
+<div class="emotion-group d-none" index="1">
+<div class="emotion-item" text="😂" title="">😂</div>
+<div class="emotion-item" text="😀" title="">😀</div>
+<div class="emotion-item" text="😅" title="">😅</div>
+<div class="emotion-item" text="😊" title="">😊</div>
+<div class="emotion-item" text="🙂" title="">🙂</div>
+<div class="emotion-item" text="🙃" title="">🙃</div>
+<div class="emotion-item" text="😌" title="">😌</div>
+<div class="emotion-item" text="😍" title="">😍</div>
+<div class="emotion-item" text="😘" title="">😘</div>
+<div class="emotion-item" text="😜" title="">😜</div>
+<div class="emotion-item" text="😝" title="">😝</div>
+<div class="emotion-item" text="😏" title="">😏</div>
+<div class="emotion-item" text="😒" title="">😒</div>
+<div class="emotion-item" text="🙄" title="">🙄</div>
+<div class="emotion-item" text="😳" title="">😳</div>
+<div class="emotion-item" text="😡" title="">😡</div>
+<div class="emotion-item" text="😔" title="">😔</div>
+<div class="emotion-item" text="😫" title="">😫</div>
+<div class="emotion-item" text="😱" title="">😱</div>
+<div class="emotion-item" text="😭" title="">😭</div>
+<div class="emotion-item" text="💩" title="">💩</div>
+<div class="emotion-item" text="👻" title="">👻</div>
+<div class="emotion-item" text="🙌" title="">🙌</div>
+<div class="emotion-item" text="🖕" title="">🖕</div>
+<div class="emotion-item" text="👍" title="">👍</div>
+<div class="emotion-item" text="👫" title="">👫</div>
+<div class="emotion-item" text="👬" title="">👬</div>
+<div class="emotion-item" text="👭" title="">👭</div>
+<div class="emotion-item" text="🌚" title="">🌚</div>
+<div class="emotion-item" text="🌝" title="">🌝</div>
+<div class="emotion-item" text="🙈" title="">🙈</div>
+<div class="emotion-item" text="💊" title="">💊</div>
+<div class="emotion-item" text="😶" title="">😶</div>
+<div class="emotion-item" text="🙏" title="">🙏</div>
+<div class="emotion-item" text="🍦" title="">🍦</div>
+<div class="emotion-item" text="🍉" title="">🍉</div>
+<div class="emotion-item" text="😣" title="">😣</div>
+</div>
+<div class="emotion-group d-none" index="2">
+<div class="emotion-item emotion-item-sticker" code="dinosaur-shy" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/1.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-daze" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/2.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-sweat" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/3.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-proud" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/4.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-powerless" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/5.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-pouting" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/6.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-eating" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/7.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-ok" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/8.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-doubt" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/9.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-depressed" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/10.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-close-eyes" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/11.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-sleeping" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/12.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-puzzled" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/13.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-agree" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/14.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-crazy" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/15.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-angry" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/dinosaur/16.jpg"></div>
+</div>
+<div class="emotion-group d-none" index="3">
+<div class="emotion-item emotion-item-sticker" code="flower-flower" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/1.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-grass" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/2.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-leaf" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/3.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-star" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/4.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-sun" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/5.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-moon" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/6.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-water" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/7.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-heihei" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/8.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-lemon" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/9.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-birthday" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/10.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-sea" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/11.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-vegetable" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/12.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-tile" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/13.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-utf" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="/wp-content/themes/argon/stickers/flower/14.jpg"></div>
+<div class="emotion-group-description">Source: github.com/k4yt3x/flowerhd</div>
+</div>	</div>
+	<div class="emotion-keyboard-bar">
+		<div class="emotion-group-name active" index="0">颜文字</div>
+<div class="emotion-group-name" index="1">Emoji</div>
+<div class="emotion-group-name" index="2">小恐龙</div>
+<div class="emotion-group-name" index="3">花!</div>	</div>
+</div>									</div>
+			</div>
+			<input id="post_comment_captcha_seed" value="" style="display: none;">
+			<input id="post_comment_post_id" value="1024" style="display: none;">
+		</form>
+	</div>
+</div>
+<div id="comment_edit_history" class="modal fade" tabindex="-1" role="dialog" aria-modal="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" style="font-size: 20px;"></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body" style="word-break: break-word;"></div>
+		</div>
+	</div>
+</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content"></div>
+	</div>
+</div>
+<div class="post-navigation card shadow-sm">
+<div class="post-navigation-item post-navigation-pre">
+<span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/leetcode-6/" rel="prev">LeetCode-6</a>
+</div>
+<div class="post-navigation-item post-navigation-next">
+<span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/e-li-qian-duan-lian-xi-sheng-zong-jie/" rel="next">阿里前端练习生总结</a>
+</div>
+</div>
+<div class="related-posts card shadow-sm">
+                    <h2 class="post-comment-title" style="margin-top: 1.2rem;margin-left: 1.5rem;margin-right: 1.5rem;">
+                    <i class="fa fa-book"></i>
+			        <span>推荐文章</span>
+		            </h2>
+		            <div style="overflow-x: auto;padding: 1.5rem;padding-top: 0.8rem;padding-bottom: 0.8rem;}">
+<a class="related-post-card" href="/leetcode-8/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">LeetCode-8</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/10/erciyuan67.webp"></a><a class="related-post-card" href="/leetcode-6/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">LeetCode-6</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/10/erciyuan77.webp"></a><a class="related-post-card" href="/leetcode-5/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">LeetCode-5</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/10/erciyuan74.webp"></a><a class="related-post-card" href="/leetcode-4/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">LeetCode-4</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/10/erciyuan65.webp"></a><a class="related-post-card" href="/leetcode-3/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">LeetCode-3</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="/wp-content/uploads/2021/10/erciyuan72.webp"></a>
+</div>
+</div>
+					<footer id="footer" class="site-footer card shadow-sm border-0">
+						<div>
+    Copyright © 2021
+    <a href="/">xaotuman's home</a>
+    |  <a href="https://github.szx.life/">Backup site</a> 
+    | Worked in <span id="run_time"></span> days
+</div>
+<div>
+    <img src="/wp-content/uploads/2021/08/工信部.webp" href="http://beian.miit.gov.cn">
+    <a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备2021021402号-1 浙ICP备2021021402号-2</a> ｜
+    <img src="/wp-content/uploads/2021/08/备案图标.png" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030302001119">
+    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030302001119">浙公网安备
+        33030302001119号</a>｜
+     <img src="/wp-content/uploads/2021/09/萌国icon.webp" href="https://icp.gov.moe/?keyword=20218257">
+    <a href="https://icp.gov.moe/?keyword=20218257" target="_blank">萌ICP备20218257号</a>
+</div>
+						<div>Theme <a href="https://github.com/solstice23/argon-theme" target="_blank"><strong>Argon</strong></a>
+</div>
+					</footer>
+				</main>
+			</div>
+		</div>
+		<script src="/wp-content/themes/argon/argontheme.js?v1.2.8"></script>
+						
+					<link rel="stylesheet" href="/wp-content/themes/argon/assets/vendor/highlight/styles/gradient-light.css">
+		
+	
+
+</body>
+
+<script>
+function runTime() {
+    var d = new Date(), str = '';
+    BirthDay = new Date("2021-7-14");
+    today = new Date();
+    timeold = (today.getTime() - BirthDay.getTime());
+    msPerDay = 24 * 60 * 60 * 1000
+    e_daysold = timeold / msPerDay
+    daysold = Math.floor(e_daysold);
+    str = daysold;
+    return str;
+}
+$('#run_time').html(runTime())
+setInterval(function () {
+    $('#run_time').html(runTime())
+}, 3600000);
+</script>
+
+
+<!-- Dynamic page generated in 0.067 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2021-12-01 14:33:45 -->
+
+<!-- super cache -->
+</html>

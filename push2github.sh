@@ -5,6 +5,6 @@ cd /home/ubuntu/code/backup_szx_life
 cp erciyuan4.webp wp-content/uploads/2021/07/erciyuan4.webp 
 git add .
 # 提交，每次都是随机数
-git commit -m "$date \"+%Y-%m-%d\""
+git commit -m "$(date +%Y-%m-%d)"
 # 推送到远程仓库，如果有必要的话，可以加个-f强制推送
 git push -u github main

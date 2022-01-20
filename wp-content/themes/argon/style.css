@@ -3,7 +3,7 @@ Theme Name: argon
 Author: solstice23
 Author URI: https://solstice23.top/
 Description: 轻盈、简洁、美观的 Wordpress 主题
-Version: 1.2.9
+Version: 1.2.10
 License: GNU General Public License v3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: 简约, 两栏, 侧栏在左边, 浮动侧栏, 文章目录, 自适应, 夜间模式, 可自定义
@@ -88,6 +88,12 @@ article img,
 .shuoshuo-preview-container img {
 	max-width: 100%;
 	height: auto;
+}
+.shuoshuo-preview-container img {
+	border-radius: var(--card-radius);
+}
+.shuoshuo-preview-container p + p > img:first-child {
+	margin-top: 12px;
 }
 article .wp-block-image figcaption,
 .shuoshuo-preview-container .wp-block-image figcaption {
@@ -1004,6 +1010,15 @@ html.darkmode .sidebar-tab-switcher > a.active {
 	border-bottom: 1px solid var(--themecolor-light);
 }
 
+#leftbar_overview_author_image{
+	width: 100px;
+	height: 100px;
+	margin: auto;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: rgba(127, 127, 127, 0.1);
+}
 #leftbar_overview_author_name {
 	margin-top: 15px;
 	font-size: 18px;
@@ -1989,11 +2004,11 @@ html.darkmode.amoled-dark .tippy-box[data-theme~="light"] > .tippy-svg-arrow {
 	margin-top: 0px;
 }
 .search-filter-wrapper {
-    display: inline-block;
-    margin-right: 12px;
+	display: inline-block;
+	margin-right: 12px;
 }
 .search-filter-wrapper > .custom-control-label {
-    line-height: 25px;
+	line-height: 25px;
 }
 
 /*文章导航 (上/下一篇文章)*/
@@ -2946,6 +2961,7 @@ html.darkmode.amoled-dark .emotion-item > img {
 }
 .emotion-keyboard-bar::-webkit-scrollbar-thumb {
 	background-color: rgba(0, 0, 0, 0.2);
+	border: none;
 }
 .emotion-keyboard-bar::-webkit-scrollbar-thumb:hover {
 	background-color: var(--themecolor);
@@ -3653,7 +3669,7 @@ article img.lazyload[src^="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPg"
 	width: max-content;
 	max-width: 100%;
 }
-figure > .fancybox-wrapper {
+figure > .fancybox-wrapper, figure > a > .fancybox-wrapper {
 	width: unset;
 }
 .fancybox-wrapper.lazyload-container-unload {
@@ -4086,7 +4102,7 @@ html[lang] {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	height: 100px;
+	height: 150px;
 	background: linear-gradient(180deg, transparent 0%, #fff 100%);
 	pointer-events: none;
 }
@@ -4098,21 +4114,25 @@ html.darkmode.amoled-dark .shuoshuo-content.shuoshuo-folded:after {
 }
 .shuoshuo-content.shuoshuo-folded .show-full-shuoshuo {
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 25px;
+	bottom: 10px;
+	right: 50%;
+	transform: translateX(50%);
 	color: var(--themecolor);
 	z-index: 2;
 	text-align: left;
 	cursor: pointer;
 	user-select: none;
-	opacity: 0.6;
-	transition: opacity 0.25s ease;
-}
-.shuoshuo-content.shuoshuo-folded:hover .show-full-shuoshuo {
 	opacity: 1;
 }
+.shuoshuo-content.shuoshuo-folded .show-full-shuoshuo > button {
+	border-radius: var(--card-radius);
+	padding: 5px 20px;
+	opacity: .8;
+}
+.shuoshuo-content.shuoshuo-folded .show-full-shuoshuo button:hover {
+	opacity: 1;
+}
+
 .shuoshuo-content:not(.shuoshuo-folded) .show-full-shuoshuo {
 	display: none;
 }
